@@ -1,2 +1,2 @@
 # Crack-the-coding-interview
-Solutions in C++
+Solutions in C++/Python
