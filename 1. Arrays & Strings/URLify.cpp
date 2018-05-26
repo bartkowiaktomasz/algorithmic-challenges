@@ -6,7 +6,8 @@ perform this operation in place.) */
 /*
 Other possible solutions:
 - Allocate new array of characters based on the number of spaces (and the length
-of the original string and then either copy the characters or insert "%20" */
+of the original string and then either copy the characters or insert "%20"
+*/
 #include <iostream>
 #include <string>
 
