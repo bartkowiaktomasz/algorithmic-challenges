@@ -4,8 +4,8 @@
 Solutions to questions taken from _Hackerrank - Cracking the Coding Interview Challenges_.
 
 ### Data Structures
- - [x] Arrays: Left rotation
- - [x] Strings: Making anagrams
+ - [x] Arrays: Left rotation  
+ - [x] Strings: Making anagrams  
  _**How many deletions needed to make two strings anagrams?**_
  _- Insert each char from the first string in the dict (char as a `key` and counter as a `value`), then for each char in the second string subtract the counter and count the number of common letters. Then return:
  `len(str1) + len(str2) - 2 * numCommonLetters`_
@@ -18,10 +18,10 @@ Solutions to questions taken from _Hackerrank - Cracking the Coding Interview Ch
 
 
 ### Algorithms
- - [x] Sorting: Bubble sort
- - [x] Sorting: Comparator
- - [x] Hash Tables: Ice cream parlor
-_**Given list of integers, find two of them that sum to n.**_
+ - [x] Sorting: Bubble sort  
+ - [x] Sorting: Comparator  
+ - [x] Hash Tables: Ice cream parlor  
+_**Given list of integers, find two of them that sum to n.**_  
 _- Iterate through the list once and add each value to the dict if it does not already contain an element that, when added, gives a sum of n._
  - [x] Stacks: Balanced brackets
  _**Given a string of brackets `{}[]()` state if they are balanced or not**_
