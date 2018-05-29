@@ -60,7 +60,7 @@ _- return the remaining element on the first queue,_
 _- swap queues' names._  
 
  - [x] Trees: Is this a binary search tree?  
- **_Check if given tree is a BST.  Assume a node has has attributes: data, left, right _**  
+ **_Check if given tree is a BST.  Assume a node has has attributes: data, left, right_**  
  _- check recursively with parameters min, max:_  
 `def isBST(root, min=None, max=None):`  
 _For the right branch set the value of min, for the left branch set the value of max (i.e. nothing in the right branch can be smaller or equal to Min)._  
