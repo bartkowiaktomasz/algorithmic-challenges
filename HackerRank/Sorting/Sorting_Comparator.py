@@ -1,4 +1,8 @@
-from functools import cmp_to_key
+"""
+Comparators are used to compare two objects.
+In this challenge, you'll create a comparator and use it to sort an array.
+"""
+
 class Player:
     def __init__(self, name, score):
         self.name = name

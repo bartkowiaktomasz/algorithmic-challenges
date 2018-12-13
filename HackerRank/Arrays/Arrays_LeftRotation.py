@@ -1,3 +1,7 @@
+"""
+A _left rotation_ operation on an array shifts each of the array's elements unit to the left.
+"""
+
 def array_left_rotation(a, n, k):
     rightShift = n - k
     b = a[:]

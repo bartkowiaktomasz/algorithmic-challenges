@@ -1,7 +1,8 @@
-/* Check Permutation: Given two strings, write a method to decide if one is a permutation of the
-other. */
-
 /*
+Check Permutation: Given two strings, write a method to decide if one is a permutation of the
+other.
+
+
 Other possible solutions:
 - Count the number of characters in each string and then compare
 */

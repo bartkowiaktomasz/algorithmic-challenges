@@ -1,7 +1,8 @@
-/* Is Unique: Implement an algorithm to determine if a string has all unique
-characters. What if you cannot use additional data structures? */
-
 /*
+Is Unique: Implement an algorithm to determine if a string has all unique
+characters. What if you cannot use additional data structures?
+
+
 Other possible solutions:
 - Sort the string in O(Nlog(N) and compare neighbouring characters
 - Hash each character and check if table entry empty

@@ -1,3 +1,8 @@
+"""
+Given an array of integers, sort the array in ascending
+order using the Bubble Sort algorithm.
+"""
+
 def swap(list, a, b):
     temp = list[a]
     list[a] = list[b]
