@@ -1,8 +1,3 @@
-import os
-import random
-import re
-import sys
-
 # Complete the solve function below.
 def solve(arr, money):
     dict = {}

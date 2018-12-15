@@ -1,10 +1,8 @@
-import math
-import os
-import random
-import re
-import sys
-
-
+"""
+Given the words in the magazine and the words in the ransom note,
+print `Yes` if he can replicate his ransom note _exactly_
+using whole words from the magazine; otherwise, print `No`.
+"""
 
 if __name__ == '__main__':
     mn = input().split()

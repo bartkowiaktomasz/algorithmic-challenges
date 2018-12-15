@@ -1,8 +1,7 @@
-import math
-import os
-import random
-import re
-import sys
+"""
+Complete the stepPerms function in the editor below. It should recursively calculate and return the integer number of ways
+Davis can climb the staircase, modulo 10000000007.
+"""
 
 def waysToClimb(n, waysToClimbArr):
     if(waysToClimbArr[n - 1] is not None):

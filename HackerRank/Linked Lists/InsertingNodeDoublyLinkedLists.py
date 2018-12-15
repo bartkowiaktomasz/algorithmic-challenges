@@ -1,3 +1,8 @@
+"""
+Given a reference to the head of a doubly-linked list and an integer, `data`, create a new DoublyLinkedListNode object
+having data value `data` and insert it into a sorted linked list while maintaining the sort.
+"""
+
 # For your reference:
 #
 # DoublyLinkedListNode:

@@ -1,3 +1,8 @@
+"""
+You’re given the pointer to the head node of a doubly linked list.
+Reverse the order of the nodes in the list.
+"""
+
 # For your reference:
 #
 # DoublyLinkedListNode:

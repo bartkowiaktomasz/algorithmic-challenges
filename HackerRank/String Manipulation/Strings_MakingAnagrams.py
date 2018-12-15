@@ -1,8 +1,6 @@
-import math
-import os
-import random
-import re
-import sys
+"""
+How many deletions needed to make two strings anagrams?
+"""
 
 
 def numSameLetters(str1, str2):
