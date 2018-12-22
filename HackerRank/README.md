@@ -18,6 +18,14 @@ Solutions to selected questions taken from _Hackerrank - Cracking the Coding Int
 - [x] Two Strings
 > Given two strings, determine if they share a common substring. A substring may be as small as one character.
  
+ - [x] Sherlock and Anagrams
+ > Two strings are anagrams of each other if the letters of one string can be rearranged to form the other string.
+ Given a string, find the number of pairs of substrings of the string that are anagrams of each other.
+ 
+ _For each substring, sort its letters it and store the counter for each sorted substring in a hash map. Then for each element in the hash map
+ calculate the number of anagrams, which can be interpreted as a number of connections with other identical sorted substrings 
+ (number of connections between the vertices of the polygon, i.e. n(n-1)/2)._
+ 
 ## Greedy Algorithms 
 - [x] Minimum Absolute Difference in an Array
 > Given an array of integers, find and print the minimum absolute difference between any two elements in the array.
@@ -114,7 +122,12 @@ _2) Pop operation costly_ **`push`** _- insert an element to the first stack,_
  - [x] Strings: Making anagrams 
  > How many deletions needed to make two strings anagrams?  
 _Insert each char from the first string in the dict (char as a `key` and counter as a `value`), then for each char in the second string subtract the counter and count the number of common letters. Then return:      
- `len(str1) + len(str2) - 2 * numCommonLetters`_   
+ `len(str1) + len(str2) - 2 * numCommonLetters`_ 
+ 
+ - [x] Alternating Characters
+ > You are given a string containing characters A and B only. Your task is to change it
+into a string such that there are no matching adjacent characters. To do this, you
+are allowed to delete zero or more characters in the string.
 
 
 ## Trees  
