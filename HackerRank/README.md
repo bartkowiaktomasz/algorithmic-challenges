@@ -129,6 +129,16 @@ _Insert each char from the first string in the dict (char as a `key` and counter
 into a string such that there are no matching adjacent characters. To do this, you
 are allowed to delete zero or more characters in the string.
 
+ - [x] Sherlock and the Valid String
+ > Sherlock considers a string to be valid if all characters of the string appear the same number of times.
+It is also valid if he can remove just 1 character at 1 index in the string, and the remaining characters
+will occur the same number of times. Given a string `s`, determine if it is valid.
+If so, return `YES`, otherwise return `NO`.
+
+_Solve using two dictionaries: one for counting letters in the string, the second one for keeping 
+information of how many letters (value) appeared at particular frequency (key); e.g.
+{3:1, 4:2} means that there is one letter that appears 3 times and two letters that
+appear four times._
 
 ## Trees  
  - [x] Tree: Height of a Binary Tree 
