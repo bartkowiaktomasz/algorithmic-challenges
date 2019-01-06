@@ -77,6 +77,12 @@ _It is enough to check if strings share at least one common letter._
   
 _Iterate through the list once and add each value to the dict if it does not already contain an element that, when added, gives a sum of n._   
 
+- [x] Swap Nodes   
+> Build a Binary Tree and swap children of nodes at particular depths.
+After each round of swapping, traverse the tree in-order and print the values of nodes.
+
+_Build a tree using queue, for each pair of children to be inserted, pop a parent from the queue
+and add children to it._
 
 ## Sorting  
  - [x] Sorting: Bubble sort      
