@@ -45,6 +45,7 @@ having data value `data` and insert it into a sorted linked list while maintaini
 - [x] Reverse a doubly linked list   
 > You’re given the pointer to the head node of a doubly linked list. Reverse the order of the nodes in the list.
 
+
  ## Dictionaries and Hashmaps    
 - [x] Two Strings    
  > Given two strings, determine if they share a common substring. A substring may be as small as one character.
@@ -55,6 +56,30 @@ _It is enough to check if strings share at least one common letter._
  > Given the words in the magazine and the words in the ransom note, print `Yes` if he can replicate his ransom note _exactly_ using whole words from the magazine; otherwise, print `No`.
  > 
  _Insert each word from `magazine` to a dict (char as a `key` and counter as a `value`) and then, for each word in `ransom note` check if the word is available._   
+
+
+## Dynamic Programming
+- [x] Max Array Sum
+> Given an array of integers, find the subset of non-adjacent elements with the maximum sum.
+Calculate the sum of that subset.
+
+_Bottom up solution: Build an array (dynamically) that, at each position, holds a maximum sum of the original
+array up to that position. For each next element (at position `i`) the maximum sum will either be a) the element itself,
+b) previous max sum (at position `i-1`), or c) sum of that  element and the maximum sum at position `i-2`._
+
+- [x] Candies
+> Alice is a kindergarten teacher. She wants to give some candies to the children in her class. 
+All the children sit in a line and each of them has a rating score according to his or her performance
+in the class.  Alice wants to give at least 1 candy to each child. If two children sit next to each
+other, then the one with the higher rating must get more candies. Alice wants to minimize the total 
+umber of candies she must buy.
+
+_Create two arrays: `left_to_right` and `right_to_left`. The first array will keep the amount of candies
+such that each child with higher score than its left neighbour will have more candies. The other array
+ensures the reverse. The return value will be the max of the two at each position. Note that this solution
+is `O(N)` in both time and space and there exists a solution that is `O(1)` in space:
+[Solution on LeetCode](https://leetcode.com/problems/candy/solution/)_
+ 
 
 
 ## Graphs
@@ -117,16 +142,23 @@ _2) Pop operation costly_ **`push`** _- insert an element to the first stack,_
  **`pop`**      
  _- if both stacks are empty - return `Error`,_      
  _- if second stack is empty - put all elements from the first stack on the second stack,_      
- _- pop the element from the second stack._   
+ _- pop the element from the second stack._
+ 
  - [x] Stacks: A tale of two queues      
 > Build a stack using two queues  
   
-  _There are again two methods: 1) make `push` operation costly and 2) make `pop` operation costly._ _1) Make push operation costly_ **`push`** _- enqueue element to second queue,_ _- move all elements from the first queue to the second one,_ _- swap queues' names (to avoid the necessity of moving elements back to the first queue._ _2) Make pop operation costly_ **`push`** _- enqueue element to the first queue_ **`pop`** _- move all elements (except the last one) from the first queue to the second one,_ _- return the remaining element on the first queue,_ _- swap queues' names._   
+  _There are again two methods: 1) make `push` operation costly and 2) make `pop` operation costly._
+  _1) Make push operation costly_ **`push`** _- enqueue element to second queue,_ _- move all elements 
+   the first queue to the second one,_ _- swap queues' names (to avoid the necessity of moving elements
+   back to the first queue._ _2) Make pop operation costly_ **`push`** _- enqueue element to the first
+   queue_ **`pop`** _- move all elements (except the last one) from the first queue to the second
+   one,_ _- return the remaining element on the first queue,_ _- swap queues' names._   
 
 
 ## String Manipulation  
  - [x] Strings: Making anagrams 
- > How many deletions needed to make two strings anagrams?  
+ > How many deletions needed to make two strings anagrams? 
+ 
 _Insert each char from the first string in the dict (char as a `key` and counter as a `value`), then for each char in the second string subtract the counter and count the number of common letters. Then return:      
  `len(str1) + len(str2) - 2 * numCommonLetters`_ 
  
@@ -150,7 +182,8 @@ appear four times._
  - [x] Tree: Height of a Binary Tree 
  - [x] Binary Search Tree: Lowest Common Ancestor
  - [x] Trees: Is this a binary search tree?      
-> Check if given tree is a BST.  Assume a node has has attributes: data, left, right  
+> Check if given tree is a BST.  Assume a node has has attributes: data, left, right 
+
   _Check recursively with parameters min, max:_ `def isBST(root, min=None, max=None):` _For the right branch set the value of min, for the left branch set the value of max (i.e. nothing in the right branch can be smaller or equal to Min)._      
  _- base case: if not root - Return `True`,_      
  _- if min is not None and `root.data <= min` - Return `False`,_      
