@@ -11,52 +11,6 @@ Solutions to selected questions taken from _Hackerrank - Cracking the Coding Int
  > You need to find the minimum number of swaps required to sort the array in ascending order.   
  - [x] Array Manipulation
 
-## Dictionaries and Hashmaps  
-- [x] Hash Tables: Ransom Note
-> Given the words in the magazine and the words in the ransom note, print `Yes` if he can replicate his ransom note _exactly_ using whole words from the magazine; otherwise, print `No`.
-
-- [x] Two Strings
-> Given two strings, determine if they share a common substring. A substring may be as small as one character.
- 
- - [x] Sherlock and Anagrams
- > Two strings are anagrams of each other if the letters of one string can be rearranged to form the other string.
- Given a string, find the number of pairs of substrings of the string that are anagrams of each other.
- 
- _For each substring, sort its letters it and store the counter for each sorted substring in a hash map. Then for each element in the hash map
- calculate the number of anagrams, which can be interpreted as a number of connections with other identical sorted substrings 
- (number of connections between the vertices of the polygon, i.e. n(n-1)/2)._
- 
-## Greedy Algorithms 
-- [x] Minimum Absolute Difference in an Array
-> Given an array of integers, find and print the minimum absolute difference between any two elements in the array.
-
-- [x] Luck Balance
-
-## Linked Lists  
-- [x] Linked Lists: Detect a cycle      
-> Given a linked list detect if it contains a cycle.
-
- _Use Floyd's cycle detection algorithm - create two pointers, one (slow) jumping from list to the next node, the second one (quick) jumping to every 2nd node. If they eventually meet, there is a loop._    
-
-- [x] Inserting a Node Into a Sorted Doubly Linked List  
-> Given a reference to the head of a doubly-linked list and an integer, `data`, create a new DoublyLinkedListNode object  
-having data value `data` and insert it into a sorted linked list while maintaining the sort.
-
-- [x] Reverse a doubly linked list   
-> You’re given the pointer to the head node of a doubly linked list. Reverse the order of the nodes in the list.
-
-
- ## Dictionaries and Hashmaps    
-- [x] Two Strings    
- > Given two strings, determine if they share a common substring. A substring may be as small as one character.
-
-_It is enough to check if strings share at least one common letter._
-  
- - [x] Hash tables: Ransom note      
- > Given the words in the magazine and the words in the ransom note, print `Yes` if he can replicate his ransom note _exactly_ using whole words from the magazine; otherwise, print `No`.
- > 
- _Insert each word from `magazine` to a dict (char as a `key` and counter as a `value`) and then, for each word in `ransom note` check if the word is available._   
-
 
 ## Dynamic Programming
 - [x] Max Array Sum
@@ -79,7 +33,47 @@ such that each child with higher score than its left neighbour will have more ca
 ensures the reverse. The return value will be the max of the two at each position. Note that this solution
 is `O(N)` in both time and space and there exists a solution that is `O(1)` in space:
 [Solution on LeetCode](https://leetcode.com/problems/candy/solution/)_
+
+
+## Dictionaries and Hashmaps  
+- [x] Hash Tables: Ransom Note
+> Given the words in the magazine and the words in the ransom note, print `Yes` if he can replicate his ransom note _exactly_ using whole words from the magazine; otherwise, print `No`.
+
+ _Insert each word from `magazine` to a dict (char as a `key` and counter as a `value`) and then, for each word in `ransom note` check if the word is available._   
+
+- [x] Two Strings
+> Given two strings, determine if they share a common substring. A substring may be as small as one character.
  
+ _It is enough to check if strings share at least one common letter._
+
+ - [x] Sherlock and Anagrams
+ > Two strings are anagrams of each other if the letters of one string can be rearranged to form the other string.
+ Given a string, find the number of pairs of substrings of the string that are anagrams of each other.
+ 
+ _For each substring, sort its letters it and store the counter for each sorted substring in a hash map. Then for each element in the hash map
+ calculate the number of anagrams, which can be interpreted as a number of connections with other identical sorted substrings 
+ (number of connections between the vertices of the polygon, i.e. n(n-1)/2)._
+ 
+ 
+## Greedy Algorithms 
+- [x] Minimum Absolute Difference in an Array
+> Given an array of integers, find and print the minimum absolute difference between any two elements in the array.
+
+- [x] Luck Balance
+
+
+## Linked Lists  
+- [x] Linked Lists: Detect a cycle      
+> Given a linked list detect if it contains a cycle.
+
+ _Use Floyd's cycle detection algorithm - create two pointers, one (slow) jumping from list to the next node, the second one (quick) jumping to every 2nd node. If they eventually meet, there is a loop._    
+
+- [x] Inserting a Node Into a Sorted Doubly Linked List  
+> Given a reference to the head of a doubly-linked list and an integer, `data`, create a new DoublyLinkedListNode object  
+having data value `data` and insert it into a sorted linked list while maintaining the sort.
+
+- [x] Reverse a doubly linked list   
+> You’re given the pointer to the head node of a doubly linked list. Reverse the order of the nodes in the list.
 
 
 ## Graphs
