@@ -118,7 +118,9 @@ _Use Merge Sort_
   
 ## Stacks and Queues  
  - [x] Stacks: Balanced brackets      
- > Given a string of brackets `{}[]()` state if they are balanced or not  _Push each bracket on the stack and pop if found the matching one. If closing bracket does not match the one on the top of the stack - Return `False`._    
+ > Given a string of brackets `{}[]()` state if they are balanced or not.
+ 
+ _Push each bracket on the stack and pop if found the matching one. If closing bracket does not match the one on the top of the stack - Return `False`._    
  - [x] Queues: A tale of two stacks      
 > Build a queue using two stacks.  
   

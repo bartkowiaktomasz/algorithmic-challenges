@@ -1,43 +1,50 @@
-import math
+"""
+Complete the function isBalanced in the editor below.
+It must return a string: YES if the sequence is balanced or NO if it is not.
+"""
+
 import os
-import random
-import re
-import sys
+from collections import deque
 
-def checkBrackets(str):
-    list = []
-
-    for char in expression:
-        if char == '{' or char == '(' or char == '[':
-            list.append(char)
-        else:
-            if len(list) == 0:
-                return 'NO'
-            if char == '}':
-                if list[len(list) - 1] == '{':
-                    list.pop()
-                else:
-                    return 'NO'
-            if char == ')':
-                if list[len(list) - 1] == '(':
-                    list.pop()
-                else:
-                    return 'NO'
-            if char == ']':
-                if list[len(list) - 1] == '[':
-                    list.pop()
-                else:
-                    return 'NO'
-
-
-    if len(list) == 0:
-        return 'YES'
+def isOpening(bracket):
+    if bracket == '(' or bracket == '{' or bracket == '[':
+        return True
     else:
-        return 'NO'
+        return False
+
+
+def areMatching(a, b):
+    if a == '(' and b == ')' or a == '{' and b == '}' or a == '[' and b == ']':
+        return True
+    else:
+        return False
+
+
+# Complete the isBalanced function below.
+def isBalanced(s):
+    queue = deque()
+    for bracket in s:
+        if isOpening(bracket):
+            queue.append(bracket)
+        else:
+            try:
+                element = queue.pop()
+            except:
+                return "NO"
+            if not areMatching(element, bracket):
+                return "NO"
+
+    if len(queue) == 0:
+        return "YES"
+    else:
+        return "NO"
+
 
 if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
     t = int(input())
-
     for t_itr in range(t):
-        expression = input()
-        print(checkBrackets(expression))
+        s = input()
+        result = isBalanced(s)
+        fptr.write(result + '\n')
+    fptr.close()
