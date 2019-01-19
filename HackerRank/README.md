@@ -124,15 +124,17 @@ _Use Merge Sort_
   
   _There are two methods: 1) make `push` operation costly and 2) make `pop` operation costly._  
  *1) Push operation costly*  
-  **`push`**      
+ **`push`**      
  _- while first stack is not empty - put all elements from the first stack on the second one,_      
  _- push the element on the first stack,_      
  _- move all elements back from the second stack to the first one._      
  **`pop`**      
  _- if the first stack is empty - return `Error`,_      
  _- else `pop` the element from the first stack._  
-  
-_2) Pop operation costly_ **`push`** _- insert an element to the first stack,_      
+ 
+  *2) Pop operation costly*  
+   **`push`**  
+  _- insert an element to the first stack,_      
  **`pop`**      
  _- if both stacks are empty - return `Error`,_      
  _- if second stack is empty - put all elements from the first stack on the second stack,_      
@@ -141,12 +143,21 @@ _2) Pop operation costly_ **`push`** _- insert an element to the first stack,_
  - [x] Stacks: A tale of two queues      
 > Build a stack using two queues  
   
-  _There are again two methods: 1) make `push` operation costly and 2) make `pop` operation costly._
-  _1) Make push operation costly_ **`push`** _- enqueue element to second queue,_ _- move all elements 
-   the first queue to the second one,_ _- swap queues' names (to avoid the necessity of moving elements
-   back to the first queue._ _2) Make pop operation costly_ **`push`** _- enqueue element to the first
-   queue_ **`pop`** _- move all elements (except the last one) from the first queue to the second
-   one,_ _- return the remaining element on the first queue,_ _- swap queues' names._   
+  _There are again two methods: 1) make `push` operation costly and 2) make `pop` operation costly._  
+  _1) Make push operation costly_  
+  **`push`**  
+  _- enqueue element to second queue,_  
+  _- move all elements 
+   the first queue to the second one,_  
+   _- swap queues' names (to avoid the necessity of moving elements back to the first queue._
+   
+   _2) Make pop operation costly_  
+   **`push`**  
+   _- enqueue element to the first queue_  
+   **`pop`**  
+   _- move all elements (except the last one) from the first queue to the second one,_  
+   _- return the remaining element on the first queue,_  
+   _- swap queues' names._   
 
 
 ## String Manipulation  
