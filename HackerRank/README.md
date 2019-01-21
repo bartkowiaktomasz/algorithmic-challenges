@@ -12,7 +12,27 @@ Solutions to selected questions taken from _Hackerrank - Cracking the Coding Int
  - [x] Array Manipulation
 
 
-## Dynamic Programming
+## Dictionaries and Hashmaps  
+- [x] Hash Tables: Ransom Note
+> Given the words in the magazine and the words in the ransom note, print `Yes` if he can replicate his ransom note _exactly_ using whole words from the magazine; otherwise, print `No`.
+
+ _Insert each word from `magazine` to a dict (char as a `key` and counter as a `value`) and then, for each word in `ransom note` check if the word is available._   
+
+- [x] Two Strings
+> Given two strings, determine if they share a common substring. A substring may be as small as one character.
+ 
+ _It is enough to check if strings share at least one common letter._
+
+ - [x] Sherlock and Anagrams
+ > Two strings are anagrams of each other if the letters of one string can be rearranged to form the other string.
+ Given a string, find the number of pairs of substrings of the string that are anagrams of each other.
+ 
+ _For each substring, sort its letters it and store the counter for each sorted substring in a hash map. Then for each element in the hash map
+ calculate the number of anagrams, which can be interpreted as a number of connections with other identical sorted substrings 
+ (number of connections between the vertices of the polygon, i.e. n(n-1)/2)._
+ 
+ 
+ ## Dynamic Programming
 - [x] Max Array Sum
 > Given an array of integers, find the subset of non-adjacent elements with the maximum sum.
 Calculate the sum of that subset.
@@ -35,24 +55,19 @@ is `O(N)` in both time and space and there exists a solution that is `O(1)` in s
 [Solution on LeetCode](https://leetcode.com/problems/candy/solution/)_
 
 
-## Dictionaries and Hashmaps  
-- [x] Hash Tables: Ransom Note
-> Given the words in the magazine and the words in the ransom note, print `Yes` if he can replicate his ransom note _exactly_ using whole words from the magazine; otherwise, print `No`.
-
- _Insert each word from `magazine` to a dict (char as a `key` and counter as a `value`) and then, for each word in `ransom note` check if the word is available._   
-
-- [x] Two Strings
-> Given two strings, determine if they share a common substring. A substring may be as small as one character.
  
- _It is enough to check if strings share at least one common letter._
+ ## Graphs
+ - [x] BFS: Shortest Reach in a Graph
+ - [x] DFS: Connected Cell in a Grid
+ - [x] Find Nearest Clone
+ > In this challenge, there is a connected undirected graph where each of the
+nodes is a color. Given a color, find the shortest path connecting any two
+nodes of that color. Each edge has a weight of 1. If there is not a pair or if
+the color is not found, print -1.
 
- - [x] Sherlock and Anagrams
- > Two strings are anagrams of each other if the letters of one string can be rearranged to form the other string.
- Given a string, find the number of pairs of substrings of the string that are anagrams of each other.
- 
- _For each substring, sort its letters it and store the counter for each sorted substring in a hash map. Then for each element in the hash map
- calculate the number of anagrams, which can be interpreted as a number of connections with other identical sorted substrings 
- (number of connections between the vertices of the polygon, i.e. n(n-1)/2)._
+_For each node of required color, perform a BFS, finding a minimum
+distance from that node to the other one of the same colour. Then return
+the smallest of all distances found, or zero if no distance is positive_
  
  
 ## Greedy Algorithms 
