@@ -95,9 +95,16 @@ having data value `data` and insert it into a sorted linked list while maintaini
  - [x] BFS: Shortest Reach in a Graph
  - [x] DFS: Connected Cell in a Grid
 
+
 ## Miscellaneous  
  - [x] Bit Manipulation: Lonely Integer
  - [x] Time Complexity: Primality
+ - [x] Flipping Bits
+ > You will be given a list of 32 bit unsigned integers.
+ Flip all the bits ( and ) and print the result as an unsigned integer.
+
+_`XOR`ing with `one` will flip the beats of any binary number._
+
 
 ## Recursion and Backtracking
  - [x] Recursion: Fibonacci Numbers
