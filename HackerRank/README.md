@@ -76,6 +76,13 @@ the smallest of all distances found, or zero if no distance is positive_
 
 - [x] Luck Balance
 
+- [x] Greedy Florist
+> Minimize the amount of money it costs for a group of friends to 
+buy all 'n' flowers
+
+_Sort an array and then, until all flowers are bought, add (for
+each friend) the most expensive ones to the sum, keeping track of 
+the `round number` (in each turn the cost of flowers increases)._
 
 ## Linked Lists  
 - [x] Linked Lists: Detect a cycle      
@@ -101,7 +108,7 @@ having data value `data` and insert it into a sorted linked list while maintaini
  - [x] Time Complexity: Primality
  - [x] Flipping Bits
  > You will be given a list of 32 bit unsigned integers.
- Flip all the bits ( and ) and print the result as an unsigned integer.
+ Flip all the bits and print the result as an unsigned integer.
 
 _`XOR`ing with `one` will flip the beats of any binary number._
 
@@ -124,6 +131,15 @@ After each round of swapping, traverse the tree in-order and print the values of
 
 _Build a tree using queue, for each pair of children to be inserted, pop a parent from the queue
 and add children to it._
+
+- [x] Pairs
+> You will be given an array of integers and a target value.
+Determine the number of pairs of array elements that have a
+difference equal to a target value.
+
+_Use `hashmap` to store each element of the array. Then in the second pass
+check `hashmap` for the existence of `elem+k` and `elem-k`. Return `num_pairs/2` 
+because each existing pair has been counted twice._
 
 ## Sorting  
  - [x] Sorting: Bubble sort      
