@@ -112,6 +112,14 @@ having data value `data` and insert it into a sorted linked list while maintaini
 
 _`XOR`ing with `one` will flip the beats of any binary number._
 
+- [x] Friend Circle Queries
+> You will be given q queries. After each query, you need to report the size of
+the largest friend circle (the largest group of friends) formed after
+considering that query.
+
+_Use `Union-Find` (or `Disjoint-Set`) data structure, which has a linear time
+or almost constant amortized time for `union` and `find`, when both path
+compression and union by rank/size are applied._ 
 
 ## Recursion and Backtracking
  - [x] Recursion: Fibonacci Numbers
