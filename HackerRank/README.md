@@ -54,6 +54,20 @@ ensures the reverse. The return value will be the max of the two at each positio
 is `O(N)` in both time and space and there exists a solution that is `O(1)` in space:
 [Solution on LeetCode](https://leetcode.com/problems/candy/solution/)_
 
+- [x] Abbreviation
+> You can perform the following operations on the string, a:
+> 1. Capitalize zero or more of a's lowercase letters.
+> 2. Delete all of the remaining lowercase letters in a.
+
+> Given two strings, a and b, determine if it's possible to make  equal to  as 
+> described. If so, print YES on a new line. Otherwise, print NO.
+
+_Use `dict` for memoization. Set `sys.setrecursionlimit(2000)` to allow for 
+ bigger stack. Do not memoize tuples of strings but tuples of indeces instead. 
+ Remember, in `if` statements, to put statements that are easier to evaluate
+ on the left hand side so that, if the result is `False`, short-circuting
+ prevents from evaluating expensive expression, e.g. `string.lower()`._
+
 
  
  ## Graphs
