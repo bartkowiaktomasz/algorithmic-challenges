@@ -222,6 +222,25 @@ _Use Merge Sort_
    _- swap queues' names._   
 
 
+- [x] Castle on the Grid
+> You are given a square grid with some cells open (.) and some blocked (X).
+Your playing piece can move along any row or column until it reaches the edge
+of the grid or a blocked cell. Given a grid, a start and an end position,
+determine the number of moves it will take to get to the end position.
+
+_Build an auxiliary method `possible fields` that, given a field, returns
+a list of possible fields that the piece can move to. Do a BFS/DFS marking each
+visited field. For each possible field store the distance to it from
+the beginning. Distance for each field is equal to the incremented distance
+to previous field._
+
+- [x] Largest Rectangle
+> Maximise a rectangular area under the histogram.
+
+_Use an increasing stack to store the indeces of rectangles.
+Good explanation: 
+[Stack Overflow](https://stackoverflow.com/questions/4311694/maximize-the-rectangular-area-under-histogram)_
+
 ## String Manipulation  
  - [x] Strings: Making anagrams 
  > How many deletions needed to make two strings anagrams? 
