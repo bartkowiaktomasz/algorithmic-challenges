@@ -136,13 +136,24 @@ or almost constant amortized time for `union` and `find`, when both path
 compression and union by rank/size are applied._ 
 
 ## Recursion and Backtracking
- - [x] Recursion: Fibonacci Numbers
- > Implement Fibonacci sequence recursively.
- - [x] Recursion: Davids' Staircase
- > Complete the  _stepPerms_  function in the editor below. It should recursively calculate and return the integer number of ways Davis can climb the staircase, modulo 10000000007.
+- [x] Recursion: Fibonacci Numbers
+> Implement Fibonacci sequence recursively.
+- [x] Recursion: Davids' Staircase
+> Complete the  _stepPerms_  function in the editor below. It should recursively calculate and return the integer number of ways Davis can climb the staircase, modulo 10000000007.
+- [x] Crossword Puzzle
+> Fill in the crossword of size 10x10 with given list of words.
+
+_Build a pool (stack/set) with all positions to which words are to be inserted. 
+For each position try inserting words recursively. `Revert` function (cleaning wrong 
+entries) is called twice: first time when insertion was successful (proper
+word length) but recursive `solve` returned `False`, and the second time
+when no words fit given position (the current position itself should be put 
+back to the pool)._
+
+
 
 ## Search  
- - [x] Hash Tables: Ice cream parlor      
+- [x] Hash Tables: Ice cream parlor      
 > Given list of integers, find two of them that sum to n.  
   
 _Iterate through the list once and add each value to the dict if it does not already contain an element that, when added, gives a sum of n._   
