@@ -150,6 +150,9 @@ word length) but recursive `solve` returned `False`, and the second time
 when no words fit given position (the current position itself should be put 
 back to the pool)._
 
+- [x] Recursive Digit Sum
+> Calculate a `super digit` of given number recursively until one digit is 
+left, e.g `sd(533) = sd(5+3+3) = sd(12) = sd(1+2) = sd(3) = 3`
 
 
 ## Search  
