@@ -177,6 +177,14 @@ _Use `hashmap` to store each element of the array. Then in the second pass
 check `hashmap` for the existence of `elem+k` and `elem-k`. Return `num_pairs/2` 
 because each existing pair has been counted twice._
 
+- [x] Triple Sum
+> Sum of special triplets having elements from 3 different arrays.
+
+_First sort the arrays and remove the duplicates. Then iterate through the
+arrays in parallel, counting for each element `elem` of array `b` the number of
+elements in `a` and `c` that is less or equal to `elem`. The number of possible
+triplets for each `elem` is the product of the counts_.
+
 ## Sorting  
  - [x] Sorting: Bubble sort      
  > Given an array of integers, sort the array in ascending order using the Bubble Sort algorithm.  
