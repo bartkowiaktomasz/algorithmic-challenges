@@ -185,6 +185,21 @@ arrays in parallel, counting for each element `elem` of array `b` the number of
 elements in `a` and `c` that is less or equal to `elem`. The number of possible
 triplets for each `elem` is the product of the counts_.
 
+- [x] Minimum Time Required
+> You are planning production for an order. You have a number of machines that
+each have a fixed number of days to produce an item. Given that all the
+machines operate simultaneously, determine the minimum number of days to
+produce the required order.
+
+_First sort the machines. Then we need to find a minimum find of days that give
+particular `goal` (and one day less must give a value less than a `goal`). 
+This is a binary search question where days are the arrays we operate in. 
+The bounds for days are `1` and `10^18` since in the worst case there is only
+one machine that needs `10^9` days to produce an item and we need `10^9` items.
+Recursion might be too deep so we need to use two moving bounds to iteratively 
+keep track where we are. Util function `num_items` will, given a number of days,
+output a number of items that the `machines` can produce._
+
 ## Sorting  
  - [x] Sorting: Bubble sort      
  > Given an array of integers, sort the array in ascending order using the Bubble Sort algorithm.  
