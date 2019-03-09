@@ -275,8 +275,22 @@ to previous field._
 > Maximise a rectangular area under the histogram.
 
 _Use an increasing stack to store the indeces of rectangles.
-Good explanation: 
+Good explanation:_
 [Stack Overflow](https://stackoverflow.com/questions/4311694/maximize-the-rectangular-area-under-histogram)_
+
+- [x] Min Max Riddle
+> Given an integer array of size , find the maximum of the minimum(s) of every
+window size in the array. The window size varies from 1 to N.
+
+_For each element (index) in the array, use stack to keep track of the
+index of the first element that is smaller. Invoke the function two times:
+for given array `a` and its reverse (to know the index of the first element 
+that is smaller to the left). Then compute diameters of max windows for 
+each element (index) for which this element is the smallest. Keep that
+information in the hashmap and at the end iterate through it. Note that
+for decreasing window size, the `max` of all of them can be either the same or
+higher._
+
 
 ## String Manipulation  
  - [x] Strings: Making anagrams 
