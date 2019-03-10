@@ -1,5 +1,6 @@
 """
-A left rotation operation on an array shifts each of the array's elements  unit to the left.
+A left rotation operation on an array shifts each of the array's elements
+unit to the left.
 """
 import os
 
@@ -18,19 +19,13 @@ def hourglassSum(arr):
             sum = singleGlassSum(arr, x, y)
             if(sum > maxSum):
                 maxSum = sum
-
     return maxSum
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
-
     arr = []
-
     for _ in range(6):
         arr.append(list(map(int, input().rstrip().split())))
-
     result = hourglassSum(arr)
-
     fptr.write(str(result) + '\n')
-
     fptr.close()

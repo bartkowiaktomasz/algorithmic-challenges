@@ -1,5 +1,6 @@
 """
-You need to find the minimum number of swaps required to sort the array in ascending order.
+You need to find the minimum number of swaps required to sort the array in
+ascending order.
 """
 import os
 

@@ -83,6 +83,18 @@ _For each node of required color, perform a BFS, finding a minimum
 distance from that node to the other one of the same colour. Then return
 the smallest of all distances found, or zero if no distance is positive_
  
+ - [x] Roads and Libraries
+ > You are given ``n`` queries, where each query consists of a map of HackerLand
+and value of ``cost_library`` and ``cost_road``. For each query, find the minimum
+cost of making libraries accessible to all the citizens and print it on a
+new line.
+
+_This is a graph question. First, compute the number of components in the graph
+(and how many vertices there are in each component) - this can be done using 
+`DFS` or `BFS` (here `DFS` is used). If the library is cheaper than the road, 
+build a library in each city. Else build one library per component. The number
+of roads in the component is the number of vertices (cities) minus one. Sum
+the costs for all of the components._
  
 ## Greedy Algorithms 
 - [x] Minimum Absolute Difference in an Array
