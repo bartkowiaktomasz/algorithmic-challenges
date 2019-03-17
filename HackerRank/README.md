@@ -110,6 +110,13 @@ _Sort an array and then, until all flowers are bought, add (for
 each friend) the most expensive ones to the sum, keeping track of 
 the `round number` (in each turn the cost of flowers increases)._
 
+- [x] Max Min
+> You must create an array of length ``k`` from elements of ``arr`` such that its
+unfairness is minimized.
+
+_Sort an array and find a sliding window of size ``k`` for which the
+difference between the biggest and the smallest element is the smallest._
+
 ## Linked Lists  
 - [x] Linked Lists: Detect a cycle      
 > Given a linked list detect if it contains a cycle.
