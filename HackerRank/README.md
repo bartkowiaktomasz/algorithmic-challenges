@@ -130,6 +130,8 @@ having data value `data` and insert it into a sorted linked list while maintaini
 - [x] Reverse a doubly linked list   
 > You’re given the pointer to the head node of a doubly linked list. Reverse the order of the nodes in the list.
 
+- [x] Insert a node at a specific position in a linked list
+- [x] Find Merge Point of Two Lists
 
 ## Graphs
  - [x] BFS: Shortest Reach in a Graph
