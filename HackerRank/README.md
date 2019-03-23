@@ -356,3 +356,7 @@ has only a one element._
  _- if min is not None and `root.data <= min` - Return `False`,_      
  _- if max is not None and `root.data >= max` - Return `False`,_      
  _- check recursively left and the right branches with `root.data` set as max and min respectively._
+
+ - [x] Tree: Huffman Decoding
+ > You are given pointer to the root of the Huffman tree and a binary coded string
+to decode. You need to print the decoded string.
