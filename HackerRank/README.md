@@ -336,6 +336,15 @@ information of how many letters (value) appeared at particular frequency (key); 
 {3:1, 4:2} means that there is one letter that appears 3 times and two letters that
 appear four times._
 
+- [x] Special Palindrome Again
+> Find Special palindromic sub-strings in a string
+
+_Build a list of tuples, e.g. for `"monopoo"` -> `[(m,1), (o,1), (n,1), (o,1), (p,1), (o,2)]`.
+Then, in first pass, count the number of substrings that have only the same letters. 
+Remember that for `n` letters, there is `n(n-1)/2` such substrings. In the second
+pass slide a window of size `3`, checking for a pattern, for which the middle tuple
+has only a one element._
+
 ## Trees  
  - [x] Tree: Height of a Binary Tree 
  - [x] Binary Search Tree: Lowest Common Ancestor
