@@ -31,6 +31,20 @@ Solutions to selected questions taken from _Hackerrank - Cracking the Coding Int
  calculate the number of anagrams, which can be interpreted as a number of connections with other identical sorted substrings 
  (number of connections between the vertices of the polygon, i.e. n(n-1)/2)._
  
+ - [x] Count Triplets
+ > You are given an array and you need to find number of tripets of indices
+`(i, j, k)` such that the elements at those indices are in geometric progression
+for a given common ratio `r` and `i < j < k`.
+
+_This algorithm can be solved in linear time with one pass: 
+Run a single pass through the array and for each element keep track how many
+previous elements can form a tuple `(i,j)` and triple `(i, j, k)` with that element.
+Keep two counters for that purpose, e.g. `t2`, `t3`. For example, if for one of
+the elements no other elements are yet to form a tuple or triple, this element
+is the one that is "waiting" to form a tuple and then a triple. For this purpose
+increment the counter (`t2`) for the value `elem*r`. Next time, if element `elem*r`
+arrives, it will check how many elements are waiting for it and will increment
+the value of `t3` accordingly._
  
  ## Dynamic Programming
 - [x] Max Array Sum
