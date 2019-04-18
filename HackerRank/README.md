@@ -45,6 +45,27 @@ is the one that is "waiting" to form a tuple and then a triple. For this purpose
 increment the counter (`t2`) for the value `elem*r`. Next time, if element `elem*r`
 arrives, it will check how many elements are waiting for it and will increment
 the value of `t3` accordingly._
+
+- [x] Frequency Queries
+> Process the insert/delete queries and report if any integer is there with a
+particular frequency.
+
+_Keep a mapping from the integer to its count and a mapping from a count to the
+set of integers. Increment/decrement counters when needed and return true if,
+when queried, the size of the set of integers with given count is greater than 
+zero._
+
+- [x] Fraudulent Activity Notifications
+> Given the number of trailing days d and a client's total daily expenditures
+for a period of n days, find and print the number of times the client will
+receive a notification over all n days.
+
+_Note that the range of expenses is very small (0-200), which allows it to be
+sorted using count sort, which is linear time. Create a cumulative
+sum array (count sort array) to keep all the expenses that need to be used to
+compute the median. Each time add remove the last expense and add a newest one 
+and propagate the change throughout the array. This allows to quickly find 
+a running median._
  
  ## Dynamic Programming
 - [x] Max Array Sum
