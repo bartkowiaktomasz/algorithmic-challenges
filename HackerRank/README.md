@@ -380,6 +380,18 @@ Remember that for `n` letters, there is `n(n-1)/2` such substrings. In the secon
 pass slide a window of size `3`, checking for a pattern, for which the middle tuple
 has only a one element._
 
+- [x] Common Child
+> A string is said to be a child of a another string if it can be formed by
+deleting 0 or more characters from the other string. Given two strings of
+equal length, what's the longest string that can be constructed such that it
+is a child of both?
+
+_This is essentially a Longest Common Subsequence Problem. Solve it in `O(nm)`
+time using Dynamic Programming, where `n` and `m` are lengths of strings.
+Construct a 2D array of size `(n+1)(m+1)` and fill zero'th row and column with
+zeros (LCS of empty string with anything is zero). Then iterate through each
+row and column and compute LCS based on memoized solutions to subproblems._
+
 ## Trees  
  - [x] Tree: Height of a Binary Tree 
  - [x] Binary Search Tree: Lowest Common Ancestor
