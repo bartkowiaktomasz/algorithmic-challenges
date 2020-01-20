@@ -256,13 +256,31 @@ Recursion might be too deep so we need to use two moving bounds to iteratively
 keep track where we are. Util function `num_items` will, given a number of days,
 output a number of items that the `machines` can produce._
 
+- [x] Maximum Subarray Sum
+> Find a maximum subarray sum of given array such that the `sum(subarr) mod m` is the
+biggest. 
+
+NOTE that a subarray is contiguous and a subsequence is not. In the algorithm
+it is useful to build a prefix sum table such that `prefix[n] = (a[0] + ... a[n]) mod m`.
+Then it is important to note that the highest modulo for each `prefix[i]` will
+be for some `prefix[j]` such that `(prefix[i] - prefix[j]) % M` is the biggest. 
+For this reason `prefix[j]` must be bigger by `prefix[i]` but ideally only bigger by `+1`,
+because then the modulo will be `M-1`. So we need, for each `prefix[i]`, to be
+able to find `prefix[j]` which is bigger but as close as possible to `prefix[i]` 
+as possible. We cannot first build the `prefix` table and then sort it because
+we lose track of indexes and we can only subtract `prefix[i]` from `prefix[j]` if 
+`i > j` (they need to be contiguous). So we need to dynamically create a prefix
+table and keep it sorted. In order to get an index of the element which is closest
+to our current new prefix table element, we can use `bisect.bisect_right`.
+ 
+
 ## Sorting  
  - [x] Sorting: Bubble sort      
  > Given an array of integers, sort the array in ascending order using the Bubble Sort algorithm.  
  - [x] Sorting: Comparator      
  > Comparators are used to compare two objects. In this challenge, you'll create a comparator and use it to sort an array.  
  - [x] Mark and Toys   
->Given a list of prices and an amount to spend, what is the maximum number of toys Mark can buy?
+ > Given a list of prices and an amount to spend, what is the maximum number of toys Mark can buy?
 
 - [x] Merge Sort: Counting Inversions
 > Given `d` datasets, print the number of inversions that must be swapped to sort each dataset on a new line.
