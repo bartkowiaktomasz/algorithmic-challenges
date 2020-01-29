@@ -152,6 +152,28 @@ unfairness is minimized.
 _Sort an array and find a sliding window of size ``k`` for which the
 difference between the biggest and the smallest element is the smallest._
 
+- [x] Reverse Shuffle Merge
+> Given a string S such that `s = merge(reverse(A), shuffle(A))` for some string
+> `A`, find the lexicographically smallest `A`.
+> "shuffle" is any permutation of the string
+> "merge(a, b)" is an interspersing of "a" and "b" that maintains the order
+  of the characters
+
+_First of all, note that in the input string `S` every character of `A` is 
+duplicated. Also, if we `reverse(S)` and iterate it, we will get a `A` as a
+subsequence. So, while iterating `reverse(S)` we must select some characters
+and reject others to build `A`. The key is that sometimes we need to backtrack when coming
+across some reasonably "small" character. For this purpose it is useful to
+use an `answer` array as a stack, and each time we find a "good" character,
+we can pop as many characters from the `answer` stack as necessary (assuming some
+conditions are met). We also need to build `freq` tables for keeping track of 1) 
+count of each character that we still need to use (we know all the characters of `A`
+upfront) and 2) count of chars that are yet to be seen in the string while iterating.
+Whenever we get a char that is smaller (i.e. better) than the one on top of the stack, 
+we can start popping the elements all the way down the stack if and only if they
+are bigger than our current `char` and if we are yet to see sufficient number
+of those characters in future._
+
 ## Linked Lists  
 - [x] Linked Lists: Detect a cycle      
 > Given a linked list detect if it contains a cycle.
