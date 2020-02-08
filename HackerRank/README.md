@@ -295,6 +295,35 @@ we lose track of indexes and we can only subtract `prefix[i]` from `prefix[j]` i
 table and keep it sorted. In order to get an index of the element which is closest
 to our current new prefix table element, we can use `bisect.bisect_right`.
  
+- [x] Making Candies
+> Karl loves playing games on social networking sites. His current favorite is
+  CandyMaker, where the goal is to make candies.
+  Karl just started a level in which he must accumulate `n` candies starting with
+  `m` machines and `w` workers. In a single pass, he can make `m * w` candies. After
+  each pass, he can decide whether to spend some of his candies to buy more
+  machines or hire more workers. Buying a machine or hiring a worker costs `p`
+  units, and there is no limit to the number of machines he can own or workers
+  he can employ.
+  Karl wants to minimize the number of passes to obtain the required number of
+  candies at the end of a day. Determine that number of passes.
+
+_The optimal strategy involves, at each round, either spending all the "money" (i.e. candles)
+on purchasing machines/workers, or saving. When purchasing, one needs to find
+an optimal (purchase) allocation to maximise `m * w` (so `m` should be as close to
+`w` as possible). At each round `r`, compute the number of rounds required to collect
+enough money assuming saving from `r` until the end, and update this minimum 
+amount at each round (running min). Instead of using recursion to explore 
+two possibilities at each round (buy vs. wait), buy candies each time until the stopping condition
+(enough candles) is satisfied or until the running min is smaller than current count 
+(this means that at some previous round the optimal strategy was to start saving from 
+that round on). In order to avoid timeout, if `p` (price) is bigger than `m * w`, we should
+avoid looping and incrementing rounds until we have enough money. We could 
+perform a shortcut by calculating the amount of rounds needed to collect 
+enough money and update the `count` and money collected accordingly. In case
+this waiting time turns out to be too high (i.e. `p` is too big) and we
+can collect enough candles to meet the condition before even making `p`, return
+the current running min._
+  
 
 ## Sorting  
  - [x] Sorting: Bubble sort      
