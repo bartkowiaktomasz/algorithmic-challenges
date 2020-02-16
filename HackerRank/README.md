@@ -1,6 +1,6 @@
 
-# HackeRank Questions  
-Solutions to selected questions taken from _Hackerrank - Cracking the Coding Interview Challenges_ and _HackerRank - Interview Preparation Kit_.    
+# HackeRank - Interview Preparation Kit
+Solutions to [**HackerRank Interview Preparation Kit**](https://www.hackerrank.com/interview/interview-preparation-kit)
   
 ## Arrays  
  - [x] 2D Array - DS  
@@ -415,6 +415,25 @@ each element (index) for which this element is the smallest. Keep that
 information in the hashmap and at the end iterate through it. Note that
 for decreasing window size, the `max` of all of them can be either the same or
 higher._
+
+- [x] Poisonous Plants
+> You are given the initial values of the pesticide in each of the plants. Print
+  the number of days after which no plant dies, i.e. the time after which there
+  are no plants with more pesticide content than the plant to their left.
+> For example, pesticide levels `p = [3, 6, 2, 7, 5]`. Using a 1-indexed array,
+  day 1 plants 2 and 4 die leaving `p = [3, 2, 5]`. On day 2, plant 3 of the current
+  array dies leaving `p = [3, 2]`. As there is no plant with a higher concentration of
+  pesticide than the one to its left, plants stop dying after day 2.
+
+_First, partition `p` into list of non-increasing stacks, so that we know that
+the first element in `stack[i + 1]` is bigger than `stack[i]`. After building such
+list we can iteratively remove those first elements from each stack while
+removing the empty lists. After each round of `pop`ing the elements we merge 
+the neighbouring stacks if they can form a bigger, non increasing stack. In order
+to avoid timeout do `stacks[1:] = [s for s in stacks[1:] if len(s) != 1]` to avoid 
+expensive removals. Also, use `stack.pop(0)` instead of slicing (i.e. `stack[1:]`)
+which requires copying the whole list. Another approach to the problem would be a 
+solution similar to the "The Stock Span Problem"._
 
 
 ## String Manipulation  
