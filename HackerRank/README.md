@@ -114,6 +114,32 @@ nodes is a color. Given a color, find the shortest path connecting any two
 nodes of that color. Each edge has a weight of 1. If there is not a pair or if
 the color is not found, print -1.
 
+ - [x] Matrix
+ > The kingdom of Zion has cities connected by bidirectional roads. There is a
+   unique path between any pair of cities. Morpheus has found out that the machines
+   are planning to destroy the whole kingdom. If two machines can join forces,
+   they will attack. Neo has to destroy roads connecting cities with machines in
+   order to stop them from joining forces. There must not be any path connecting
+   two machines.
+
+ > Each of the roads takes an amount of time to destroy, and only one can be
+   worked on at a time. Given a list of edges and times, determine the minimum
+   time to stop the attack.
+   
+ > TLDR: Given a graph with green and red nodes and weighted edges, define
+   the edges with the least cost that, when removed, result in disjoint graphs
+   that have at max one red node.
+
+_Sort the edges by decreasing weight. Then, for each edge, build graph
+Components (biggest weights are used to build the components, which means
+we will remove the lightest edges). Use given edge to connect the nodes iff
+the components they belong to do not make a graph with two red nodes (machines). 
+This can be tracked by using Union-Find (DisjointSet) structure, where the parent
+holds information about whether there is already a red node (machine) in the 
+component. If both components have a red node inside them this means that given
+edge needs to be removed (increase the time counter). Use `path compression` to
+speedup union/find operations._
+
 _For each node of required color, perform a BFS, finding a minimum
 distance from that node to the other one of the same colour. Then return
 the smallest of all distances found, or zero if no distance is positive_
