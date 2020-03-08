@@ -225,6 +225,19 @@ having data value `data` and insert it into a sorted linked list while maintaini
 
 _`XOR`ing with `one` will flip the beats of any binary number._
 
+ - [x] Maximum XOR
+ > You are given an array `arr` of `n` elements. A list of integers, `queries` is
+   given as an input, find the maximum values of `queries[j] xor arr[i]` for all `i`.
+
+_First, build a binary trie out of all `arr` numbers. Then, for each element of 
+`queries`, convert the element to bits and traverse the trie to find the 
+maximum `xor` value. The trick is, when traversing, go to the opposite bit than
+the current bit (because in order for `xor` to be `1` the args must be opposite)
+if it's possible, otherwise go to the same direction (the resulting `xor` bit
+will be zero in such case). For each of the bits, append them to the list and, at the
+leaf node, convert the list to string and return it as a `max` value for given
+`query`._
+
 - [x] Friend Circle Queries
 > You will be given q queries. After each query, you need to report the size of
 the largest friend circle (the largest group of friends) formed after
