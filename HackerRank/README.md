@@ -216,11 +216,6 @@ having data value `data` and insert it into a sorted linked list while maintaini
 - [x] Insert a node at a specific position in a linked list
 - [x] Find Merge Point of Two Lists
 
-## Graphs
- - [x] BFS: Shortest Reach in a Graph
- - [x] DFS: Connected Cell in a Grid
-
-
 ## Miscellaneous  
  - [x] Bit Manipulation: Lonely Integer
  - [x] Time Complexity: Primality
