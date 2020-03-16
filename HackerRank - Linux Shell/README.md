@@ -138,3 +138,118 @@ while read line ; do
     echo $line | cut -c3
 done
 ```
+
+## Cut #2
+> Display the `2`th and `7`th character from each line of text.
+
+```shell script
+while read line; do
+    echo $line | cut -c2,7
+done 
+```
+
+## Cut #3
+> Display a range of characters starting at the `2`th position of
+> a string and ending at the `7`th position (both positions included).
+
+```shell script
+while read line; do
+    echo $line | cut -c2-7
+done 
+```
+
+## Cut #4
+> Display the first four characters from each line of text.
+
+```shell script
+while read line; do
+    echo $line | cut -c1-4
+done
+```
+
+## Cut 5
+> Given a tab delimited file with several columns (`tsv` format) 
+> print the first three fields.
+
+```shell script
+cut -f-3
+```
+
+_NOTE that `TAB` is the default delimiter. There is no need for `while` loop 
+as the input get's piped directly to the solution. `echo`ing is also redundant
+as the output goes directly to `stdout`._
+Solution with explicit delimiter:
+```shell script
+cut -f-3 -d$'\t'
+```
+
+## Cut #6
+> Print the characters from thirteenth position to the end.
+
+```shell script
+cut -c13-
+```
+
+## Cut #7
+> Given a sentence, identify and display its fourth word. Assume that the space
+> (`' '`) is the only delimiter between words.
+
+```shell script
+cut -f4 -d' '
+```
+
+## Cut #8
+> Given a sentence, identify and display its first three words. Assume that the 
+> space (`' '`) is the only delimiter between words.
+
+```shell script
+cut -f-3  -d' '
+```
+
+## Cut #9
+> Given a tab delimited file with several columns (`tsv` format) 
+> print the fields from second fields to last field.
+
+```shell script
+cut -f2-
+```
+
+## Head of a Text File #1
+> Display the first `20` lines of an input file.
+
+```shell script
+head -n20
+```
+
+_NOTE: flag `-n` means "lines", `-c` - "characters", `-f` - "follow"
+(e.g. you want to see the log file as it updates live). The same 
+flags apply to `tail`._
+
+## Head of a Text File #2
+> Display the first `20` characters of an input file.
+
+```shell script
+head -c20
+```
+
+## Middle of a Text File
+> Display the lines (from line number `12` to `22`, both inclusive) 
+> of a given text file.
+
+```shell script
+head -n22 | tail -n11
+```
+
+## Tail of a Text File #1
+> Display the last `20` lines of an input file.
+
+```shell script
+tail -n20
+```
+
+## Tail of a Text File #2
+> Display the last `20` characters of an input file.
+
+```shell script
+tail -c20
+```
