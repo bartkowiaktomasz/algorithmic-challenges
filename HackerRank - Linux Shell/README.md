@@ -199,7 +199,7 @@ cut -c13-
 cut -f4 -d' '
 ```
 
-#### Cut #8
+### Cut #8
 > Given a sentence, identify and display its first three words. Assume that the 
 > space (`' '`) is the only delimiter between words.
 
@@ -257,7 +257,8 @@ tail -c20
 
 
 ### 'Tr' Command #1
-_`Tr` stands for "translate", `-d` - delete, `-s` - squeeze_
+_`Tr` stands for "translate", `-d` - delete, `-s` - squeeze
+(use e.g. when you want to substitute many repeated whitespaces by one_
 > In a given fragment of text, replace all parentheses `()`  with box brackets `[]`.
 
 ```shell script
@@ -289,7 +290,8 @@ sort
 ```
 
 ### Sort Command #2
-> Given a text file, order the lines in reverse lexicographical order (i.e. `Z-A` instead of `A-Z`).
+> Given a text file, order the lines in reverse lexicographical order 
+> (i.e. `Z-A` instead of `A-Z`).
 
 ```shell script
 sort -r
@@ -312,6 +314,7 @@ sort -nr
 #### Sort Command #5
 > Rearrange the rows of the table in descending order of the 
 > values for the average temperature in January.
+_FLAGS: `-r` - reversed, `-n` - numeric `-k` column, `-t` - delimiter._ 
 ```shell script
 sort -rn -k2 -t $'\t'
 ```
