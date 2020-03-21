@@ -304,14 +304,14 @@ sort -r
 sort -n
 ```
 
-#### Sort Command #4
+### Sort Command #4
 > Sort the lines in descending order
 
 ```shell script
 sort -nr
 ```
 
-#### Sort Command #5
+### Sort Command #5
 > Rearrange the rows of the table in descending order of the 
 > values for the average temperature in January.
 _FLAGS: `-r` - reversed, `-n` - numeric `-k` column, `-t` - delimiter._ 
@@ -319,7 +319,7 @@ _FLAGS: `-r` - reversed, `-n` - numeric `-k` column, `-t` - delimiter._
 sort -rn -k2 -t $'\t'
 ```
 
-#### 'Sort' command #6
+### 'Sort' command #6
 > You need to sort this file in ascending order of the second column (i.e. 
 > the average monthly temperature in January).
 ```shell script
