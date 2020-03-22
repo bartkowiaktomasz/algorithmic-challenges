@@ -3,6 +3,7 @@ Solutions to [**HackerRank Linux Shell**](https://www.hackerrank.com/domains/she
 
 Useful Sources:
 - [A quick guide to writing scripts using the bash shell](http://www.panix.com/~elflord/unix/bash-tute.html)
+- [Regular expreessions](http://users.cs.cf.ac.uk/Dave.Marshall/Internet/NEWS/regexp.html)
 
 ## Easy
 ### Let's Echo
@@ -258,7 +259,7 @@ tail -c20
 
 ### 'Tr' Command #1
 _`Tr` stands for "translate", `-d` - delete, `-s` - squeeze
-(use e.g. when you want to substitute many repeated whitespaces by one_
+(use e.g. when you want to substitute many repeated whitespaces by one)_
 > In a given fragment of text, replace all parentheses `()`  with box brackets `[]`.
 
 ```shell script
@@ -325,3 +326,50 @@ sort -rn -k2 -t $'\t'
 ```shell script
 sort -n -k2 -t $'\t'
 ```
+
+### 'Uniq' Command #1
+_`uniq` is a Unix utility which, when fed a text file or STDIN,
+outputs the text with adjacent identical lines collapsed to one,
+unique line of text._
+
+_FLAGS: `-c` - count, `-d` - print only lines that are followed by
+repetitons, `-u` is an opposite of `-d`, `-i` - ignore case._
+
+> Given a text file, remove the consecutive repetitions of any line.
+```shell script
+uniq
+```
+
+### 'Uniq' Command #2
+> Given a text file, count the number of times each line repeats itself. 
+>Only consider consecutive repetitions. Display the space separated 
+>count and line, respectively. There shouldn't be any leading or trailing spaces.
+
+```shell script
+uniq -c | sed "s/^ *//g"
+```
+_`sed` use:_
+```shell script
+sed 's/regexp/replacement/g'
+```
+_Read: `^` matches the beginning of the line, `*` - match zero or more
+ characters of type "whitespace" and replace by nothing_, 
+ 
+ ### 'Uniq' command #3
+> Given a text file, count the number of times each line repeats itself (only 
+> consider consecutive repetions). Display the count and the line, separated 
+> by a space. There shouldn't be leading or trailing spaces. 
+ 
+ ```shell script
+uniq -ic | sed "s/^ *//g"
+```
+
+### 'Uniq' command #4
+> Given a text file, display only those lines which are not followed or
+> preceded by identical replications.
+
+```shell script
+uniq -u
+```
+  
+
