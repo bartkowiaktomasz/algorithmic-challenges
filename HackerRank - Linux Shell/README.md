@@ -3,7 +3,8 @@ Solutions to [**HackerRank Linux Shell**](https://www.hackerrank.com/domains/she
 
 Useful Sources:
 - [A quick guide to writing scripts using the bash shell](http://www.panix.com/~elflord/unix/bash-tute.html)
-- [Regular expreessions](http://users.cs.cf.ac.uk/Dave.Marshall/Internet/NEWS/regexp.html)
+- [Regular expressions, TLDR](http://users.cs.cf.ac.uk/Dave.Marshall/Internet/NEWS/regexp.html)
+- [Learn, build & test RegEx](https://regexr.com/)
 
 ## Easy
 ### Let's Echo
@@ -371,5 +372,109 @@ uniq -ic | sed "s/^ *//g"
 ```shell script
 uniq -u
 ```
-  
 
+### Read in an Array
+> Given a list of countries, each on a new line, your task is to read them into
+> an array and then display the entire array, with a space between each of the countries' names.
+
+```shell script
+xargs
+``` 
+or
+```shell script
+input=$(cat)
+echo ${input[@]}
+```
+or
+```shell script
+readarray input
+echo ${input[@]}
+```
+
+### Slice an Array
+> Given a list of countries, each on a new line, your task is to read them into an
+array. Then slice the array and display only the elements lying between positions 
+`3` and `7`, both inclusive. Indexing starts from from `0`.
+
+```shell script
+input=($(cat))
+echo ${input[@]:3:$((7-3+1))}
+```
+
+### Concatenate an array with itself
+> Given a list of countries, each on a new line, your task is to read them into 
+an array. Then, concatenate the array with itself (twice) - so that you have 
+a total of three repetitions of the original array - and then display the entire concatenated array, with a space between each of the countries' names.
+
+```shell script
+input=($(cat))
+echo ${input[@]} ${input[@]} ${input[@]}
+```
+
+### Display an element of an array
+> Given a list of countries, each on a new line, your task is to read them into 
+an array and then display the element indexed at `3`. Note that indexing starts 
+from `0`.
+
+```shell script
+input=($(cat))
+echo ${input[3]}
+```
+
+### Count the number of elements in an Array
+> Given a list of countries, each on a new line, your task is to read them 
+into an array and then display the count of elements in that array.
+
+```shell script
+input=($(cat))
+echo ${#input[@]}
+```
+
+### Remove the First Capital Letter from Each Element
+> You are given a list of countries, each on a new line. Your task is to read 
+them into an array and then transform them in the following way:
+The first capital letter (if present) in each element of the array should be 
+replaced with a dot (`.`). Then, display the entire array with a space between 
+each country's names.  
+```shell script
+input=($(cat))
+echo ${input[@]/[A-Z]/.}
+```
+
+### 'Grep' - A
+> Given a text file, which will be piped to your command through STDIN, use 
+grep to display all those lines which contain any of the following words in them:
+the, that, then, those. The search should not be sensitive to case. Display 
+only those lines of an input file, which contain the required words.
+```shell script
+grep -iw -e "the" -e "that" -e "then" -e "those"
+```
+_FLAGS: `-i` - Ignore case, `-w` - The expression is searched for as a word,
+`-e` - Specify a pattern used during the search of the input (`--regexp=`)_
+
+### 'Grep' - B
+> Given an input file, with N credit card numbers, each in a new line, your 
+task is to grep out and output only those credit card numbers which have two or
+more consecutive occurences of the same digit (which may be separated by a space,
+if they are in different segments). Assume that the credit card numbers will
+have 4 space separated segments with 4 digits each.
+```shell script
+grep '\([0-9]\) *\1'
+```
+_NOTE: ` *` matches zero or more spaces and `\1` matches one repeat of the digit_ 
+
+
+### 'Sed' command #3
+> Given an input file, in each line, highlight all the occurrences of `thy` 
+by wrapping them up in brace brackets. The search should be case-insensitive.
+```shell script
+sed -e 's/[tT]hy/{&}/g'
+```
+_NOTE: `&` is special in the replacement text: it means “the whole part of the 
+input that was matched by the pattern”. `[tT]` means `t or T`._
+or
+```shell script
+sed -e 's/thy/{&}/ig'
+```
+_Where `i` modifier to regular-expression matching is a GNU extension which 
+makes sed match regexp in a case-insensitive manner._
