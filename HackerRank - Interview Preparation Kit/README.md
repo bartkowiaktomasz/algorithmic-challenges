@@ -8,7 +8,15 @@ Solutions to [**HackerRank Interview Preparation Kit**](https://www.hackerrank.c
  > A _left rotation_ operation on an array shifts each of the array's elements unit to the left.
  - [x] New Year Chaos  
  - [x] Minimum Swaps 2  
- > You need to find the minimum number of swaps required to sort the array in ascending order.   
+ > You need to find the minimum number of swaps required to sort the array in ascending order.
+
+1. Sort an array `arr` to get `arrSorted`
+2. Create a hashmap `d` of each element in the sorted array to its position (index) in that array
+3. Identify all cycles in the original array (e.g. for `[1, 3, 4, 2]` there is one cycle
+    `3 -> 4 -> 2 (-> 3)`) using `d` and `arrSorted` (we know that e.g. `3` needs to go
+    to index/position `2`)
+4. Each cycle with size `n` can be ordered with `n - 1` swaps because each swap places
+one element in the correct position (last swap will place two elements in their positions)
  - [x] Array Manipulation
 
 

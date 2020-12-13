@@ -11,5 +11,4 @@ book by Gayle Laakmann McDowell.
     - Linux Shell: **Solved: 45/65** [[Solutions]](https://github.com/bartkowiaktomasz/algorithmic-challenges/tree/master/HackerRank%20-%20Linux%20Shell)
 - Cracking the Coding Interview: **Solved 4** [[Solutions]](https://github.com/bartkowiaktomasz/algorithmic-challenges/tree/master/Cracking%20the%20Coding%20Interview)
 
-
 ##### [Learn Computer Science - Repository](https://github.com/bartkowiaktomasz/cs-learning)
