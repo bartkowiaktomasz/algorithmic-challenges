@@ -2,6 +2,12 @@
 # HackeRank - Interview Preparation Kit
 Solutions to [**HackerRank Interview Preparation Kit**](https://www.hackerrank.com/interview/interview-preparation-kit)
 
+## Warm-up Challenges
+- [x] Sales by Match (Easy)
+- [x] Counting Valleys (Easy)
+- [x] Jumping on the Clouds (Easy)
+- [x] Repeated String
+
 ## Arrays  
  - [x] 2D Array - DS (Easy)
  - [x] Arrays: Left rotation (Easy)  
