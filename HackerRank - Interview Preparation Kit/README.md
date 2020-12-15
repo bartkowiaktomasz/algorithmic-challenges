@@ -1,13 +1,21 @@
 
 # HackeRank - Interview Preparation Kit
 Solutions to [**HackerRank Interview Preparation Kit**](https://www.hackerrank.com/interview/interview-preparation-kit)
-  
+
 ## Arrays  
- - [x] 2D Array - DS  
- - [x] Arrays: Left rotation  
+ - [x] 2D Array - DS (Easy)
+ - [x] Arrays: Left rotation (Easy)  
  > A _left rotation_ operation on an array shifts each of the array's elements unit to the left.
- - [x] New Year Chaos  
- - [x] Minimum Swaps 2  
+ - [x] New Year Chaos (Medium)
+ > Find the minimum number of bribes (swaps) that took place to get the queue into its 
+   current state. One person can bribe at most two others.
+ > e.g. `[1, 2, 3, 5, 4]` means one bribe (Person 5 swapped a position with Person 4)
+
+   Start from the left (top). For each person in the queue count the number of times
+   given person was bribed. Also, since we can only do two bribes, any person that bribed 
+   person `P` cannot get further top than one position in front of `P`s *original* position 
+   and further back than `P`s current position
+ - [x] Minimum Swaps 2 (Medium)
  > You need to find the minimum number of swaps required to sort the array in ascending order.
 
 1. Sort an array `arr` to get `arrSorted`
@@ -17,8 +25,26 @@ Solutions to [**HackerRank Interview Preparation Kit**](https://www.hackerrank.c
     to index/position `2`)
 4. Each cycle with size `n` can be ordered with `n - 1` swaps because each swap places
 one element in the correct position (last swap will place two elements in their positions)
- - [x] Array Manipulation
+ - [x] Array Manipulation (Hard)
+> Starting with a 1-indexed array of zeros and a list of operations, for each operation
+  add a value to each of the array element between two given indices, inclusive.
+  Once all operations have been performed, return the maximum value in the array.
+> e.g. operation `o = [a, b, k]` means indices `a, b` and the value of `k`, 
+> e.g. for `n=5` and query/operation `[1 2 3]` we do:
+```
+[0, 0, 0, 0, 0] -> [3, 3, 0, 0, 0]
+```
 
+Given `l` to be our initial list of `0`s:
+1. For each query `[a, b, k]` add the value of `k` to `l[a-1]` and `-k` to `l[b]` such
+that we only alter two cells - the first changed cell and the first unchanged cell.
+2. After making all queries, the cumulative sum for each cell will represent its value.
+In the example above (`[1 2 3]`) we do:
+```
+[0, 0, 0, 0, 0] -> [3, 0, -3, 0, 0]
+```
+Then we know that the running cumulative sum is `[3, 3, 0, 0, 0]`. This improves the
+running time cause we only overwrite two cells for each query. 
 
 ## Dictionaries and Hashmaps  
 - [x] Hash Tables: Ransom Note

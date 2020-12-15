@@ -1,3 +1,10 @@
+"""
+Find the minimum number of bribes (swaps) that took place to get the queue into its
+current state. One person can bribe at most two others.
+
+e.g. [1, 2, 3, 5, 4] means one bribe (Person 5 swapped a position with Person 4)
+"""
+
 # Complete the minimumBribes function below.
 def minimumBribes(q):
     for i, elem in enumerate(q):
