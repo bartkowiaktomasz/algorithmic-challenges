@@ -2,13 +2,7 @@
 Given an array of integers, find the subset of non-adjacent elements with the maximum sum.
 Calculate the sum of that subset.
 """
-
 import os
-
-
-def max(a, b, c):
-    temp = a if a > b else b
-    return temp if temp > c else c
 
 
 # Complete the maxSubsetSum function below.

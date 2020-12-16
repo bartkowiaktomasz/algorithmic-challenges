@@ -11,7 +11,6 @@ def computeRegion(grid, n, m, regionSize, row, column):
 
 
 def findLargestRegion(grid, n, m):
-    grid_original = grid  # Copy grid and modify it while traversing
     largestRegion = 0
     for row in range(n):
         for column in range(m):

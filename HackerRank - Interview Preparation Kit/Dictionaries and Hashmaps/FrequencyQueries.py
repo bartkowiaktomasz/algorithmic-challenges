@@ -27,8 +27,7 @@ def freqQuery(queries):
             ret.append(1 if len(freq_to_ints[num]) > 0 else 0)
     return ret
 
-l = \
-[tuple(map(int, elem.split(" "))) for elem in
+l = [tuple(map(int, elem.split(" "))) for elem in
 """1 3
 2 3
 3 2

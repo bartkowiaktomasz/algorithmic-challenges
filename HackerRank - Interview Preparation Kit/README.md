@@ -6,7 +6,7 @@ Solutions to [**HackerRank Interview Preparation Kit**](https://www.hackerrank.c
 - [x] Sales by Match (Easy)
 - [x] Counting Valleys (Easy)
 - [x] Jumping on the Clouds (Easy)
-- [x] Repeated String
+- [x] Repeated String (Easy)
 
 ## Arrays  
  - [x] 2D Array - DS (Easy)
@@ -53,32 +53,38 @@ Then we know that the running cumulative sum is `[3, 3, 0, 0, 0]`. This improves
 running time cause we only overwrite two cells for each query. 
 
 ## Dictionaries and Hashmaps  
-- [x] Hash Tables: Ransom Note
+- [x] Hash Tables: Ransom Note (Easy)
 > Given the words in the magazine and the words in the ransom note, print `Yes` if he can replicate his ransom note _exactly_ using whole words from the magazine; otherwise, print `No`.
 
  _Insert each word from `magazine` to a dict (char as a `key` and counter as a `value`) and then, for each word in `ransom note` check if the word is available._   
 
-- [x] Two Strings
+- [x] Two Strings (Easy)
 > Given two strings, determine if they share a common substring. A substring may be as small as one character.
  
  _It is enough to check if strings share at least one common letter._
 
- - [x] Sherlock and Anagrams
+ - [x] Sherlock and Anagrams (Medium)
  > Two strings are anagrams of each other if the letters of one string can be rearranged to form the other string.
  Given a string, find the number of pairs of substrings of the string that are anagrams of each other.
  
  _For each substring, sort its letters it and store the counter for each sorted substring in a hash map. Then for each element in the hash map
  calculate the number of anagrams, which can be interpreted as a number of connections with other identical sorted substrings 
- (number of connections between the vertices of the polygon, i.e. n(n-1)/2)._
+ (number of connections between the vertices of the polygon, i.e. `n(n-1)/2)`._
  
- - [x] Count Triplets
+ _Optimisation: Use rolling hash (e.g. Rabin-Karp) and use a hashing function that
+ gives the same hash to anagrams (this eliminates the sorting step)._
+ 
+ - [x] Count Triplets (Medium)
  > You are given an array and you need to find number of tripets of indices
 `(i, j, k)` such that the elements at those indices are in geometric progression
-for a given common ratio `r` and `i < j < k`.
+for a given common ratio `r` and `i < j < k`
+
+> e.g. for `arr = [1, 4, 16, 64]` if `r = 4` we have `[1, 4, 16]` and `[4, 16, 64]` at 
+indices `(0, 1, 2)` and `(1, 2, 3)` so the count is `2`.
 
 _This algorithm can be solved in linear time with one pass: 
-Run a single pass through the array and for each element keep track how many
-previous elements can form a tuple `(i,j)` and triple `(i, j, k)` with that element.
+Run a single pass through the array and for each element `elem` keep track how many
+previous elements can form a tuple `(i, j)` and triple `(i, j, k)` with `elem`.
 Keep two counters for that purpose, e.g. `t2`, `t3`. For example, if for one of
 the elements no other elements are yet to form a tuple or triple, this element
 is the one that is "waiting" to form a tuple and then a triple. For this purpose
@@ -86,75 +92,111 @@ increment the counter (`t2`) for the value `elem*r`. Next time, if element `elem
 arrives, it will check how many elements are waiting for it and will increment
 the value of `t3` accordingly._
 
-- [x] Frequency Queries
-> Process the insert/delete queries and report if any integer is there with a
-particular frequency.
+- [x] Frequency Queries (Medium)
+> You are given `q` queries. Each query is of the form two integers described below:
+ 1 Insert, 2 Delete, 3 Check. Process the those queries and report if any integer
+ is there with a particular frequency.
 
 _Keep a mapping from the integer to its count and a mapping from a count to the
 set of integers. Increment/decrement counters when needed and return true if,
 when queried, the size of the set of integers with given count is greater than 
-zero._
+zero_
 
-- [x] Fraudulent Activity Notifications
-> Given the number of trailing days d and a client's total daily expenditures
-for a period of n days, find and print the number of times the client will
-receive a notification over all n days.
+- [x] Fraudulent Activity Notifications (Medium)
+> HackerLand National Bank has a simple policy for warning clients about possible 
+fraudulent account activity. If the amount spent by a client on a particular day is
+greater than or equal to  the client's median spending for a trailing number of days,
+they send the client a notification about potential fraud. The bank doesn't send the
+client any notifications until they have at least that trailing number of prior days' 
+transaction data.
+
+> Given the number of trailing days `d` and a client's total daily expenditures
+for a period of `n` days, find and print the number of times the client will
+receive a notification over all `n` days.
 
 _Note that the range of expenses is very small (0-200), which allows it to be
 sorted using count sort, which is linear time. Create a cumulative
 sum array (count sort array) to keep all the expenses that need to be used to
 compute the median. Each time add remove the last expense and add a newest one 
-and propagate the change throughout the array. This allows to quickly find 
-a running median._
+and propagate the change throughout the array. The median can be efficiently
+found using `bisect` (binary search) from the cumulative count array._
  
  ## Dynamic Programming
-- [x] Max Array Sum
+- [x] Max Array Sum (Medium)
 > Given an array of integers, find the subset of non-adjacent elements with the maximum sum.
 Calculate the sum of that subset.
 
-_Bottom up solution: Build an array (dynamically) that, at each position, holds a maximum sum of the original
-array up to that position. For each next element (at position `i`) the maximum sum will either be a) the element itself,
-b) previous max sum (at position `i-1`), or c) sum of that  element and the maximum sum at position `i-2`._
+_Bottom up solution: Build an array (dynamically) that, at each position, holds a maximum 
+sum of the original array up to that position. For each next element (at position `i`)
+the maximum sum will either be a) the element itself, b) previous max sum 
+(at position `i-1`), or c) sum of that element and the maximum sum at position `i-2`._
 
-- [x] Candies
+- [x] Candies (Medium)
 > Alice is a kindergarten teacher. She wants to give some candies to the children in her class. 
 All the children sit in a line and each of them has a rating score according to his or her performance
 in the class.  Alice wants to give at least 1 candy to each child. If two children sit next to each
 other, then the one with the higher rating must get more candies. Alice wants to minimize the total 
-umber of candies she must buy.
+number of candies she must buy.
 
-_Create two arrays: `left_to_right` and `right_to_left`. The first array will keep the amount of candies
-such that each child with higher score than its left neighbour will have more candies. The other array
-ensures the reverse. The return value will be the max of the two at each position. Note that this solution
-is `O(N)` in both time and space and there exists a solution that is `O(1)` in space:
+_Create two arrays: `left_to_right` and `right_to_left`. The first array will keep the 
+amount of candies such that each child with higher score than its left neighbour will 
+have more candies. The other array ensures the reverse. The return value will be the
+max of the two at each position. Note that this solution is `O(N)` in both time and 
+space and there exists a solution that is `O(1)` in space:
 [Solution on LeetCode](https://leetcode.com/problems/candy/solution/)_
 
-- [x] Abbreviation
-> You can perform the following operations on the string, a:
-> 1. Capitalize zero or more of a's lowercase letters.
+- [x] Abbreviation (Medium)
+> You can perform the following operations on the string, `a`:
+> 1. Capitalize zero or more of `a`'s lowercase letters.
 > 2. Delete all of the remaining lowercase letters in a.
 
-> Given two strings, a and b, determine if it's possible to make  equal to  as 
+> Given two strings, a and b, determine if it's possible to make `a` equal to `b` as 
 > described. If so, print YES on a new line. Otherwise, print NO.
 
 _Use `dict` for memoization. Set `sys.setrecursionlimit(2000)` to allow for 
- bigger stack. Do not memoize tuples of strings but tuples of indeces instead. 
+ bigger stack. Do not memoize tuples of strings but tuples of indices instead. 
  Remember, in `if` statements, to put statements that are easier to evaluate
  on the left hand side so that, if the result is `False`, short-circuting
- prevents from evaluating expensive expression, e.g. `string.lower()`._
+ prevents from evaluating expensive expression (e.g. `string.lower()`)._
 
 
  
  ## Graphs
- - [x] BFS: Shortest Reach in a Graph
- - [x] DFS: Connected Cell in a Grid
- - [x] Find Nearest Clone
+ - [x] Find Nearest Clone (Medium)
  > In this challenge, there is a connected undirected graph where each of the
 nodes is a color. Given a color, find the shortest path connecting any two
 nodes of that color. Each edge has a weight of 1. If there is not a pair or if
 the color is not found, print -1.
 
- - [x] Matrix
+_Use BFS to find the shortest path which gives `O(|V| + |E|)`_
+
+ - [x] Roads and Libraries (Medium)
+> HackerLand has `n` cities numbered from `1` to `n`. The cities are connected by `m`
+bidirectional roads. A citizen has access to a library if: 1) Their city contains a
+library and 2) They can travel by road from their city to a city containing a library.
+
+ > You are given ``n`` queries, where each query consists of a map of HackerLand
+and value of ``cost_library`` and ``cost_road``. For each query, find the minimum
+cost of making libraries accessible to all the citizens and print it on a
+new line.
+
+_This is a graph question. First, compute the number of components in the graph
+(and how many vertices there are in each component) - this can be done using 
+`DFS` or `BFS` (here `DFS` is used). If the library is cheaper than the road, 
+build a library in each city. Else build one library per component. The number
+of roads in the component is the number of vertices (cities) minus one. Sum
+the costs for all of the components._
+
+ - [x] BFS: Shortest Reach in a Graph (Hard)
+
+_Use BFS_
+ - [x] DFS: Connected Cell in a Grid (Hard)
+ > Find the biggest region in a binary matrix. Region is a set of matrix cells that
+have the value of `1` and are adjacent to each other (vertically, horizontally or 
+diagonally)
+
+_Use DFS to traverse the regions. Keep track of visited cells (e.g. in another matrix)_
+ - [x] Matrix (Hard)
  > The kingdom of Zion has cities connected by bidirectional roads. There is a
    unique path between any pair of cities. Morpheus has found out that the machines
    are planning to destroy the whole kingdom. If two machines can join forces,
@@ -180,22 +222,10 @@ component. If both components have a red node inside them this means that given
 edge needs to be removed (increase the time counter). Use `path compression` to
 speedup union/find operations._
 
-_For each node of required color, perform a BFS, finding a minimum
-distance from that node to the other one of the same colour. Then return
-the smallest of all distances found, or zero if no distance is positive_
- 
- - [x] Roads and Libraries
- > You are given ``n`` queries, where each query consists of a map of HackerLand
-and value of ``cost_library`` and ``cost_road``. For each query, find the minimum
-cost of making libraries accessible to all the citizens and print it on a
-new line.
+_NOTE: This is a modification of a Kruskal's algorithm (we're trying to find a Minimum
+Spanning Tree (MST) using Union-Find (Disjoint-Set)) which builds an MST by sorting
+existing edges in order._
 
-_This is a graph question. First, compute the number of components in the graph
-(and how many vertices there are in each component) - this can be done using 
-`DFS` or `BFS` (here `DFS` is used). If the library is cheaper than the road, 
-build a library in each city. Else build one library per component. The number
-of roads in the component is the number of vertices (cities) minus one. Sum
-the costs for all of the components._
  
 ## Greedy Algorithms 
 - [x] Minimum Absolute Difference in an Array
