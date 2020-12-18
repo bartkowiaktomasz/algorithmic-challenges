@@ -228,8 +228,13 @@ existing edges in order._
 
  
 ## Greedy Algorithms 
-- [x] Minimum Absolute Difference in an Array
-> Given an array of integers, find and print the minimum absolute difference between any two elements in the array.
+- [x] Minimum Absolute Difference in an Array (Easy)
+> Given an array of integers, find and print the minimum absolute difference between 
+any two elements in the array.
+
+_Sort and compute running diff => O(nlogn). You can theoretically do O(dn) where `d` is
+the minimum absolute difference by adding all elements to a set and for each element
+checking_
 
 - [x] Luck Balance
 
@@ -238,12 +243,14 @@ existing edges in order._
 buy all 'n' flowers
 
 _Sort an array and then, until all flowers are bought, add (for
-each friend) the most expensive ones to the sum, keeping track of 
-the `round number` (in each turn the cost of flowers increases)._
+each friend) the most expensive ones to the sum (the amount of additional money we
+need to pay later is linear in `c[i]` so we want to buy the most expensive flowers first,
+at the lower multiple). Also we need to keep track of the `round number` (in each turn
+the cost of flowers increases)._
 
 - [x] Max Min
-> You must create an array of length ``k`` from elements of ``arr`` such that its
-unfairness is minimized.
+> You must create an array of length `k` from elements of `arr` such that its
+unfairness is minimized (unfairness is a diff between the max and the min elements).
 
 _Sort an array and find a sliding window of size ``k`` for which the
 difference between the biggest and the smallest element is the smallest._
