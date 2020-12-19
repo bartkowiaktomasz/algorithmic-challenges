@@ -38,7 +38,7 @@ _If a new `char` exists in the map, move `i` to the right of the existing duplic
 and calculate the length of the substring starting in `i` ending in `j`. Keep track
 of the running `max` of the longest substring._
 
-- [x] Median of Two Sorted Arrays
+- [x] Median of Two Sorted Arrays (Hard)
 > Given two sorted arrays `nums1` and `nums2` of size `m` and `n` respectively, 
 return the median of the two sorted arrays.
 
@@ -58,3 +58,20 @@ correct because `5 < 6` and no element is smaller than `7`_
 _NOTE: `|` indicates a partition. Finally, if the number of all elements is odd, return
 max element on the LHS (cause it's bigger), otherwise take an average of max LHS elem and
 min RHS elem._
+
+- [x] Longest Palindromic Substring (Medium)
+> Given a string `s`, return the longest palindromic substring in `s`.
+
+`O(n^2 logn)`: 
+_Do a binary search over lengths of palindrome. For a given length
+finding a palindrome is `O(n^2)` so with binary search we improve to `O(n^2)`._
+
+_NOTE: In general it might be a good idea to do a BS over possible answers_
+
+ `O(n^2)` (this solution):
+_For each character in `s` at index `i` expand outwards comparing letters at indices
+`i - d` and `i + d` saving biggest encountered palindrome. Note the second case where
+the palindrome has even length so we need to compare letters at indices `i - d , i+1 - d`_
+
+`O(n)`:
+_See Manacher's algorithm_
