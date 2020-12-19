@@ -63,8 +63,8 @@ min RHS elem._
 > Given a string `s`, return the longest palindromic substring in `s`.
 
 `O(n^2 logn)`: 
-_Do a binary search over lengths of palindrome. For a given length
-finding a palindrome is `O(n^2)` so with binary search we improve to `O(n^2)`._
+_Do a binary search over lengths of palindrome. For a given length,
+finding a palindrome is `O(n^2)` so with binary search we improve to `O(n^2 logn)`._
 
 _NOTE: In general it might be a good idea to do a BS over possible answers_
 
