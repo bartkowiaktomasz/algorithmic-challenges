@@ -62,6 +62,9 @@ min RHS elem._
 - [x] Longest Palindromic Substring (Medium)
 > Given a string `s`, return the longest palindromic substring in `s`.
 
+`O(n^3)`: _Naive implementation. For each substring `O(n^2)` `bool: is_palindrome(s)` 
+costs `O(n)`_
+
 `O(n^2 logn)`: 
 _Do a binary search over lengths of palindrome. For a given length,
 finding a palindrome is `O(n^2)` so with binary search we improve to `O(n^2 logn)`._
