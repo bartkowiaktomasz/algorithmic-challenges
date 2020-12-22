@@ -278,20 +278,22 @@ are bigger than our current `char` and if we are yet to see sufficient number
 of those characters in future._
 
 ## Linked Lists  
-- [x] Linked Lists: Detect a cycle      
+- [x] Linked Lists: Detect a cycle (Easy)
 > Given a linked list detect if it contains a cycle.
 
- _Use Floyd's cycle detection algorithm - create two pointers, one (slow) jumping from list to the next node, the second one (quick) jumping to every 2nd node. If they eventually meet, there is a loop._    
+ _Use Floyd's cycle detection algorithm - create two pointers, one (slow) jumping from 
+ list to the next node, the second one (quick) jumping to every 2nd node. 
+ If they eventually meet, there is a loop._    
 
-- [x] Inserting a Node Into a Sorted Doubly Linked List  
-> Given a reference to the head of a doubly-linked list and an integer, `data`, create a new DoublyLinkedListNode object  
-having data value `data` and insert it into a sorted linked list while maintaining the sort.
+- [x] Inserting a Node Into a Sorted Doubly Linked List (Easy)
+- [x] Reverse a doubly linked list (Easy)
+- [x] Insert a node at a specific position in a linked list (Easy)
+- [x] Find Merge Point of Two Lists (Easy)
 
-- [x] Reverse a doubly linked list   
-> You’re given the pointer to the head node of a doubly linked list. Reverse the order of the nodes in the list.
-
-- [x] Insert a node at a specific position in a linked list
-- [x] Find Merge Point of Two Lists
+_We know that the two lists are equal beyond a certain point.
+We can scan ahead to the point in the longer list where the length of the remainder 
+matches the length of the shorter list. Now start comparing nodes in each list.
+Increment both pointers until the two pointers are equal._
 
 ## Miscellaneous  
  - [x] Bit Manipulation: Lonely Integer

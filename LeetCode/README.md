@@ -2,6 +2,7 @@
 Solutions to [**LeetCode - Top Interview Questions**](https://leetcode.com/problemset/top-interview-questions/)
 
 - [x] Two Sum (Easy)
+---
 - [x] Add Two Numbers (Medium)
 > You are given two non-empty linked lists representing two non-negative integers. The
 digits are stored in reverse order, and each of their nodes contains a single digit.
@@ -13,7 +14,7 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 
 _Iterate through both linked lists simultaneously while any of them is non-empty.
 Add digits and carry a "carry" to the next operation in case of overflow_  
-
+---
 - [x] Longest Substring Without Repeating Characters (Medium)
 > Given a string `s`, find the length of the longest substring without repeating 
 characters. Examples:
@@ -37,7 +38,7 @@ _If a new `char` does not exist in the map, move `j`_
 _If a new `char` exists in the map, move `i` to the right of the existing duplicate
 and calculate the length of the substring starting in `i` ending in `j`. Keep track
 of the running `max` of the longest substring._
-
+---
 - [x] Median of Two Sorted Arrays (Hard)
 > Given two sorted arrays `nums1` and `nums2` of size `m` and `n` respectively, 
 return the median of the two sorted arrays.
@@ -78,3 +79,21 @@ the palindrome has even length so we need to compare letters at indices `i - d ,
 
 `O(n)`:
 _See Manacher's algorithm_
+---
+- [x] Reverse Integer (Easy)
+> Given a 32-bit signed integer, reverse digits of an integer.
+If a number overflows, return `0`
+
+_Keep updating `result` with_
+```
+result = digit + result * 10
+```
+_Note that if `result == (MAXINT // 10)` the overflow will
+happen if `digit > 7`, because `7` is the last number of `2^31` -1
+(Multiples of `2` end with (2, 4, 8, 6)... )_
+---
+- [x] String to Integer (Medium)
+
+_Note: Annoying edge cases like `input="++1"`_
+
+---
