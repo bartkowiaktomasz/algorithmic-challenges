@@ -97,3 +97,32 @@ happen if `digit > 7`, because `7` is the last number of `2^31` -1
 _Note: Annoying edge cases like `input="++1"`_
 
 ---
+- [x] Regular Expression Matching
+
+> Given an input string `s` and a pattern `p`, implement regular expression matching 
+with support for `.` and `*` where: 
+
+>`.` Matches any single character.
+
+>`*` Matches zero or more of the preceding element.
+
+> The matching should cover the entire input string (not partial).
+
+_Use DP (bottom-up): Set up a boolean matrix of size `S x P` where `S` is the size of 
+a string and `P` is a size of a prefix. DP is useful because of the `*` (wildcard) case
+where we need to reuse previous (memoized matches), e.g._
+```
+s = "x", p="xy*" <==> s = "x", p="x"
+```
+_i.e. `x` matches `xy*` if `x` matches the subpattern `x` (after removing `y*`). Or:_
+```
+s = "xyy", p="xy*" <==> s = "xy", p="xy*"
+```
+_i.e. `xyy` matches `xy*` if, when we remove `y`, the resulting `xy` also matches `xy*`._
+_As a result, if the char is `*` the result `dp[i][j]` will match if one of the above
+cases happens_
+
+_NOTE: For each `dp[i][j]` we're deciding if substring `s[:i]` matches subpattern
+`p[:j]`. Also note that we need to initialise the first row of the matrix (empty string)
+and the first column (empty pattern)._
+---
