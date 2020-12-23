@@ -13,7 +13,8 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 > e.g. `l1 = 2 -> 4 -> 3`, `l2 = 5 -> 6 -> 4` gives `7 -> 0 -> 8`
 
 _Iterate through both linked lists simultaneously while any of them is non-empty.
-Add digits and carry a "carry" to the next operation in case of overflow_  
+Add digits and carry a "carry" to the next operation in case of overflow_
+
 ---
 - [x] Longest Substring Without Repeating Characters (Medium)
 > Given a string `s`, find the length of the longest substring without repeating 
@@ -38,6 +39,7 @@ _If a new `char` does not exist in the map, move `j`_
 _If a new `char` exists in the map, move `i` to the right of the existing duplicate
 and calculate the length of the substring starting in `i` ending in `j`. Keep track
 of the running `max` of the longest substring._
+
 ---
 - [x] Median of Two Sorted Arrays (Hard)
 > Given two sorted arrays `nums1` and `nums2` of size `m` and `n` respectively, 
@@ -60,6 +62,7 @@ _NOTE: `|` indicates a partition. Finally, if the number of all elements is odd,
 max element on the LHS (cause it's bigger), otherwise take an average of max LHS elem and
 min RHS elem._
 
+---
 - [x] Longest Palindromic Substring (Medium)
 > Given a string `s`, return the longest palindromic substring in `s`.
 
@@ -79,6 +82,7 @@ the palindrome has even length so we need to compare letters at indices `i - d ,
 
 `O(n)`:
 _See Manacher's algorithm_
+
 ---
 - [x] Reverse Integer (Easy)
 > Given a 32-bit signed integer, reverse digits of an integer.
@@ -91,6 +95,7 @@ result = digit + result * 10
 _Note that if `result == (MAXINT // 10)` the overflow will
 happen if `digit > 7`, because `7` is the last number of `2^31` -1
 (Multiples of `2` end with (2, 4, 8, 6)... )_
+
 ---
 - [x] String to Integer (Medium)
 
@@ -125,6 +130,7 @@ cases happens_
 _NOTE: For each `dp[i][j]` we're deciding if substring `s[:i]` matches subpattern
 `p[:j]`. Also note that we need to initialise the first row of the matrix (empty string)
 and the first column (empty pattern)._
+
 ---
 - [x] Container With Most Water
 > Given `n` non-negative integers `a1, a2, ..., an`, where each represents a point at 
@@ -146,3 +152,10 @@ _Intuition: Assume there exists some biggest area between indices `a` and `b` (`
  reach `b` eventually - it is impossible for us to find a line higher than `height[i]`
  before reaching `b` because this would mean that the new area is bigger than the one
  between `a` and `b`, which is a contradiction._
+
+
+---
+- [x] Roman to Integer (Easy)
+
+---
+- [x] Longest Common Prefix (Easy)
