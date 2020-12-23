@@ -1,8 +1,11 @@
+"""
+A prime is a natural number greater than `1` that has no positive divisors other than
+`1` and itself. Given `p` integers, determine the primality of each integer and return
+`Prime` or `Not prime` on a new line.
+"""
+
 import math
-import os
-import random
-import re
-import sys
+
 
 def isPrime(n):
     if(n == 1):
@@ -14,9 +17,15 @@ def isPrime(n):
             return 'Not prime'
     return 'Prime'
 
-if __name__ == '__main__':
-    p = int(input())
-
-    for p_itr in range(p):
-        n = int(input())
-        print(isPrime(n))
+s = """30
+1
+4
+9
+16
+25
+36
+907"""
+l = list(map(int, s.split("\n")))
+print(
+    list(map(isPrime, l))
+)

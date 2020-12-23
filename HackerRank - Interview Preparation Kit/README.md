@@ -234,11 +234,11 @@ any two elements in the array.
 
 _Sort and compute running diff => O(nlogn). You can theoretically do O(dn) where `d` is
 the minimum absolute difference by adding all elements to a set and for each element
-checking_
+checking if `elem - d` or `elem + d` is in the set_
 
-- [x] Luck Balance
+- [x] Luck Balance (Easy)
 
-- [x] Greedy Florist
+- [x] Greedy Florist (Medium)
 > Minimize the amount of money it costs for a group of friends to 
 buy all 'n' flowers
 
@@ -248,7 +248,7 @@ need to pay later is linear in `c[i]` so we want to buy the most expensive flowe
 at the lower multiple). Also we need to keep track of the `round number` (in each turn
 the cost of flowers increases)._
 
-- [x] Max Min
+- [x] Max Min (Medium)
 > You must create an array of length `k` from elements of `arr` such that its
 unfairness is minimized (unfairness is a diff between the max and the min elements).
 
@@ -296,15 +296,23 @@ matches the length of the shorter list. Now start comparing nodes in each list.
 Increment both pointers until the two pointers are equal._
 
 ## Miscellaneous  
- - [x] Bit Manipulation: Lonely Integer
- - [x] Time Complexity: Primality
- - [x] Flipping Bits
+ - [x] Flipping Bits (Easy)
  > You will be given a list of 32 bit unsigned integers.
  Flip all the bits and print the result as an unsigned integer.
 
 _`XOR`ing with `one` will flip the beats of any binary number._
 
- - [x] Maximum XOR
+ - [x] Time Complexity: Primality (Medium)
+> A prime is a natural number greater than `1` that has no positive divisors other than 
+`1` and itself. Given `p` integers, determine the primality of each integer and return
+`Prime` or `Not prime` on a new line.
+
+_For a given number `n` simply check if it can be divided by any number `i`:_
+```
+for i in range(2, math.ceil(math.sqrt(n)) + 1)
+```
+
+ - [x] Maximum XOR (Medium)
  > You are given an array `arr` of `n` elements. A list of integers, `queries` is
    given as an input, find the maximum values of `queries[j] xor arr[i]` for all `i`.
 
@@ -317,10 +325,10 @@ will be zero in such case). For each of the bits, append them to the list and, a
 leaf node, convert the list to string and return it as a `max` value for given
 `query`._
 
-- [x] Friend Circle Queries
-> You will be given q queries. After each query, you need to report the size of
-the largest friend circle (the largest group of friends) formed after
-considering that query.
+- [x] Friend Circle Queries (Medium)
+> You will be given `q` queries (each query is a handshake between two people).
+ After each query, you need to report the size of the largest friend circle 
+(the largest group of friends) formed after considering that query.
 
 _Use `Union-Find` (or `Disjoint-Set`) data structure, which has a linear time
 or almost constant amortized time for `union` and `find`, when both path
@@ -512,9 +520,27 @@ to previous field._
 - [x] Largest Rectangle
 > Maximise a rectangular area under the histogram.
 
-_Use an increasing stack to store the indeces of rectangles.
+_Use an increasing stack to store the indices of rectangles.
 Good explanation:_
-[Stack Overflow](https://stackoverflow.com/questions/4311694/maximize-the-rectangular-area-under-histogram)_
+_[Stack Overflow](https://stackoverflow.com/questions/4311694/maximize-the-rectangular-area-under-histogram)_
+
+_TLDR: We need to use stack to be able to quickly find, for each bar, it's first smaller
+element to its left and to its right (first smaller means: first bar that is smaller 
+than a given bar, NOT the closest smaller). We know that for a given bar
+with height `h`, if it's first smaller to its left is at index `l` and it's first smaller
+to its right is at index `r` then the area of the rectangle ending (and excluding) after 
+bar at `l` and before bar at `r` is `h * (r - l - 1)` (if given bar is a local max then 
+its width is gonna be `1` and `area = h * 1`_
+
+_In order to ensure the stack is increasing we need to do:_
+```
+while x < stack.top():
+    stack.pop()
+stack.push(x)
+```
+_Note: this will ensure that elem at `stack[x-1]` is the first smaller elem to elem at 
+`stack[x]` and any new elem `e` that pops `stack[x]` is the first smaller on its right_  
+
 
 - [x] Min Max Riddle
 > Given an integer array of size , find the maximum of the minimum(s) of every
