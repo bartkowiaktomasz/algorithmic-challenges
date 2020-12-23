@@ -126,3 +126,23 @@ _NOTE: For each `dp[i][j]` we're deciding if substring `s[:i]` matches subpatter
 `p[:j]`. Also note that we need to initialise the first row of the matrix (empty string)
 and the first column (empty pattern)._
 ---
+- [x] Container With Most Water
+> Given `n` non-negative integers `a1, a2, ..., an`, where each represents a point at 
+> coordinate `(i, ai)`. `n` vertical lines are drawn such that the two endpoints of 
+> the line `i` is at `(i, ai)` and `(i, 0)`. Find two lines, which, together with the
+> x-axis forms a container, such that the container contains the most water.
+
+_O(n): (greedy) Use two pointers `i`, `j` that start at edges and get closer to each
+other until they are equal. Increment `i` (or decrement `j`) whichever pointer points 
+to the smaller line._
+
+_Intuition: Assume there exists some biggest area between indices `a` and `b` (`b > a`).
+ Let's try to prove that always moving the pointer that points to the smaller height 
+ will eventually find our maximum area. Since we increment pointer `i` 
+ (or decrement pointer `j`) either `i` will hit `a` first or `j` will hit 
+ `b`. We now need to guarantee that, if `i` hits `a` first, it will stay there until `j`
+ hits `b` (or if `j` hits `b` first, it will stay there until `i` hits `a`). 
+ Say `i` hits `a` first - since we only decrement `j` if `height[j] < height[i]` we must
+ reach `b` eventually - it is impossible for us to find a line higher than `height[i]`
+ before reaching `b` because this would mean that the new area is bigger than the one
+ between `a` and `b`, which is a contradiction._
