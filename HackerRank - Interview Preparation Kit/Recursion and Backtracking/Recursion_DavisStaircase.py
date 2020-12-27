@@ -1,29 +1,36 @@
 """
-Complete the stepPerms function in the editor below. It should recursively calculate and return the integer number of ways
+Complete the stepPerms function in the editor below. It should recursively calculate
+and return the integer number of ways
 Davis can climb the staircase, modulo 10000000007.
 """
 
-def waysToClimb(n, waysToClimbArr):
-    if(waysToClimbArr[n - 1] is not None):
-        return waysToClimbArr[n - 1]
-    else:
-        waysToClimbArr[n - 4] = waysToClimb(n - 3, waysToClimbArr)
-        waysToClimbArr[n - 3] = waysToClimb(n - 2, waysToClimbArr)
-        waysToClimbArr[n - 2] = waysToClimb(n - 1, waysToClimbArr)
-        return waysToClimb(n - 1, waysToClimbArr) + waysToClimb(n - 2, waysToClimbArr) + waysToClimb(n - 3, waysToClimbArr)
 
-if __name__ == '__main__':
-    s = int(input())
+# Complete the stepPerms function below.
+def stepPerms(n):
+    # We only need last three entries, start with index 1 for simplicity
+    #  i.e. memo[1] means step 1
+    memo = [0 for _ in range(4)]
+    memo[1] = 1
+    memo[2] = 2
+    # 4 ways to jump to step 3:
+    #   3, 2 -> 1, 1 -> 2, 1 -> 1 -> 1
+    memo[3] = 4
+    if n <= 3:
+        return memo[n]
+    i = 4
+    while i <= n:
+        # inserts num -> idx:
+        #  1 -> 1, 2 -> 2, 3-> 3, 4 -> 1, 5 -> 2,...
+        #  such that 0th index isn't used
+        memo[(i - 1) % 3 + 1] = memo[1] + memo[2] + memo[3]
+        i += 1
+    # i was incremented before leaving while loop so we need to access previous
+    #  memoized number
+    num_ways = memo[(i - 2) % 3 + 1]
+    return num_ways % (pow(10, 10) + 7)
 
-    for s_itr in range(s):
-        n = int(input())
-        waysToClimbArr = list()
-        if(n < 3):
-            waysToClimbArr = [None] * 3
-        else:
-            waysToClimbArr = [None] * n
 
-        waysToClimbArr[0] = 1
-        waysToClimbArr[1] = 2
-        waysToClimbArr[2] = 4
-        print(waysToClimb(n, waysToClimbArr))
+print(
+    [stepPerms(n) for n in range(19)]
+)
+

@@ -335,11 +335,30 @@ or almost constant amortized time for `union` and `find`, when both path
 compression and union by rank/size are applied._ 
 
 ## Recursion and Backtracking
-- [x] Recursion: Fibonacci Numbers
-> Implement Fibonacci sequence recursively.
-- [x] Recursion: Davids' Staircase
-> Complete the  _stepPerms_  function in the editor below. It should recursively calculate and return the integer number of ways Davis can climb the staircase, modulo 10000000007.
-- [x] Crossword Puzzle
+- [x] Recursion: Fibonacci Numbers (Easy)
+> Given `n` compute `nth` Fibonacci number
+
+_Note: You can evaluate `n`th Fibonacci number directly by defining
+a difference equation linking `F_{k+1}` with `F_{k}` using matrix `A`. Then, 
+`A^n` can be quickly calculated using eigendecomposition. Otherwise use DP
+to solve in O(n)_
+
+- [x] Recursion: Davids' Staircase (Medium)
+> Davis has a number of staircases in his house and he likes to climb each 
+staircase 1, 2, or 3 steps at a time. Being a very precocious child, he wonders how 
+many ways there are to reach the top of the staircase.
+
+> Complete the `stepPerms`  function in the editor below. It should recursively 
+calculate and return the integer number of ways Davis can climb the staircase, 
+modulo 10000000007
+
+_Use DP relation:_
+```
+countPaths[step] = countPaths[step - 1] + countPaths[step - 2] + countPaths[step - 3]
+```
+_Using a (matrix) difference equation you can go down to O(logn)_
+
+- [x] Crossword Puzzle (Medium)
 > Fill in the crossword of size 10x10 with given list of words.
 
 _Build a pool (stack/set) with all positions to which words are to be inserted. 
@@ -349,18 +368,19 @@ word length) but recursive `solve` returned `False`, and the second time
 when no words fit given position (the current position itself should be put 
 back to the pool)._
 
-- [x] Recursive Digit Sum
+- [x] Recursive Digit Sum (Medium)
 > Calculate a `super digit` of given number recursively until one digit is 
 left, e.g `sd(533) = sd(5+3+3) = sd(12) = sd(1+2) = sd(3) = 3`
 
 
 ## Search  
-- [x] Hash Tables: Ice cream parlor      
+- [x] Hash Tables: Ice cream parlor
 > Given list of integers, find two of them that sum to n.  
-  
-_Iterate through the list once and add each value to the dict if it does not already contain an element that, when added, gives a sum of n._   
 
-- [x] Swap Nodes   
+_Iterate through the list once and add each value to the dict if it does not already 
+contain an element that, when added, gives a sum of n._   
+
+- [x] Swap Nodes
 > Build a Binary Tree and swap children of nodes at particular depths.
 After each round of swapping, traverse the tree in-order and print the values of nodes.
 

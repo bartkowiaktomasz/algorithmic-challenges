@@ -159,3 +159,26 @@ _Intuition: Assume there exists some biggest area between indices `a` and `b` (`
 
 ---
 - [x] Longest Common Prefix (Easy)
+> Write a function to find the longest common prefix string amongst an array of strings.
+If there is no common prefix, return an empty string `""`.
+
+_Every approach needs to scan all characters in all strings so Best Conceivable Runtime
+(BCR) is `O(S)` where `S` is the sum of lengths of all strings_
+
+---
+- [x] 3Sum
+> Given an array nums of n integers, are there elements a, b, c in nums such that 
+`a + b + c = 0`? Find all unique triplets in the array which gives the sum of zero.
+Notice that the solution set must not contain duplicate triplets.
+
+_Slow `O(n^2)`: Insert each `e`lement into a hash map and then check, for each element,
+if `-(a[i] + a[j])` is in the map_
+
+_`O(n^2)`: Sort an array in `O(nlog)` (Note that you can solve 2Sum in `O(n)` so sorting
+is not needed there) and then, for each element `e` in the sorted array, keep two pointers
+`i`, `j` (`i` to the right of `e` and `j` at the end of the array) and 
+increment/decrement the pointers depending on whether `sum > 0` or not._
+
+_Optimisations: #1: If `nums[i] == nums[i - 1]` then we're gonna find the same `l, r` and 
+since we don't want to return duplicates, we can `continue`. #2: If `e > 0` then the sum
+with `l` and `r` will be `>0` (array is sorted) so we can `break`._
