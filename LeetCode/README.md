@@ -182,3 +182,16 @@ increment/decrement the pointers depending on whether `sum > 0` or not._
 _Optimisations: #1: If `nums[i] == nums[i - 1]` then we're gonna find the same `l, r` and 
 since we don't want to return duplicates, we can `continue`. #2: If `e > 0` then the sum
 with `l` and `r` will be `>0` (array is sorted) so we can `break`._
+
+---
+- [x] Letter Combinations of a Phone Number (Medium)
+> Given a string containing digits from 2-9 inclusive, return all possible letter
+combinations that the number could represent. Return the answer in any order. A mapping
+of digit to letters (just like on the telephone buttons) is given below. Note that `1` 
+does not map to any letters.
+
+> e.g. `2 -> "abc", 3-> "def"` etc.
+
+_Solve recursively by stripping `digits` (e.g. `234` -> `23` -> `2`) from the end 
+until one digit is left, then return a list of characters mapped to that
+digit. Merge this recursively with each letter corresponding to a current digit_  

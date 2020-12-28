@@ -374,58 +374,55 @@ left, e.g `sd(533) = sd(5+3+3) = sd(12) = sd(1+2) = sd(3) = 3`
 
 
 ## Search  
-- [x] Hash Tables: Ice cream parlor
-> Given list of integers, find two of them that sum to n.  
+- [x] Hash Tables: Ice cream parlor (Medium)
+> Given list of integers, find two of them that sum to `n`
 
 _Iterate through the list once and add each value to the dict if it does not already 
-contain an element that, when added, gives a sum of n._   
+contain an element that, when added, gives a sum of `n`._
 
-- [x] Swap Nodes
+- [x] Swap Nodes (Medium)
 > Build a Binary Tree and swap children of nodes at particular depths.
 After each round of swapping, traverse the tree in-order and print the values of nodes.
 
-_Build a tree using queue, for each pair of children to be inserted, pop a parent from the queue
-and add children to it._
+_Build a tree using queue, for each pair of children to be inserted, pop a parent from 
+the queue and add children to it._
 
-- [x] Pairs
+- [x] Pairs (Medium)
 > You will be given an array of integers and a target value.
 Determine the number of pairs of array elements that have a
 difference equal to a target value.
 
-_Use `hashmap` to store each element of the array. Then in the second pass
-check `hashmap` for the existence of `elem+k` and `elem-k`. Return `num_pairs/2` 
+_Use a hashmap to store each element of the array. Then in the second pass
+check the map for the existence of `elem+k` and `elem-k`. Return `num_pairs/2` 
 because each existing pair has been counted twice._
 
-- [x] Triple Sum
-> Sum of special triplets having elements from 3 different arrays.
+- [x] Triple Sum (Medium)
+> Given 3 arrays `a, b, c` of different sizes, find the number of distinct triplets
+`(p, q, r)` where `p` comes from `a`, `q` from `b` etc. such that `p <= q` and `q >= r`   
 
 _First sort the arrays and remove the duplicates. Then iterate through the
 arrays in parallel, counting for each element `elem` of array `b` the number of
-elements in `a` and `c` that is less or equal to `elem`. The number of possible
-triplets for each `elem` is the product of the counts_.
+elements in `a` and `c` that is less or equal to `elem` (with binary search).
+The number of possible triplets for each `elem` is the product of the counts_.
 
-- [x] Minimum Time Required
+- [x] Minimum Time Required (Medium)
 > You are planning production for an order. You have a number of machines that
 each have a fixed number of days to produce an item. Given that all the
 machines operate simultaneously, determine the minimum number of days to
 produce the required order.
 
-_First sort the machines. Then we need to find a minimum find of days that give
-particular `goal` (and one day less must give a value less than a `goal`). 
-This is a binary search question where days are the arrays we operate in. 
-The bounds for days are `1` and `10^18` since in the worst case there is only
-one machine that needs `10^9` days to produce an item and we need `10^9` items.
-Recursion might be too deep so we need to use two moving bounds to iteratively 
-keep track where we are. Util function `num_items` will, given a number of days,
-output a number of items that the `machines` can produce._
+_We need to find a minimum number of days that give
+particular `goal` (and one day less must give a value less than a `goal`). Use binary
+search over the answer to find the optimal number of days. For a given number of days
+calculate the total number of items produced by each machine_
 
-- [x] Maximum Subarray Sum
+- [x] Maximum Subarray Sum (Hard)
 > Find a maximum subarray sum of given array such that the `sum(subarr) mod m` is the
 biggest. 
 
-NOTE that a subarray is contiguous and a subsequence is not. In the algorithm
-it is useful to build a prefix sum table such that `prefix[n] = (a[0] + ... a[n]) mod m`.
-Then it is important to note that the highest modulo for each `prefix[i]` will
+_NOTE that a subarray is contiguous and a subsequence is not. In the algorithm
+it is useful to build a cumulative sum (`mod m`) table: `prefix[n] = (a[0] + ... a[n]) mod m`.
+Then it is important to note that the highest subarray sum for each `prefix[i]` will
 be for some `prefix[j]` such that `(prefix[i] - prefix[j]) % M` is the biggest. 
 For this reason `prefix[j]` must be bigger by `prefix[i]` but ideally only bigger by `+1`,
 because then the modulo will be `M-1`. So we need, for each `prefix[i]`, to be
@@ -434,9 +431,22 @@ as possible. We cannot first build the `prefix` table and then sort it because
 we lose track of indexes and we can only subtract `prefix[i]` from `prefix[j]` if 
 `i > j` (they need to be contiguous). So we need to dynamically create a prefix
 table and keep it sorted. In order to get an index of the element which is closest
-to our current new prefix table element, we can use `bisect.bisect_right`.
+to our current new prefix table element, we can use `bisect.bisect_right`._
+
+_Note 2: Use Kadane's Algorithm to solve vanilla Maximum Subarray Sum Problem in 
+`O(N)` using DP_:
+```python
+def max_subarray(numbers):
+    """Find the largest sum of any contiguous subarray."""
+    best_sum = 0  # or: float('-inf')
+    current_sum = 0
+    for x in numbers:
+        current_sum = max(0, current_sum + x)
+        best_sum = max(best_sum, current_sum)
+    return best_sum
+```
  
-- [x] Making Candies
+- [x] Making Candies (Hard)
 > Karl loves playing games on social networking sites. His current favorite is
   CandyMaker, where the goal is to make candies.
   Karl just started a level in which he must accumulate `n` candies starting with

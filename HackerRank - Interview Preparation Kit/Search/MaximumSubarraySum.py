@@ -18,6 +18,7 @@ def maximumSum(a, m):
         prefix_sum.append(prefix_sum_next)
         idx_closest_bigger = bisect.bisect_right(prefix_sum_sorted, prefix_sum_next)
         if idx_closest_bigger >= len(prefix_sum_sorted):
+            # There is no closest bigger
             current_max = max(current_max, prefix_sum_next)
             bisect.insort_right(prefix_sum_sorted, prefix_sum_next)
             continue
