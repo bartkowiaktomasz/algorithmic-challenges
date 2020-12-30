@@ -195,3 +195,24 @@ does not map to any letters.
 _Solve recursively by stripping `digits` (e.g. `234` -> `23` -> `2`) from the end 
 until one digit is left, then return a list of characters mapped to that
 digit. Merge this recursively with each letter corresponding to a current digit_  
+
+---
+- [x] Remove Nth Node From End of List (Medium)
+> Given the head of a linked list, remove the nth node from the end of the list and
+return its head. Follow up: Could you do this in one pass?
+
+_Scan the list with two pointers `i, j` with `j` being `n` nodes behind the `i`. In 
+this way, when `i` hits the end, we know that the node at `j` needs to be removed_  
+
+---
+- [x] Valid Parentheses (Easy)
+> Given a string s containing just the characters `'(', ')', '{', '}', '[', ']'`, 
+determine if the input string is valid.
+
+_Use stack to solve in `O(n)`. Optimisation: if input string has an odd length, 
+return `False`_
+
+---
+- [x] Merge Two Sorted Lists (Easy)
+> Merge two sorted linked lists and return it as a new sorted list. The new list should 
+be made by splicing together the nodes of the first two lists.
