@@ -216,3 +216,19 @@ return `False`_
 - [x] Merge Two Sorted Lists (Easy)
 > Merge two sorted linked lists and return it as a new sorted list. The new list should 
 be made by splicing together the nodes of the first two lists.
+
+---
+- [x] Generate Parentheses
+> Given `n` pairs of parentheses, write a function to generate all combinations of 
+well-formed parentheses.
+
+_Solve recursively. Start with empty string and, for each call, consider adding `(` and
+`)` at the end. Base cases should check if parentheses are valid, i.e. if, at any point,
+the number of `)` is `>` than the number of `(`. Keep track of the number of `(` and `)`
+used so far (e.g. `left`, `right`), once `left == right == n` we know it's a valid 
+parentheses so we can append to the solution_
+
+_Remark: The number of well-formed parentheses for `n` pairs of parentheses is `n`th
+Catalan Number so the solution scales with `O(4^n/n^(3/2))`_
+  
+

@@ -101,25 +101,6 @@ _Keep a mapping from the integer to its count and a mapping from a count to the
 set of integers. Increment/decrement counters when needed and return true if,
 when queried, the size of the set of integers with given count is greater than 
 zero_
-
-- [x] Fraudulent Activity Notifications (Medium)
-> HackerLand National Bank has a simple policy for warning clients about possible 
-fraudulent account activity. If the amount spent by a client on a particular day is
-greater than or equal to  the client's median spending for a trailing number of days,
-they send the client a notification about potential fraud. The bank doesn't send the
-client any notifications until they have at least that trailing number of prior days' 
-transaction data.
-
-> Given the number of trailing days `d` and a client's total daily expenditures
-for a period of `n` days, find and print the number of times the client will
-receive a notification over all `n` days.
-
-_Note that the range of expenses is very small (0-200), which allows it to be
-sorted using count sort, which is linear time. Create a cumulative
-sum array (count sort array) to keep all the expenses that need to be used to
-compute the median. Each time add remove the last expense and add a newest one 
-and propagate the change throughout the array. The median can be efficiently
-found using `bisect` (binary search) from the cumulative count array._
  
  ## Dynamic Programming
 - [x] Max Array Sum (Medium)
@@ -380,12 +361,26 @@ left, e.g `sd(533) = sd(5+3+3) = sd(12) = sd(1+2) = sd(3) = 3`
 _Iterate through the list once and add each value to the dict if it does not already 
 contain an element that, when added, gives a sum of `n`._
 
-- [x] Swap Nodes (Medium)
+- [x] Swap Nodes (Medium) / Invert Binary Tree
 > Build a Binary Tree and swap children of nodes at particular depths.
 After each round of swapping, traverse the tree in-order and print the values of nodes.
 
 _Build a tree using queue, for each pair of children to be inserted, pop a parent from 
 the queue and add children to it._
+
+_You can also invert a binary tree recursively:_
+```python
+def invert(node):
+    if node is None:
+        return
+    else:
+        invert(node.left)
+        invert(node.right)
+        
+        temp = node.left
+        node.left = node.right
+        node.right = temp
+```
 
 - [x] Pairs (Medium)
 > You will be given an array of integers and a target value.
@@ -477,30 +472,62 @@ the current running min._
   
 
 ## Sorting  
- - [x] Sorting: Bubble sort      
- > Given an array of integers, sort the array in ascending order using the Bubble Sort algorithm.  
- - [x] Sorting: Comparator      
- > Comparators are used to compare two objects. In this challenge, you'll create a comparator and use it to sort an array.  
- - [x] Mark and Toys   
- > Given a list of prices and an amount to spend, what is the maximum number of toys Mark can buy?
+ - [x] Sorting: Bubble sort (Easy)
+ > Given an array of integers, sort the array in ascending order using the Bubble Sort 
+algorithm.
 
-- [x] Merge Sort: Counting Inversions
-> Given `d` datasets, print the number of inversions that must be swapped to sort each dataset on a new line.
+ - [x] Mark and Toys (Easy)
+ > Given a list of prices and an amount to spend, what is the maximum number of toys 
+Mark can buy?
 
-_Use Merge Sort_
+ - [x] Sorting: Comparator (Medium)
+> Comparators are used to compare two objects. In this challenge, you'll create a
+comparator and use it to sort an array.
+
+- [x] Fraudulent Activity Notifications (Medium)
+> HackerLand National Bank has a simple policy for warning clients about possible 
+fraudulent account activity. If the amount spent by a client on a particular day is
+greater than or equal to the client's median spending for a trailing number of days,
+they send the client a notification about potential fraud. The bank doesn't send the
+client any notifications until they have at least that trailing number of prior days' 
+transaction data.
+
+> Given the number of trailing days `d` and a client's total daily expenditures
+for a period of `n` days, find and print the number of times the client will
+receive a notification over all `n` days.
+
+_Note that the range of expenses is very small (0-200), which allows it to be
+sorted using count sort, which is linear time. Create a cumulative
+sum array (count sort array) to keep all the expenses that need to be used to
+compute the median. Each time remove the last expense and add a newest one 
+and propagate the change throughout the array. The median can be efficiently
+found using `bisect` (binary search) from the cumulative count array._
+
+- [x] Merge Sort: Counting Inversions (Hard)
+> Given `d` datasets, print the number of inversions that must be swapped to sort each
+dataset on a new line
+
+_Use Merge Sort to count inversions. When you merge two arrays, every time the
+element in the right array is smaller than the one in the left array it gets shifted, 
+where the value of that shift is the inversion_
   
 ## Stacks and Queues  
- - [x] Stacks: Balanced brackets      
+ - [x] Stacks: Balanced brackets (Medium)   
  > Given a string of brackets `{}[]()` state if they are balanced or not.
  
- _Push each bracket on the stack and pop if found the matching one. If closing bracket does not match the one on the top of the stack - Return `False`._    
- - [x] Queues: A tale of two stacks      
+ _Push each bracket on the stack and pop if found the matching one. If closing 
+bracket does not match the one on the top of the stack - Return `False`_
+    
+ - [x] Queues: A tale of two stacks (Medium)
 > Build a queue using two stacks.  
   
-  _There are two methods: 1) make `push` operation costly and 2) make `pop` operation costly._  
+_There are two methods to solve the problem: 1) make `push` operation costly, 2)
+ make `pop` operation costly_
+    
  *1) Push operation costly*  
  **`push`**      
- _- while first stack is not empty - put all elements from the first stack on the second one,_      
+ _- while first stack is not empty - put all elements from the first stack on the 
+ second one,_      
  _- push the element on the first stack,_      
  _- move all elements back from the second stack to the first one._      
  **`pop`**      
@@ -535,7 +562,7 @@ _Use Merge Sort_
    _- swap queues' names._   
 
 
-- [x] Castle on the Grid
+- [x] Castle on the Grid (Medium)
 > You are given a square grid with some cells open (.) and some blocked (X).
 Your playing piece can move along any row or column until it reaches the edge
 of the grid or a blocked cell. Given a grid, a start and an end position,
@@ -547,7 +574,7 @@ visited field. For each possible field store the distance to it from
 the beginning. Distance for each field is equal to the incremented distance
 to previous field._
 
-- [x] Largest Rectangle
+- [x] Largest Rectangle (Medium)
 > Maximise a rectangular area under the histogram.
 
 _Use an increasing stack to store the indices of rectangles.
@@ -572,20 +599,29 @@ _Note: this will ensure that elem at `stack[x-1]` is the first smaller elem to e
 `stack[x]` and any new elem `e` that pops `stack[x]` is the first smaller on its right_  
 
 
-- [x] Min Max Riddle
-> Given an integer array of size , find the maximum of the minimum(s) of every
+- [x] Min Max Riddle (Medium)
+> Given an integer array of size `n`, find the maximum of the minimum(s) of every
 window size in the array. The window size varies from 1 to N.
+
+_To solve this problem efficiently, first we have to find the indices of previous and 
+next smaller element for every element of the array. If there is no previous smaller 
+element, then the index will be `-1` and if there is no next smaller element, then the 
+index will be `n`._
+
+_Finding an index of previous smaller element is the **Stock Span Problem**_ 
 
 _For each element (index) in the array, use stack to keep track of the
 index of the first element that is smaller. Invoke the function two times:
 for given array `a` and its reverse (to know the index of the first element 
-that is smaller to the left). Then compute diameters of max windows for 
+that is smaller to the left). We end up with `previous[n]` and `next[n]` arrays, such 
+that `arr[i]` is the smallest element within the window `next[i] - previous[i] - 1`
+Then compute diameters of max windows for 
 each element (index) for which this element is the smallest. Keep that
 information in the hashmap and at the end iterate through it. Note that
 for decreasing window size, the `max` of all of them can be either the same or
 higher._
 
-- [x] Poisonous Plants
+- [x] Poisonous Plants (Hard)
 > You are given the initial values of the pesticide in each of the plants. Print
   the number of days after which no plant dies, i.e. the time after which there
   are no plants with more pesticide content than the plant to their left.
