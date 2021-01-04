@@ -218,7 +218,7 @@ return `False`_
 be made by splicing together the nodes of the first two lists.
 
 ---
-- [x] Generate Parentheses
+- [x] Generate Parentheses (Medium)
 > Given `n` pairs of parentheses, write a function to generate all combinations of 
 well-formed parentheses.
 
