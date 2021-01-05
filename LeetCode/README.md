@@ -231,4 +231,12 @@ parentheses so we can append to the solution_
 _Remark: The number of well-formed parentheses for `n` pairs of parentheses is `n`th
 Catalan Number so the solution scales with `O(4^n/n^(3/2))`_
   
+---
+- [x] Merge k Sorted Lists
+> You are given an array of `k` linked-lists lists, each linked-list is sorted in
+ascending order. Merge all the linked-lists into one sorted linked-list and return it.
 
+_Iterate each linked list simultaneously, adding new nodes to a priority queue. In
+each iteration, `heappop` smallest node in the heap, access its `next` element and add
+it to the heap if it exists, otherwise add `inf`. `break` if the smallest element in
+the heap is `inf`_
