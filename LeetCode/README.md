@@ -255,3 +255,17 @@ is not part of haystack.
 
 _Do a Naive Search in `O(|s||p|)`, Knuth-Morris-Pratt in `O(|s| + |p|)` or Karp-Rabin
 in expected `O(|s|)` (or worst-case `O(|s||p|)`). See [Algorithms](https://github.com/bartkowiaktomasz/algorithms)_
+
+---
+- [x] Divide Two Integers
+> Given two integers `dividend` and `divisor`, divide two integers without using 
+multiplication, division, and mod operator.
+
+_We use the fact that `divisor << i` is the same as `divisor * 2^i`. Build two `while` 
+loops. The inner loop finds the maximum `i` for which we can subtract `divisor * 2^i` 
+from `dividend` and still have a non-negative number. In outer loop keep decrementing 
+`divisor * 2^i` from `divident` for each `i` we found in the inner loop until we get 
+`i == 0`. We also update the answer `res` in the outer loop based on the `i`s. 
+For example, for a division `22/3` we're gonna find `i = [2, 1, 0]`
+so we're gonna make subtractions `22 - 12 - 6 - 3 = 1` and our result will be updated as 
+`res = 2^2 + 2^1 + 2^0 = 4 + 2 + 1 = 7`_
