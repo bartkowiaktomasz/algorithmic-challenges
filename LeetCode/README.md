@@ -102,7 +102,7 @@ happen if `digit > 7`, because `7` is the last number of `2^31` -1
 _Note: Annoying edge cases like `input="++1"`_
 
 ---
-- [x] Regular Expression Matching
+- [x] Regular Expression Matching (Hard)
 
 > Given an input string `s` and a pattern `p`, implement regular expression matching 
 with support for `.` and `*` where: 
@@ -132,7 +132,7 @@ _NOTE: For each `dp[i][j]` we're deciding if substring `s[:i]` matches subpatter
 and the first column (empty pattern)._
 
 ---
-- [x] Container With Most Water
+- [x] Container With Most Water (Medium)
 > Given `n` non-negative integers `a1, a2, ..., an`, where each represents a point at 
 > coordinate `(i, ai)`. `n` vertical lines are drawn such that the two endpoints of 
 > the line `i` is at `(i, ai)` and `(i, 0)`. Find two lines, which, together with the
@@ -166,7 +166,7 @@ _Every approach needs to scan all characters in all strings so Best Conceivable 
 (BCR) is `O(S)` where `S` is the sum of lengths of all strings_
 
 ---
-- [x] 3Sum
+- [x] 3Sum (Medium)
 > Given an array nums of n integers, are there elements a, b, c in nums such that 
 `a + b + c = 0`? Find all unique triplets in the array which gives the sum of zero.
 Notice that the solution set must not contain duplicate triplets.
@@ -232,7 +232,7 @@ _Remark: The number of well-formed parentheses for `n` pairs of parentheses is `
 Catalan Number so the solution scales with `O(4^n/n^(3/2))`_
   
 ---
-- [x] Merge k Sorted Lists
+- [x] Merge k Sorted Lists (Hard)
 > You are given an array of `k` linked-lists lists, each linked-list is sorted in
 ascending order. Merge all the linked-lists into one sorted linked-list and return it.
 
@@ -240,3 +240,18 @@ _Iterate each linked list simultaneously, adding new nodes to a priority queue. 
 each iteration, `heappop` smallest node in the heap, access its `next` element and add
 it to the heap if it exists, otherwise add `inf`. `break` if the smallest element in
 the heap is `inf`_
+
+---
+- [x] Remove Duplicates from Sorted Array (Easy)
+> Given a sorted array `nums`, remove the duplicates in-place such that each element 
+appears only once and return the new length
+
+_Remove elements `while` iterating through the array_ 
+
+---
+- [x] Implement strStr() (Easy)
+> Return the index of the first occurrence of needle in haystack, or `-1` if needle 
+is not part of haystack.
+
+_Do a Naive Search in `O(|s||p|)`, Knuth-Morris-Pratt in `O(|s| + |p|)` or Karp-Rabin
+in expected `O(|s|)` (or worst-case `O(|s||p|)`). See [Algorithms](https://github.com/bartkowiaktomasz/algorithms)_
