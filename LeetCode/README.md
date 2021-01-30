@@ -257,7 +257,7 @@ _Do a Naive Search in `O(|s||p|)`, Knuth-Morris-Pratt in `O(|s| + |p|)` or Karp-
 in expected `O(|s|)` (or worst-case `O(|s||p|)`). See [Algorithms](https://github.com/bartkowiaktomasz/algorithms)_
 
 ---
-- [x] Divide Two Integers
+- [x] Divide Two Integers (Medium)
 > Given two integers `dividend` and `divisor`, divide two integers without using 
 multiplication, division, and mod operator.
 
@@ -269,3 +269,26 @@ from `dividend` and still have a non-negative number. In outer loop keep decreme
 For example, for a division `22/3` we're gonna find `i = [2, 1, 0]`
 so we're gonna make subtractions `22 - 12 - 6 - 3 = 1` and our result will be updated as 
 `res = 2^2 + 2^1 + 2^0 = 4 + 2 + 1 = 7`_
+
+
+---
+- [x] Search in Rotated Sorted Array (Medium)
+> You are given an integer array `nums` sorted in ascending order (with distinct values),
+and an integer target.
+Suppose that `nums` is rotated at some pivot unknown to you beforehand 
+(i.e., `[0,1,2,4,5,6,7]` might become `[4,5,6,7,0,1,2]`).
+> If target is found in the array return its index, otherwise, return `-1`
+
+_First, find the index of the pivot and then decide, whether to do a binary search
+in the left or right sublist. Here pivot is defined as the first value of the 
+increasing subsequence which is smaller than the value on its left._
+
+
+---
+- [x] Find First and Last Position of Element in Sorted Array
+> Given an array of integers nums sorted in ascending order, find the starting 
+and ending position of a given target value.
+> If target is not found in the array, return `[-1, -1]`.
+
+_Implement two functions: `binary_search_leftmost` and `binary_search_rightmost` and
+then combine their outputs to give the starting and ending position of a target value_

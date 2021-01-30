@@ -11,6 +11,6 @@ book by Gayle Laakmann McDowell.
     - Interview Preparation Kit: **Solved 67/69** [[Solutions]](https://github.com/bartkowiaktomasz/algorithmic-challenges/tree/master/HackerRank%20-%20Interview%20Preparation%20Kit)
     - Linux Shell: **Solved: 45/65** [[Solutions]](https://github.com/bartkowiaktomasz/algorithmic-challenges/tree/master/HackerRank%20-%20Linux%20Shell)
 - Cracking the Coding Interview: **Solved 4** [[Solutions]](https://github.com/bartkowiaktomasz/algorithmic-challenges/tree/master/Cracking%20the%20Coding%20Interview)
-- LeetCode - Top Interview Questions: **Solved 21/100** [[Solutions]](LeetCode)
+- LeetCode - Top Interview Questions: **Solved 23/100** [[Solutions]](LeetCode)
 
 ##### [Learn Computer Science - Repository](https://github.com/bartkowiaktomasz/cs-learning)
