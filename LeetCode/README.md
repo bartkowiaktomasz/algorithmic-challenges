@@ -285,10 +285,57 @@ increasing subsequence which is smaller than the value on its left._
 
 
 ---
-- [x] Find First and Last Position of Element in Sorted Array
+- [x] Find First and Last Position of Element in Sorted Array (Medium)
 > Given an array of integers nums sorted in ascending order, find the starting 
 and ending position of a given target value.
 > If target is not found in the array, return `[-1, -1]`.
 
 _Implement two functions: `binary_search_leftmost` and `binary_search_rightmost` and
 then combine their outputs to give the starting and ending position of a target value_
+
+
+---
+- [x] Valid Sudoku (Medium)
+> Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be 
+validated according to the following rules:
+Each row must contain the digits 1-9 without repetition. Each column must contain the 
+digits 1-9 without repetition. Each of the nine 3 x 3 sub-boxes of the grid must 
+contain the digits 1-9 without repetition.
+
+_Initialise one set per each row, each column and each box (3 * 9 = 27 sets). Then iterate
+through the board once, checking for each element if it exists already in one of the
+sets (is so - return `False`). Each element at index `i, j` belongs to a box with index
+`3 * (i // 3) + (j // 3)`_
+
+
+---
+- [x] First Missing Positive (Hard)
+> Given an unsorted integer array `nums`, find the smallest missing positive integer.
+
+_Solve in `O(n)` with `O(1)` extra space. `O(1)` suggests that we need to somehow alter the
+original array to mark which positive integers are there or not. Few observations:_
+- First missing positive integer in the array of length `l` must be in range `[1, l + 1]`
+  e.g. for list `[1, 2, 3]` the first missing positive is `l + 1 = 4`
+- We will be marking positive numbers present in the array by multiplying the elements
+  at their corresponding indices by `-1`, e.g. if `3` is present in the array - mark 
+  `arr[2]` as negative (the index `2` results from the fact that we're indexing from `0`)
+- Even though the original array can contain negative numbers we can convert them to
+  any positive number `> n` (e.g. `n + 1`) and ignore when scanning because we know that
+  they won't be the answer (see p.1). After all, we ignore any element `e` such that
+  `n < e <= 0`
+
+
+---
+- [x] Count and Say (Easy)
+> The count-and-say sequence is a sequence of digit strings defined by the recursive 
+formula:
+- `countAndSay(1) = "1"`
+- `countAndSay(n)` is the way you would "say" the digit string from 
+`countAndSay(n-1)`, which is then converted into a different digit string.
+
+_Use Python's `itertools.groupby` to groupby string into list when the key value changes
+and then iteratively compute `countAndSay(n+1)` given `countAndSay(n)`_
+```pytho
+print ["".join(grp) for num, grp in groupby('111234')]
+# ['111', '2', '3', '4']
+```
