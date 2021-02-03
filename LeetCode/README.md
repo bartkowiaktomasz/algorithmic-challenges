@@ -339,3 +339,44 @@ and then iteratively compute `countAndSay(n+1)` given `countAndSay(n)`_
 print ["".join(grp) for num, grp in groupby('111234')]
 # ['111', '2', '3', '4']
 ```
+
+---
+- [x] Trapping Rain Water (Hard)
+> Given `n` non-negative integers representing an elevation map where the width of each 
+bar is `1`, compute how much water it can trap after raining.
+
+_`O(N)` solution using stack. Stack keeps track of **indices** of bars. We will add a 
+bar to the stack if it's smaller or equal to the top element on the stack (otherwise we will start 
+popping elements and updating volume/area). Otherwise we pop bars until we encounter
+bigger (or equal) element and update the total area/volume for each popped bar. Note:_
+- The reason for appending to stack bars smaller **or equal** is the fact that
+once we encounter a bigger bar we will ignore the plateaus of bars with the same
+heights and only add one big area at the end. E.g. say the heights are `[2, 1, 1, 1]`
+  and we encounter `h = 4`. We will now start popping `1`s, adding the area of 
+  `A = w * h = (current_idx - popped_idx - 1) * (min(1, 4) - 1) = 0` each time until we hit
+  `2` where we add `A = w * h = (4 - 0 - 1) * (min(4, 2) - 1) = 3 * 1 = 3`.
+  
+- Note: Each time when we compute the area, the width is the difference between the 
+  indices (minus 1) and the height is a difference between the `min(border heights)` and
+  the popped bar
+
+- Note: See [Solution using 2 pointers](https://leetcode.com/problems/trapping-rain-water/solution/) on LeetCode
+
+---
+- [x] Wildcard Matching (Hard)
+> Given an input string (`s`) and a pattern (`p`), implement wildcard pattern matching
+with support for '`?`' and '`*`' where:
+- '`?`' Matches any single character.
+- '`*`' Matches any sequence of characters (including the empty sequence).
+
+_Solution using bottom-down DP. Initialise `memo` table of size `|s| + 1 * |p| + 1|` 
+to account for memo values for edge cases (empty string/empty pattern). 
+Set boundary conditions: `memo[0][0] = True`, `memo[col = 0] = False` (empty pattern),
+and for `memo[row = 0]` depending on the character and the previous `memo` value for
+that row. Then, for any cell `i, j` assign the boolean value depending on previously 
+computed, neighbouring cells:_
+- If pattern is `*` we assign `True` if any of `memo[i - 1][j - 1] or memo[i - 1][j] or memo[i][j - 1]`
+is true (first case - `*` matches character directly, second case - we skip char but not `*` since `*` matches any sequence,
+  third case - we skip `*` because it matches empty sequence)
+- If pattern is `?` we can only apply first case - skip char and pattern
+- Else the character needs to match the pattern - first case (diagonal)
