@@ -380,3 +380,32 @@ is true (first case - `*` matches character directly, second case - we skip char
   third case - we skip `*` because it matches empty sequence)
 - If pattern is `?` we can only apply first case - skip char and pattern
 - Else the character needs to match the pattern - first case (diagonal)
+
+---
+- [x] Permutate (Medium)
+> Given an array `nums` of distinct integers, return all the possible permutations.
+You can return the answer in any order.
+
+_Recursive solution where base case appends a single result `single_res` to a 
+shared `res` list containing all the results. Each call to `permuteRec` makes
+`n` new recursive calls for each number (`num`) in `nums`, after appending `num` 
+to `single_res` and passing `nums \{num}` (`nums` with removed `num`) to `permuteRec`. This happens until `nums` has only one element, which is a base
+case._ 
+
+---
+- [x] Rotate Image (Medium)
+> You are given an `n x n` 2D matrix representing an image, rotate the image by 90 
+degrees (clockwise).
+> You have to rotate the image in-place, which means you have to modify the input 
+2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
+
+_Rotation by 90 degrees is equivalent to matrix transpose + reflection about 
+the y-axis. Swap each pair of cells in-place using XOR trick_
+```
+x = 10
+y = 5
+x = x ^ y
+y = y ^ x
+x = x ^ y
+# x = 5, y = 10
+```
