@@ -409,3 +409,12 @@ y = y ^ x
 x = x ^ y
 # x = 5, y = 10
 ```
+
+---
+- [x] Group Anagrams
+> Given an array of strings `strs`, group the anagrams together. You can return 
+the answer in any order.
+
+_Since the alphabet has 26 characters, use counting sort to check for anagrams.
+Build a map `count -> list(words)` where `counts` is a count tuple, 
+e.g. `counts('abb') = (1, 2, 0, ..., 0)`. _

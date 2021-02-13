@@ -31,7 +31,7 @@ class Solution:
         matrix[i2][j2] = matrix[i2][j2] ^ matrix[i1][j1]
         matrix[i1][j1] = matrix[i1][j1] ^ matrix[i2][j2]
 
-    def rotate(self, matrix: List[List[int]]) -> None:
+    def rotate(self, matrix: List[List[int]]) -> None: 
         """
         Do not return anything, modify matrix in-place instead.
         """
