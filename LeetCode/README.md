@@ -411,10 +411,107 @@ x = x ^ y
 ```
 
 ---
-- [x] Group Anagrams
+- [x] Group Anagrams (Medium)
 > Given an array of strings `strs`, group the anagrams together. You can return 
 the answer in any order.
 
-_Since the alphabet has 26 characters, use counting sort to check for anagrams.
-Build a map `count -> list(words)` where `counts` is a count tuple, 
-e.g. `counts('abb') = (1, 2, 0, ..., 0)`. _
+_Since the alphabet has 26 characters, use counting sort to check for anagrams. Build a map `count -> list(words)` where `counts` is a count tuple, e.g. `counts('abb') = (1, 2, 0, ..., 0)`._
+
+- [x] Pow (Medium)
+> Implement `pow(x, n)`, which calculates `x` raised to the power `n`
+
+_Use DP. Calculate recursively by splitting power `n` into `n // 2` and `n - n // 2` and memoize intermediate solutions to subproblems._
+
+---
+- [x] Maximum Subarray [Easy]
+> Given an integer array `nums`, find the contiguous subarray (containing at 
+least one number) which has the largest sum and return its sum.
+
+_Do linear scan in `O(N)`. For each number consider whether it should be a) added
+to a current (running) subarray, b) ignored or c) made a beggining of new running
+subarray. We want to add it (a) if a running sum is positive (or equal to 0) and
+`n` does not decrease it below 0. We ignore it (b) if it decreases running sum 
+from positive to below 0. To decide whether we start new subarray at `n` (c) 
+we need to consider two separate cases - whether `n` is contiguous with current
+subarray or not (see code). Note: the code also keeps track of indices of the
+array that produces max sum._
+
+---
+- [x] Spiral Matrix [Medium]
+> Given an `m x n` matrix, return all elements of the matrix in spiral order.
+
+_Keep decrementing one of four boundaries after changing direction. Direction
+(e.g. `(0,1)` indicating direction to the right) changes after hitting a 
+boundary. While moving through the matrix append the cells to a `res` array.
+`break` when `len(res) == len(matrix) * len(matrix[0])` (we've seen all cells)._
+
+---
+- [x] Jump Game [Medium]
+> Given an array of non-negative integers `nums`, you are initially positioned at
+ the first index of the array. Each element in the array represents your 
+ maximum jump length at that position. Determine if you are able to reach the 
+ last index.
+
+_Use DP starting from the end of the array. Trick: When we are at index `i` with
+a jump size of `n` **do not** iterate through all elems at indices 
+`i + 1, ... i + n` looking if any of the positions is *good*. Instead,
+ keep track of one value *lestmost_good* which tracks the leftmost index 
+ for which we are in good position. Each position `i` iff 
+ `i + nums[i] >= leftmost_good >= i` i.e. `leftmost_good` is within our jump._
+
+---
+- [x] Merge Intervals [Medium]
+> Given an array of intervals where `intervals[i] = [start_i, end_i]`, merge all 
+overlapping intervals, and return an array of the non-overlapping intervals 
+that cover all the intervals in the input.
+
+e.g.
+```
+merge([[1,3],[2,6],[8,10],[15,18]]) = [[1,6],[8,10],[15,18]]
+merge([[1,4],[4,5]]) = [[1,5]]
+```
+
+_Sort by start of intervals. Then solve by linear scan. Note: Remember about a
+case where one interval is inside the previous one, e.g. `[[1, 5], [2, 4]...]`
+(e.g. skip a loop, i.e. `continue`)._
+
+---
+- [x] Unique Paths [Medium]
+
+> A robot is located at the top-left corner of a `m x n` grid.
+The robot can only move either down or right at any point in time. The robot is trying to reach the
+bottom-right corner of the grid. How many possible unique paths are there?
+
+_Use DP (bottom-up) starting from finish cell and iterating back to the first
+cell. The number in a cell indicates the number of ways to get to the finish.
+`dp[-1][-1]` (finish) gets a value of 1. State: 
+`dp[row][col] = dp[row][col + 1] + dp[row + 1][col]` (i.e. move to the right 
+and down respectively)._
+
+
+---
+- [x] Minimum Window Substring [Hard]
+> Given two strings `s` and `t`, return the minimum window in `s` which will 
+contain all the characters in `t`. If there is no such window in `s` that covers 
+all characters in `t`, return the empty string `""`. Note: `t` can contain
+duplicates and the output window needs to contain all of them.
+
+_Linear scan with two pointers: `low, high`. Increment `high` in outer `while`
+loop as long as `high < len(s)`. Whenever we have a window between `low` and `high`
+such that `s[low:high + 1]` contains all the required chars in `t`, start
+shrinking the window by incrementing `low` as long as the window contains 
+all elements from `t` (use `Counter` to keep track of those counts). _
+
+
+--- 
+- [x] Largest Rectangle in Histogram [Hard]
+> Given `n` non-negative integers representing the histogram's bar height where 
+the width of each bar is 1, find the area of largest rectangle in the histogram.
+
+_Use stack of bar indices (heights can be looked up quickly given an index).
+The rep invariant in the stack is that, for a given bar, the bar to its left
+is necessarily smaller, so we only insert bars that are higher than the `top`.
+If we come across a bar that's smaller than `top` we pop the stack and
+calculate the area for each of the popped bars. The height of the area is the
+height of the popped bar. Insert dummy bar with `height = 0` at the end of the
+list to deal with an edge case._

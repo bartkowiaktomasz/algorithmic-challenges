@@ -1,5 +1,11 @@
+"""
+Given an array of strings `strs`, group the anagrams together. You can return 
+the answer in any order.
+"""
+
 from typing import List, Tuple
 from collections import defaultdict
+
 
 class Solution:
     _ALPHABET_SIZE = 26
@@ -15,6 +21,7 @@ class Solution:
             count = self.getCountTuple(s)
             count_strs_map[count].append(s)
         return list(count_strs_map.values())
+
 
 s = Solution()
 strs = ["eat","tea","tan","ate","nat","bat"]
