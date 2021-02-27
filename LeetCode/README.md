@@ -488,6 +488,30 @@ cell. The number in a cell indicates the number of ways to get to the finish.
 `dp[row][col] = dp[row][col + 1] + dp[row + 1][col]` (i.e. move to the right 
 and down respectively)._
 
+---
+- [x] Set Matrix Zeros [Medium]
+> Given an `m x n matrix. If an element is `0`, set its entire row and column to `0`.
+ Do it in-place.
+
+_Use first row and first column to mark (with zero) whether it should be 
+set to zero. But before doing the full scan, scan the first row and first columns
+to decide whether they should be converted to zero as well or not (use two 
+boolean variables. Then perform matrix scan, marking which rows/columns contain
+zeros. Then, scan through the first row and column and overwrite matrix in place.
+At the end, set first row or column to zero based on the boolean values calculated
+at the beginning._
+
+---
+- [x] Sort Colors [Medium]
+> Given an array nums with `n` objects colored red, white, or blue, sort them 
+in-place so that objects of the same color are adjacent, with the colors in the
+order red, white, and blue. We will use the integers `0, 1`, and `2` to represent
+the color red, white, and blue, respectively.
+
+_Use three pointers: `left, mid, right` and swap elements until `mid <= right`. 
+Swap according to the color encountered by `mid` - moving `0`s to the left by 
+swapping with `left`, leaving `1`s in their place and moving `2`s to the 
+right by swapping with `right`._ 
 
 ---
 - [x] Minimum Window Substring [Hard]
