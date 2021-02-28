@@ -1,6 +1,6 @@
 from typing import List
 from collections import deque
-
+from bisect import b
 
 class Solution:
     def largestRectangleArea(self, heights: List[int]) -> int:

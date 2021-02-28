@@ -489,6 +489,23 @@ cell. The number in a cell indicates the number of ways to get to the finish.
 and down respectively)._
 
 ---
+- [x] Plus One [Easy]
+> Given a non-empty array of decimal digits representing a non-negative integer, increment one to the integer.
+
+
+---
+- [x] Sqrt(x) [Easy]
+> Given a non-negative integer `x`, compute and return the square root of `x`.
+
+_Do binary search over the answers. Improvement: use Newton's method 
+with initial guess being `x`_
+
+---
+- [x] Climbing Stairs [Easy]
+> You are climbing a staircase. It takes n steps to reach the top. 
+Each time you can either climb `1` or `2` steps. In how many distinct ways can you climb to the top?
+
+---
 - [x] Set Matrix Zeros [Medium]
 > Given an `m x n matrix. If an element is `0`, set its entire row and column to `0`.
  Do it in-place.
@@ -524,7 +541,22 @@ _Linear scan with two pointers: `low, high`. Increment `high` in outer `while`
 loop as long as `high < len(s)`. Whenever we have a window between `low` and `high`
 such that `s[low:high + 1]` contains all the required chars in `t`, start
 shrinking the window by incrementing `low` as long as the window contains 
-all elements from `t` (use `Counter` to keep track of those counts). _
+all elements from `t` (use `Counter` to keep track of those counts)._
+
+---
+- [x] Subsets
+> Given an integer array nums of unique elements, return all possible subsets 
+(the power set).
+
+_Solve recursively, at each step branching into two subproblems, one which takes 
+the leftmost element of `nums` into the result, and the other one rejecting the leftmost and considering only `nums[1:]` elements._
+
+---
+- [x] Word Search
+> Given an `m x n` board and a word, find if the word exists in the grid.
+
+_Solve recursively using DFS, keeping track of `visited` cells in a current
+DFS path, otherwise we would allow for going to the cell we came from._
 
 
 --- 
@@ -539,3 +571,16 @@ If we come across a bar that's smaller than `top` we pop the stack and
 calculate the area for each of the popped bars. The height of the area is the
 height of the popped bar. Insert dummy bar with `height = 0` at the end of the
 list to deal with an edge case._
+
+---
+- [x] Merge Sorted Array [Easy]
+> Given two sorted integer arrays `nums1` and `nums2`, merge `nums2` into `nums1` as one sorted array (in place).
+> e.g. 
+```
+nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+
+# result: [1,2,2,3,5,6]
+```
+_Start filling `nums1` from the end instead of from the beginning. Keep three pointers: `i` (`j`) to iterate through `nums1` (`nums2`) and `k`
+to keep track where to insert an element (larger of the ones pointed to by 
+`i,j`) into `nums1`. We're done when either of `i, j` arrived at `-1`._
