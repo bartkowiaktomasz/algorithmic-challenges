@@ -584,3 +584,60 @@ nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
 _Start filling `nums1` from the end instead of from the beginning. Keep three pointers: `i` (`j`) to iterate through `nums1` (`nums2`) and `k`
 to keep track where to insert an element (larger of the ones pointed to by 
 `i,j`) into `nums1`. We're done when either of `i, j` arrived at `-1`._
+
+---
+- [x] Decode Ways [Medium]
+> Given a string `s` containing only digits, return the number of ways to decode it. e.g. `"11106"` can be decoded into `AAJF` `(1 1 10 6)` and
+`KJF` `(11 10 6)`. The mapping is `'A' -> '1', ... 'Z' -> '26'` etc
+
+_Use DP (top-down) with 1D memo table of size `len(s) + 1`. `dp[0] = 1`
+because once we've scanned the entire string we've discovered one way
+to decode a string. Otherwise the dp state is `dp[i] = dp[i - 1] + dp[i - 2]` assuming
+if it is possible to decode `s[1:]` and `s[2:]` respectively (e.g.
+there is no way to decode `"06"`)._
+
+---
+- [x] Binary Tree Inorder Traversal [Medium]
+> Given the `root` of a binary tree, return the inorder traversal of its 
+nodes' values.
+
+_Use `stack` and two `while` loops to solve iteratively. Initialise stack
+with single `None` element to exit gracefully from the outer `while` loop 
+(we exit when `stack` is empty and `root is None`, i.e we retrieved first, 
+initial element form the stack)._
+
+_See [How to solve Tree questions using iterative in-order traversal](https://leetcode.com/problems/validate-binary-search-tree/discuss/32112/Learn-one-iterative-inorder-traversal-apply-it-to-multiple-tree-questions-(Java-Solution))_
+
+
+---
+- [x] Validate Binary Search Tree [Medium]
+> Given the `root` of a binary tree, determine if it is a valid binary search tree (BST).
+
+_Iterative solution using `stack`. Keep track of `previous` node to compare it
+with `root` each time after retrieving it from the stack. If 
+`previous.val >= root.val` at any time, the BST is invalid (Note the task
+imposes a constraint that BST keys (of children) must be strictly less or
+ greater than the parent_.
+ 
+ ---
+ - [x] Symmetric Tree [Easy]
+ > Given the `root` of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+
+_In the iterative approach use one queue and, while it's not empty,
+retrieve two nodes at a time, compare them and then add their four children to the queue._
+
+---
+- [x] Binary Tree Level Order Traversal [Medium]
+> Given the `root` of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
+
+_Use two queues (one - temporary). The first queue keeps all nodes at height `n`. 
+Then, we pop all of the nodes from the queue and add its children to a temporary second queue until we've popped all the elements from the first queue. Then
+we swap the queues. The algorithm returns when no children are added to a queue._
+
+---
+- [x] Binary Tree Zigzag Level Order Traversal [Medium]
+> Given the `root` of a binary tree, return the zigzag level order traversal of its nodes' values. (i.e., from left to right, then right to left for the next level and alternate between).
+
+_Reuse previous solution with stacks and add an additional variable `direction`
+which switches between `1 <-> -1` at each height and decides in which order
+to insert children to the stack._
