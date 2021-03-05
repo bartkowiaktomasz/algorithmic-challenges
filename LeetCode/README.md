@@ -630,14 +630,26 @@ retrieve two nodes at a time, compare them and then add their four children to t
 - [x] Binary Tree Level Order Traversal [Medium]
 > Given the `root` of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
 
-_Use two queues (one - temporary). The first queue keeps all nodes at height `n`. 
-Then, we pop all of the nodes from the queue and add its children to a temporary second queue until we've popped all the elements from the first queue. Then
-we swap the queues. The algorithm returns when no children are added to a queue._
+_Use two queues (one - temporary). The first queue keeps all nodes at height `n`. Then, we pop all of the nodes from the queue and add its children to a temporary second queue until we've popped all the elements from the first queue. Then we swap the queues. The algorithm returns when no children are added to a queue_
 
 ---
 - [x] Binary Tree Zigzag Level Order Traversal [Medium]
 > Given the `root` of a binary tree, return the zigzag level order traversal of its nodes' values. (i.e., from left to right, then right to left for the next level and alternate between).
 
-_Reuse previous solution with stacks and add an additional variable `direction`
-which switches between `1 <-> -1` at each height and decides in which order
-to insert children to the stack._
+_Reuse previous solution with stacks and add an additional variable `direction` which switches between `1 <-> -1` at each height and decides in which order to insert children to the stack._
+
+---
+- [x] Maximum Depth of Binary Tree [Easy]
+> Given the `root` of a binary tree, return its maximum depth.
+
+---
+- [x] Construct Binary Tree from Preorder and Inorder Traversal [Medium]
+> Given two integer arrays `preorder` and `inorder` where `preorder` is the preorder traversal of a binary tree and `inorder` is the inorder traversal of the same tree, construct and return the binary tree.
+
+_Note that: 1. First element of `preorder` is the `root`, 2. `inorder` the array will look like `[..., root, ...]`. This means that for each element in `preorder` we can recursively build its left and right subtrees if we know the index of `root` element in the `inorder` array._
+
+---
+- [x] Convert Sorted Array to Binary Search Tree [Easy]
+> Given an integer array `nums` where the elements are sorted in ascending order, convert it to a height-balanced binary search tree.
+
+_For an iterative solution use stack, where each element is a `(node, left, right)` tuple. Node in the stack does not have a value assigned yet, it gets assigned a value `nums[(l + r) // 2]` after popping. Then, the range `[l ,r]` is further divided into two subsets (excluding `mid`), and corresponding children nodes are created. When `l == r` we don't need to create any new children, and when `r == l + 1` this means that we need to create a node for `nums[r]` which is a right child for `nums[l]` which had already been._
