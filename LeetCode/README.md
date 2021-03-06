@@ -613,18 +613,13 @@ _See [How to solve Tree questions using iterative in-order traversal](https://le
 - [x] Validate Binary Search Tree [Medium]
 > Given the `root` of a binary tree, determine if it is a valid binary search tree (BST).
 
-_Iterative solution using `stack`. Keep track of `previous` node to compare it
-with `root` each time after retrieving it from the stack. If 
-`previous.val >= root.val` at any time, the BST is invalid (Note the task
-imposes a constraint that BST keys (of children) must be strictly less or
- greater than the parent_.
+_Iterative solution using `stack`. Keep track of `previous` node to compare it with `root` each time after retrieving it from the stack. If `previous.val >= root.val` at any time, the BST is invalid (Note the task imposes a constraint that BST keys (of children) must be strictly less or greater than the parent_.
  
  ---
  - [x] Symmetric Tree [Easy]
  > Given the `root` of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
 
-_In the iterative approach use one queue and, while it's not empty,
-retrieve two nodes at a time, compare them and then add their four children to the queue._
+_In the iterative approach use one queue and, while it's not empty, retrieve two nodes at a time, compare them and then add their four children to the queue._
 
 ---
 - [x] Binary Tree Level Order Traversal [Medium]
@@ -653,3 +648,47 @@ _Note that: 1. First element of `preorder` is the `root`, 2. `inorder` the array
 > Given an integer array `nums` where the elements are sorted in ascending order, convert it to a height-balanced binary search tree.
 
 _For an iterative solution use stack, where each element is a `(node, left, right)` tuple. Node in the stack does not have a value assigned yet, it gets assigned a value `nums[(l + r) // 2]` after popping. Then, the range `[l ,r]` is further divided into two subsets (excluding `mid`), and corresponding children nodes are created. When `l == r` we don't need to create any new children, and when `r == l + 1` this means that we need to create a node for `nums[r]` which is a right child for `nums[l]` which had already been._
+
+
+---
+- [x] Populating Next Right Pointers in Each Node [Medium]
+> Populate each `next` pointer to point to its next right node. If there is no next right node, the `next` pointer should be set to NULL.
+
+_Iterate over levels starting from root and going down. For each level `i` populate the attribute `next` of each node in the level below (`i+1`) (otherwise we don't have parent pointers on our disposal) starting from the leftmost node and going to the right inside the inner `while` loop (we're going to the right with `tmp = tmp.next`)._
+
+---
+- [x] Pascal's Triangle [Easy]
+
+> Given an integer `numRows`, return the first `numRows` of Pascal's triangle.
+
+_Use DP - build `i`th row using `i-1`th row. Note: `i`th row can also be constructed from adding `i-1`th row to itself after shifting numbers by 1 to the right, e.g. for row `1 2 1` the next row will be_
+```
+1 2 1
+  1 2 1
+-------
+1 3 3 1
+```
+
+---
+- [x] Best Time to Buy and Sell Stock [Easy]
+> You are given an array `prices` where `prices[i]` is the price of a given stock on the `i`th day. You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+_Note: Can use stack_
+
+
+---
+- [x] Best Time to Buy and Sell Stock II [Easy]
+> You are given an array `prices` for which the `i`th element is the price of a given stock on day `i`. Find the maximum profit you can achieve. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).
+
+_Note: Highest profit can be achieved by selling immediately when the price is higher than the previous price, e.g. if prices are_
+```
+[1, 2, 3]
+```
+_we should buy for 1$, sell for 2$ (1$ profit), buy for 2$ and sell for 3$ (1$ more profit), getting a total profit of 2$ (as if we did not do any transaction at 2$ price)._
+
+
+---
+- [x] Binary Tree Maximum Path Sum [Hard]
+> Given the `root` of a binary tree, return the maximum path sum of any path.
+
+_Note: the question is about a maximum path sum and not a maximum subtree sum. Do a postorder traversal (first - leaves, root at the end), calculating a `max_path_sum` for each node, where `max_path_sum` is the maximum path sum at a given node (maximum of its own sum or it's sum plus either of its children but not both). For each node in the higher levels of the tree we recompute `max_path_sum` using `max_path_sum` of its children. Note that the maximum path might be a one that includes all: some node `n` and `n.left` and `n.right`, but then it cannot include `n.parent` because it would no longer be a path. So the final result will not be a max of `max_path_sum` - we also need to, at each step, compute a value of `n.val + n.left.max_path_sum + n.right.max_path_sum` and update our `max_sum` if necessary. `max_sum` is the final result._
