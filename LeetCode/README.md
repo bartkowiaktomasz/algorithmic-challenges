@@ -692,3 +692,23 @@ _we should buy for 1$, sell for 2$ (1$ profit), buy for 2$ and sell for 3$ (1$ m
 > Given the `root` of a binary tree, return the maximum path sum of any path.
 
 _Note: the question is about a maximum path sum and not a maximum subtree sum. Do a postorder traversal (first - leaves, root at the end), calculating a `max_path_sum` for each node, where `max_path_sum` is the maximum path sum at a given node (maximum of its own sum or it's sum plus either of its children but not both). For each node in the higher levels of the tree we recompute `max_path_sum` using `max_path_sum` of its children. Note that the maximum path might be a one that includes all: some node `n` and `n.left` and `n.right`, but then it cannot include `n.parent` because it would no longer be a path. So the final result will not be a max of `max_path_sum` - we also need to, at each step, compute a value of `n.val + n.left.max_path_sum + n.right.max_path_sum` and update our `max_sum` if necessary. `max_sum` is the final result._
+
+---
+- [x] Valid Palindrome [Easy]
+> Given a string `s`, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+
+_Watch out for inputs such as `".,"` (True), `"  "` (True)_
+
+---
+- [x] Word Ladder [Hard]
+> Given two words, `beginWord` and `endWord`, and a dictionary `wordList`, return the number of words in the shortest transformation sequence from beginWord to endWord, or 0 if no such sequence exists.
+
+e.g.
+```
+beginWord = "hit"
+endWord = "cog"
+wordList = ["hot","dot","dog","lot","log","cog"]
+# result: 5 ("hit" -> "hot" -> "dot" -> "dog" -> "cog")
+```
+
+_Solve using bidirectional BFS. Two words are neighbours in a graph iff you can change one letter in one to get the other. Instead of using queue in BFS use `set`s (one per direction) to track currently considered nodes and a set `visited` to keep track of which nodes have been visited_
