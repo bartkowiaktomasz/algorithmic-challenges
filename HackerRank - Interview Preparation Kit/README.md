@@ -700,3 +700,10 @@ row and column and compute LCS based on memoized solutions to subproblems._
  - [x] Tree: Huffman Decoding
  > You are given pointer to the root of the Huffman tree and a binary coded string
 to decode. You need to print the decoded string.
+
+- [x] Balanced Forest
+> What's the minimum weight of a node that can be added to the tree such that 
+the tree can be cut in two places and the resulting three trees have the same 
+weight?
+
+_Solve in `O(n)` using DFS. For each node keep track (`Counter`) of subtree sums (cumulative) seen above it (up to the root) and below it (another `Counter`). Use DFS to traverse all edges, considering, for each edge, whether it can be cut or not. It can be cut when one of four cases is met (see `Tree_BalancedForest.py` for detailed description of all the cases). Note: The edges are given not in tree order, it is necessary to build a graph and then convert it to a tree._
