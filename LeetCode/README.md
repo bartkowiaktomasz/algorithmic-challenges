@@ -2,6 +2,7 @@
 Solutions to [**LeetCode - Top Interview Questions**](https://leetcode.com/problemset/top-interview-questions/)
 
 - [x] Two Sum (Easy)
+
 ---
 - [x] Add Two Numbers (Medium)
 > You are given two non-empty linked lists representing two non-negative integers. The
@@ -423,7 +424,7 @@ _Since the alphabet has 26 characters, use counting sort to check for anagrams. 
 _Use DP. Calculate recursively by splitting power `n` into `n // 2` and `n - n // 2` and memoize intermediate solutions to subproblems._
 
 ---
-- [x] Maximum Subarray [Easy]
+- [x] Maximum Subarray (Easy)
 > Given an integer array `nums`, find the contiguous subarray (containing at 
 least one number) which has the largest sum and return its sum.
 
@@ -437,7 +438,7 @@ subarray or not (see code). Note: the code also keeps track of indices of the
 array that produces max sum._
 
 ---
-- [x] Spiral Matrix [Medium]
+- [x] Spiral Matrix (Medium)
 > Given an `m x n` matrix, return all elements of the matrix in spiral order.
 
 _Keep decrementing one of four boundaries after changing direction. Direction
@@ -446,7 +447,7 @@ boundary. While moving through the matrix append the cells to a `res` array.
 `break` when `len(res) == len(matrix) * len(matrix[0])` (we've seen all cells)._
 
 ---
-- [x] Jump Game [Medium]
+- [x] Jump Game (Medium)
 > Given an array of non-negative integers `nums`, you are initially positioned at
  the first index of the array. Each element in the array represents your 
  maximum jump length at that position. Determine if you are able to reach the 
@@ -460,7 +461,7 @@ a jump size of `n` **do not** iterate through all elems at indices
  `i + nums[i] >= leftmost_good >= i` i.e. `leftmost_good` is within our jump._
 
 ---
-- [x] Merge Intervals [Medium]
+- [x] Merge Intervals (Medium)
 > Given an array of intervals where `intervals[i] = [start_i, end_i]`, merge all 
 overlapping intervals, and return an array of the non-overlapping intervals 
 that cover all the intervals in the input.
@@ -476,8 +477,7 @@ case where one interval is inside the previous one, e.g. `[[1, 5], [2, 4]...]`
 (e.g. skip a loop, i.e. `continue`)._
 
 ---
-- [x] Unique Paths [Medium]
-
+- [x] Unique Paths (Medium)
 > A robot is located at the top-left corner of a `m x n` grid.
 The robot can only move either down or right at any point in time. The robot is trying to reach the
 bottom-right corner of the grid. How many possible unique paths are there?
@@ -489,24 +489,24 @@ cell. The number in a cell indicates the number of ways to get to the finish.
 and down respectively)._
 
 ---
-- [x] Plus One [Easy]
+- [x] Plus One (Easy)
 > Given a non-empty array of decimal digits representing a non-negative integer, increment one to the integer.
 
 
 ---
-- [x] Sqrt(x) [Easy]
+- [x] Sqrt(x) (Easy)
 > Given a non-negative integer `x`, compute and return the square root of `x`.
 
 _Do binary search over the answers. Improvement: use Newton's method 
 with initial guess being `x`_
 
 ---
-- [x] Climbing Stairs [Easy]
+- [x] Climbing Stairs (Easy)
 > You are climbing a staircase. It takes n steps to reach the top. 
 Each time you can either climb `1` or `2` steps. In how many distinct ways can you climb to the top?
 
 ---
-- [x] Set Matrix Zeros [Medium]
+- [x] Set Matrix Zeros (Medium)
 > Given an `m x n matrix. If an element is `0`, set its entire row and column to `0`.
  Do it in-place.
 
@@ -519,7 +519,7 @@ At the end, set first row or column to zero based on the boolean values calculat
 at the beginning._
 
 ---
-- [x] Sort Colors [Medium]
+- [x] Sort Colors (Medium)
 > Given an array nums with `n` objects colored red, white, or blue, sort them 
 in-place so that objects of the same color are adjacent, with the colors in the
 order red, white, and blue. We will use the integers `0, 1`, and `2` to represent
@@ -531,7 +531,7 @@ swapping with `left`, leaving `1`s in their place and moving `2`s to the
 right by swapping with `right`._ 
 
 ---
-- [x] Minimum Window Substring [Hard]
+- [x] Minimum Window Substring (Hard)
 > Given two strings `s` and `t`, return the minimum window in `s` which will 
 contain all the characters in `t`. If there is no such window in `s` that covers 
 all characters in `t`, return the empty string `""`. Note: `t` can contain
@@ -544,7 +544,7 @@ shrinking the window by incrementing `low` as long as the window contains
 all elements from `t` (use `Counter` to keep track of those counts)._
 
 ---
-- [x] Subsets
+- [x] Subsets (Medium)
 > Given an integer array nums of unique elements, return all possible subsets 
 (the power set).
 
@@ -552,7 +552,7 @@ _Solve recursively, at each step branching into two subproblems, one which takes
 the leftmost element of `nums` into the result, and the other one rejecting the leftmost and considering only `nums[1:]` elements._
 
 ---
-- [x] Word Search
+- [x] Word Search (Medium)
 > Given an `m x n` board and a word, find if the word exists in the grid.
 
 _Solve recursively using DFS, keeping track of `visited` cells in a current
@@ -560,7 +560,7 @@ DFS path, otherwise we would allow for going to the cell we came from._
 
 
 --- 
-- [x] Largest Rectangle in Histogram [Hard]
+- [x] Largest Rectangle in Histogram (Hard)
 > Given `n` non-negative integers representing the histogram's bar height where 
 the width of each bar is 1, find the area of largest rectangle in the histogram.
 
@@ -573,7 +573,7 @@ height of the popped bar. Insert dummy bar with `height = 0` at the end of the
 list to deal with an edge case._
 
 ---
-- [x] Merge Sorted Array [Easy]
+- [x] Merge Sorted Array (Easy)
 > Given two sorted integer arrays `nums1` and `nums2`, merge `nums2` into `nums1` as one sorted array (in place).
 > e.g. 
 ```
@@ -586,7 +586,7 @@ to keep track where to insert an element (larger of the ones pointed to by
 `i,j`) into `nums1`. We're done when either of `i, j` arrived at `-1`._
 
 ---
-- [x] Decode Ways [Medium]
+- [x] Decode Ways (Medium)
 > Given a string `s` containing only digits, return the number of ways to decode it. e.g. `"11106"` can be decoded into `AAJF` `(1 1 10 6)` and
 `KJF` `(11 10 6)`. The mapping is `'A' -> '1', ... 'Z' -> '26'` etc
 
@@ -597,7 +597,7 @@ if it is possible to decode `s[1:]` and `s[2:]` respectively (e.g.
 there is no way to decode `"06"`)._
 
 ---
-- [x] Binary Tree Inorder Traversal [Medium]
+- [x] Binary Tree Inorder Traversal (Medium)
 > Given the `root` of a binary tree, return the inorder traversal of its 
 nodes' values.
 
@@ -610,54 +610,54 @@ _See [How to solve Tree questions using iterative in-order traversal](https://le
 
 
 ---
-- [x] Validate Binary Search Tree [Medium]
+- [x] Validate Binary Search Tree (Medium)
 > Given the `root` of a binary tree, determine if it is a valid binary search tree (BST).
 
 _Iterative solution using `stack`. Keep track of `previous` node to compare it with `root` each time after retrieving it from the stack. If `previous.val >= root.val` at any time, the BST is invalid (Note the task imposes a constraint that BST keys (of children) must be strictly less or greater than the parent_.
  
  ---
- - [x] Symmetric Tree [Easy]
+ - [x] Symmetric Tree (Easy)
  > Given the `root` of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
 
 _In the iterative approach use one queue and, while it's not empty, retrieve two nodes at a time, compare them and then add their four children to the queue._
 
 ---
-- [x] Binary Tree Level Order Traversal [Medium]
+- [x] Binary Tree Level Order Traversal (Medium)
 > Given the `root` of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
 
 _Use two queues (one - temporary). The first queue keeps all nodes at height `n`. Then, we pop all of the nodes from the queue and add its children to a temporary second queue until we've popped all the elements from the first queue. Then we swap the queues. The algorithm returns when no children are added to a queue_
 
 ---
-- [x] Binary Tree Zigzag Level Order Traversal [Medium]
+- [x] Binary Tree Zigzag Level Order Traversal (Medium)
 > Given the `root` of a binary tree, return the zigzag level order traversal of its nodes' values. (i.e., from left to right, then right to left for the next level and alternate between).
 
 _Reuse previous solution with stacks and add an additional variable `direction` which switches between `1 <-> -1` at each height and decides in which order to insert children to the stack._
 
 ---
-- [x] Maximum Depth of Binary Tree [Easy]
+- [x] Maximum Depth of Binary Tree (Easy)
 > Given the `root` of a binary tree, return its maximum depth.
 
 ---
-- [x] Construct Binary Tree from Preorder and Inorder Traversal [Medium]
+- [x] Construct Binary Tree from Preorder and Inorder Traversal (Medium)
 > Given two integer arrays `preorder` and `inorder` where `preorder` is the preorder traversal of a binary tree and `inorder` is the inorder traversal of the same tree, construct and return the binary tree.
 
 _Note that: 1. First element of `preorder` is the `root`, 2. `inorder` the array will look like `[..., root, ...]`. This means that for each element in `preorder` we can recursively build its left and right subtrees if we know the index of `root` element in the `inorder` array._
 
 ---
-- [x] Convert Sorted Array to Binary Search Tree [Easy]
+- [x] Convert Sorted Array to Binary Search Tree (Easy)
 > Given an integer array `nums` where the elements are sorted in ascending order, convert it to a height-balanced binary search tree.
 
 _For an iterative solution use stack, where each element is a `(node, left, right)` tuple. Node in the stack does not have a value assigned yet, it gets assigned a value `nums[(l + r) // 2]` after popping. Then, the range `[l ,r]` is further divided into two subsets (excluding `mid`), and corresponding children nodes are created. When `l == r` we don't need to create any new children, and when `r == l + 1` this means that we need to create a node for `nums[r]` which is a right child for `nums[l]` which had already been._
 
 
 ---
-- [x] Populating Next Right Pointers in Each Node [Medium]
+- [x] Populating Next Right Pointers in Each Node (Medium)
 > Populate each `next` pointer to point to its next right node. If there is no next right node, the `next` pointer should be set to NULL.
 
 _Iterate over levels starting from root and going down. For each level `i` populate the attribute `next` of each node in the level below (`i+1`) (otherwise we don't have parent pointers on our disposal) starting from the leftmost node and going to the right inside the inner `while` loop (we're going to the right with `tmp = tmp.next`)._
 
 ---
-- [x] Pascal's Triangle [Easy]
+- [x] Pascal's Triangle (Easy)
 
 > Given an integer `numRows`, return the first `numRows` of Pascal's triangle.
 
@@ -670,14 +670,14 @@ _Use DP - build `i`th row using `i-1`th row. Note: `i`th row can also be constru
 ```
 
 ---
-- [x] Best Time to Buy and Sell Stock [Easy]
+- [x] Best Time to Buy and Sell Stock (Easy)
 > You are given an array `prices` where `prices[i]` is the price of a given stock on the `i`th day. You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
 
 _Note: Can use stack_
 
 
 ---
-- [x] Best Time to Buy and Sell Stock II [Easy]
+- [x] Best Time to Buy and Sell Stock II (Easy)
 > You are given an array `prices` for which the `i`th element is the price of a given stock on day `i`. Find the maximum profit you can achieve. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).
 
 _Note: Highest profit can be achieved by selling immediately when the price is higher than the previous price, e.g. if prices are_
@@ -688,19 +688,19 @@ _we should buy for 1$, sell for 2$ (1$ profit), buy for 2$ and sell for 3$ (1$ m
 
 
 ---
-- [x] Binary Tree Maximum Path Sum [Hard]
+- [x] Binary Tree Maximum Path Sum (Hard)
 > Given the `root` of a binary tree, return the maximum path sum of any path.
 
 _Note: the question is about a maximum path sum and not a maximum subtree sum. Do a postorder traversal (first - leaves, root at the end), calculating a `max_path_sum` for each node, where `max_path_sum` is the maximum path sum at a given node (maximum of its own sum or it's sum plus either of its children but not both). For each node in the higher levels of the tree we recompute `max_path_sum` using `max_path_sum` of its children. Note that the maximum path might be a one that includes all: some node `n` and `n.left` and `n.right`, but then it cannot include `n.parent` because it would no longer be a path. So the final result will not be a max of `max_path_sum` - we also need to, at each step, compute a value of `n.val + n.left.max_path_sum + n.right.max_path_sum` and update our `max_sum` if necessary. `max_sum` is the final result._
 
 ---
-- [x] Valid Palindrome [Easy]
+- [x] Valid Palindrome (Easy)
 > Given a string `s`, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
 
 _Watch out for inputs such as `".,"` (True), `"  "` (True)_
 
 ---
-- [x] Word Ladder [Hard]
+- [x] Word Ladder (Hard)
 > Given two words, `beginWord` and `endWord`, and a dictionary `wordList`, return the number of words in the shortest transformation sequence from beginWord to endWord, or 0 if no such sequence exists.
 
 e.g.
@@ -712,3 +712,50 @@ wordList = ["hot","dot","dog","lot","log","cog"]
 ```
 
 _Solve using bidirectional BFS. Two words are neighbours in a graph iff you can change one letter in one to get the other. Instead of using queue in BFS use `set`s (one per direction) to track currently considered nodes and a set `visited` to keep track of which nodes have been visited_
+
+---
+- [x] Longest Consecutive Sequence (Hard)
+> Given an unsorted array of integers `nums`, return the length of the longest consecutive elements sequence.
+
+e.g.
+```
+nums = [100,4,200,1,3,2]
+# result: 4 (The longest consecutive elements sequence is [1, 2, 3, 4]
+
+nums = [0,3,7,2,5,8,4,6,0,1]
+# result: 9
+```
+
+_Linear scan + hashmap. First, add all elements to a hashmap (key - element, value - length of consecutive sequence (lcs) starting at that element). For each element of the list, do an inner loop to check if conecutive elements are in the map and then backtrack, updating the lcs for each backtracked element. So for e.g. `[2, 3, 4, 1]` when we hit `1` the hashmap for element `2` will have had the value of `3` (the lcs for that element is `3`)._ 
+
+
+---
+- [x] Surrounded Regions (Medium)
+> Given an `m x n` matrix board containing `'X'` and `'O'`, capture all regions surrounded by `'X'`. A region is captured by flipping all `'O'`s into `'X'`s in that surrounded region. `'O'` is captured if it's not at the boundary or connected to the boundary by other `'O'`s
+
+_BFS with `set` as a queue, searching from all `O`s at the borders of the `board`. Any 'O` reachable form `O` at the border will not be captured - mark that cell with `K` (keep). After BFS, capture all `O` cells which haven't been changed to `K`._
+
+---
+- [x] Palindrome Paritioning (Medium)
+> Given a string `s`, partition `s` such that every substring of the partition is a palindrome. Return all possible palindrome partitioning of `s`. A palindrome string is a string that reads the same backward as forward.
+
+e.g.
+```
+s = "aab"
+# result: [["a","a","b"],["aa","b"]]
+```
+
+_DP recursive solution, where `dp[i][j]` denotes whether the string `s` between the indices `i, j` (inclusive) is a palindrome. Start with two pointers `i, j = 0, 0` and recursively search for solutions by moving `i, j` through the string. At each step we call recursively for `i + 1, j + 1` and/or `i, j + 1` and append a single result to a global `res` if we hit a boundary condition._
+
+---
+- [x] Gas Station (Medium)
+
+> Given two integer arrays `gas` (The amount of gas available at each gas station) and `cost` (the consumption of gas), return the starting gas station's index if you can travel around the circuit once in the clockwise direction, otherwise return `-1`. If there exists a solution, it is guaranteed to be unique. 
+
+e.g.
+```
+gas = [1,2,3,4,5]
+cost = [3,4,5,1,2]
+# result: 3 (you can start at gas station at index 3 and do a round trip)
+```
+_Insight: Compute `delta = gas - cost`. If `sum(delta) >= 0` there always exists a solution, otherwise return `-1`. Then, compute a `cumsum(delta)` - the starting index (result) is `idx + 1` where `idx` is the lowest `cumsum` value. Proof: if `cumsum(delta)` is the lowest for `idx`, then driving from `0,...,idx` gives us the lowest (negative) value of gas (say `-max`). This means that driving from `idx + 1, ..., n - 1` must give us at least `max` (since `sum(delta) >= 0`) which is then sufficient to cover the entire distance `0, ..., idx`. If driving from `idx + 1, ..., n-1` leaves us at some point with negative gas, then this must mean that `idx` wasn't the lowest cumulative sum to begin with._
