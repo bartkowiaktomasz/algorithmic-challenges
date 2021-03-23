@@ -323,7 +323,7 @@ original array to mark which positive integers are there or not. Few observation
 - Even though the original array can contain negative numbers we can convert them to
   any positive number `> n` (e.g. `n + 1`) and ignore when scanning because we know that
   they won't be the answer (see p.1). After all, we ignore any element `e` such that
-  `n < e <= 0`
+  `e > n or e <= 0`
 
 
 ---
@@ -548,15 +548,13 @@ all elements from `t` (use `Counter` to keep track of those counts)._
 > Given an integer array nums of unique elements, return all possible subsets 
 (the power set).
 
-_Solve recursively, at each step branching into two subproblems, one which takes 
-the leftmost element of `nums` into the result, and the other one rejecting the leftmost and considering only `nums[1:]` elements._
+_Solve recursively, at each step branching into two subproblems, one which takes the leftmost element of `nums` into the result, and the other one rejecting the leftmost and considering only `nums[1:]` elements._
 
 ---
 - [x] Word Search (Medium)
 > Given an `m x n` board and a word, find if the word exists in the grid.
 
-_Solve recursively using DFS, keeping track of `visited` cells in a current
-DFS path, otherwise we would allow for going to the cell we came from._
+_Solve recursively using DFS, keeping track of `visited` cells in a current DFS path, otherwise we would allow for going to the cell we came from._
 
 
 --- 
@@ -564,13 +562,7 @@ DFS path, otherwise we would allow for going to the cell we came from._
 > Given `n` non-negative integers representing the histogram's bar height where 
 the width of each bar is 1, find the area of largest rectangle in the histogram.
 
-_Use stack of bar indices (heights can be looked up quickly given an index).
-The rep invariant in the stack is that, for a given bar, the bar to its left
-is necessarily smaller, so we only insert bars that are higher than the `top`.
-If we come across a bar that's smaller than `top` we pop the stack and
-calculate the area for each of the popped bars. The height of the area is the
-height of the popped bar. Insert dummy bar with `height = 0` at the end of the
-list to deal with an edge case._
+_Use stack of bar indices (heights can be looked up quickly given an index). The rep invariant in the stack is that, for a given bar, the bar to its left is necessarily smaller, so we only insert bars that are higher than the `top`. If we come across a bar that's smaller than `top` we pop the stack and calculate the area for each of the popped bars. The height of the area is the height of the popped bar. Insert dummy bar with `height = 0` at the end of the list to deal with an edge case._
 
 ---
 - [x] Merge Sorted Array (Easy)
@@ -581,30 +573,21 @@ nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
 
 # result: [1,2,2,3,5,6]
 ```
-_Start filling `nums1` from the end instead of from the beginning. Keep three pointers: `i` (`j`) to iterate through `nums1` (`nums2`) and `k`
-to keep track where to insert an element (larger of the ones pointed to by 
-`i,j`) into `nums1`. We're done when either of `i, j` arrived at `-1`._
+_Start filling `nums1` from the end instead of from the beginning. Keep three pointers: `i` (`j`) to iterate through `nums1` (`nums2`) and `k` to keep track where to insert an element (larger of the ones pointed to by `i,j`) into `nums1`. We're done when either of `i, j` arrived at `-1`._
 
 ---
 - [x] Decode Ways (Medium)
 > Given a string `s` containing only digits, return the number of ways to decode it. e.g. `"11106"` can be decoded into `AAJF` `(1 1 10 6)` and
 `KJF` `(11 10 6)`. The mapping is `'A' -> '1', ... 'Z' -> '26'` etc
 
-_Use DP (top-down) with 1D memo table of size `len(s) + 1`. `dp[0] = 1`
-because once we've scanned the entire string we've discovered one way
-to decode a string. Otherwise the dp state is `dp[i] = dp[i - 1] + dp[i - 2]` assuming
-if it is possible to decode `s[1:]` and `s[2:]` respectively (e.g.
-there is no way to decode `"06"`)._
+_Use DP (top-down) with 1D memo table of size `len(s) + 1`. `dp[0] = 1` because once we've scanned the entire string we've discovered one way to decode a string. Otherwise the dp state is `dp[i] = dp[i - 1] + dp[i - 2]` assuming if it is possible to decode `s[1:]` and `s[2:]` respectively (e.g. there is no way to decode `"06"`)._
 
 ---
 - [x] Binary Tree Inorder Traversal (Medium)
 > Given the `root` of a binary tree, return the inorder traversal of its 
 nodes' values.
 
-_Use `stack` and two `while` loops to solve iteratively. Initialise stack
-with single `None` element to exit gracefully from the outer `while` loop 
-(we exit when `stack` is empty and `root is None`, i.e we retrieved first, 
-initial element form the stack)._
+_Use `stack` and two `while` loops to solve iteratively. Initialise stack with single `None` element to exit gracefully from the outer `while` loop  (we exit when `stack` is empty and `root is None`, i.e we retrieved first, initial element form the stack)._
 
 _See [How to solve Tree questions using iterative in-order traversal](https://leetcode.com/problems/validate-binary-search-tree/discuss/32112/Learn-one-iterative-inorder-traversal-apply-it-to-multiple-tree-questions-(Java-Solution))_
 
@@ -684,7 +667,7 @@ _Note: Highest profit can be achieved by selling immediately when the price is h
 ```
 [1, 2, 3]
 ```
-_we should buy for 1$, sell for 2$ (1$ profit), buy for 2$ and sell for 3$ (1$ more profit), getting a total profit of 2$ (as if we did not do any transaction at 2$ price)._
+_We should buy for 1$, sell for 2$ (1$ profit), buy for 2$ and sell for 3$ (1$ more profit), getting a total profit of 2$ (as if we did not do any transaction at 2$ price)._
 
 
 ---
@@ -759,3 +742,36 @@ cost = [3,4,5,1,2]
 # result: 3 (you can start at gas station at index 3 and do a round trip)
 ```
 _Insight: Compute `delta = gas - cost`. If `sum(delta) >= 0` there always exists a solution, otherwise return `-1`. Then, compute a `cumsum(delta)` - the starting index (result) is `idx + 1` where `idx` is the lowest `cumsum` value. Proof: if `cumsum(delta)` is the lowest for `idx`, then driving from `0,...,idx` gives us the lowest (negative) value of gas (say `-max`). This means that driving from `idx + 1, ..., n - 1` must give us at least `max` (since `sum(delta) >= 0`) which is then sufficient to cover the entire distance `0, ..., idx`. If driving from `idx + 1, ..., n-1` leaves us at some point with negative gas, then this must mean that `idx` wasn't the lowest cumulative sum to begin with._
+
+---
+- [x] Single Number (Easy)
+> Given a non-empty array of integers `nums`, every element appears twice except for one. Find that single one.
+
+_XOR all of the numbers with `0`. Only those bits corresponding to numbers that appeared odd number of times will remain._
+
+---
+- [x] Copy List with Radom Pointer (Medium)
+> Make a copy of a linked list. Any node in the list has a pointer `node.random` which points to a random node in the list
+
+_Do three passes with `O(1)` space (apart from copied list). Start with a list e.g. `2 -> 4 -> 1`. In the first pass make copies of each node and build a one long linked list, i.e. `2 -> 2' -> 4 -> 4' -> 1 -> 1'`. In the second pass assign the random pointers of the copied nodes using the fact that the random pointer of a copied node will point to the `next` element of the random pointer pointed by its predecessor (original node). So if `4.random -> 1` then we have `4'.random -> 4.random.next`. In the third pass take every other node from the long list (`head_cp.next = head_cp.next.next`) and return the copy of a root of the original node._
+
+---
+- [x] Word Break (Medium)
+> Given a string `s` and a dictionary of strings `wordDict`, return `true` if `s` can be segmented into a space-separated sequence of one or more dictionary words.
+
+e.g.
+```
+s = "applepenapple"
+wordDict = ["apple","pen"]
+# result: True - s can be segmented into "apple pen apple"
+```
+
+_DP top-down. State: `dp[s] = any([solve(s[i + 1:]) for i in range(len(s)) if s[:i + 1] in wordDictSet])`_
+
+_DP bottom-up: `can_build[i]` denotes whether we can build a string `s[:i]`. We can build `s[:i]` if there exists some `j` between `0` and `i` for which `can_build[j] == True` and `s[j:i]` is in the set_
+
+---
+- [x] Linked List Cycle (Easy)
+> Given `head`, the head of a linked list, determine if the linked list has a cycle in it.
+
+_Us Floyd's cycle detection algorithm_
