@@ -774,4 +774,32 @@ _DP bottom-up: `can_build[i]` denotes whether we can build a string `s[:i]`. We 
 - [x] Linked List Cycle (Easy)
 > Given `head`, the head of a linked list, determine if the linked list has a cycle in it.
 
-_Us Floyd's cycle detection algorithm_
+_Use Floyd's cycle detection algorithm_
+
+---
+- [x] LRU Cache (Medium)
+> Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
+
+_Use hash map with a doubly linked list. Note: create auxiliary `_add` and `_remove` methods for reassigning linked list pointers. Make sure to do the reassignment there only_
+
+_Note: Python has an in-built `collections.OrderedDict` with methods: `move_to_end(key, last=True)` and `popitem(last=True)`._
+
+
+---
+- [x] Sort List (Medium)
+> Given the `head` of a linked list, return the list after sorting it in ascending order.
+
+_Use bottom-up merge sort for `O(1)` (see `SortList.py` for details)_
+
+---
+- [x] Max Points on a Line (Hard)
+> Given an array of `points` where `points[i] = [xi, yi]` represents a point on the X-Y plane, return the maximum number of points that lie on the same straight line.
+
+_For each pair of points compute a line `(slope, intersect)` and for each slope, keep a map `(slope, intersect) -> set(points on that line)`. Note that, since `float`s are not hashable by default, the key in the map is in the form `(slope_nominator, slope_denominator, intersect_nominator)` where fractions are in their simplest form. Use Euclid's `gcd` algorithm to determine those._
+
+---
+- [x] Evaluate Reverse Polish Notation (Medium)
+
+> Evaluate the value of an arithmetic expression in Reverse Polish Notation.
+
+_Use recrusive solution by parsing characters from the end one at a time. Note: In python `1 // -2 == -1` (not `0`)._
