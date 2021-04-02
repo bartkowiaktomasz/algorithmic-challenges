@@ -802,4 +802,40 @@ _For each pair of points compute a line `(slope, intersect)` and for each slope,
 
 > Evaluate the value of an arithmetic expression in Reverse Polish Notation.
 
-_Use recrusive solution by parsing characters from the end one at a time. Note: In python `1 // -2 == -1` (not `0`)._
+_Use recrusive solution by parsing characters from the end one at a time. Note: In python `1 // -2 == -1` (not `0`). Use `int(a // b)` instead._
+
+---
+- [x] Maximum Product Subarray (Medium)
+
+> Given an integer array `nums`, find a contiguous non-empty subarray within the array that has the largest product, and return the product.
+
+_`O(N)` scan, keeping two running values: `min_, max_` where `min_` and `max_` indicate the minimum and maximum product ending before the current number (not necessarily starting from the beginning of an array). When considering a given number, note its sign. If it's negative we can multiply it with  current `min_` to get the next `max_` (or multiply with current `max_` to get the next `max_` otherwise). We should **not** keep a cumulative product starting from the beginning of the array until current number, because this product might not be contiguous._
+
+> e.g. `[2, 3, -1, 4]` - when considering `4` the maximum contiguous product would have been `6` but we cannot use `4` with `2, 3` to get a product of `24` because this would not be contiguous.
+
+---
+- [x] Min Stack (Easy)
+
+> Design a stack that supports `push`, `pop`, `top`, and retrieving the minimum element `getMin` in constant time.
+
+_When pushing an element, add to it an information about the current `min` in the stack (all elements below it)._
+
+_Remark: See [here](https://cs.stackexchange.com/questions/6146/lower-bounds-queues-that-return-their-min-elements-in-o1-time) how to implement Queue with `O(1)` access to min element._
+
+_Remark 2: Accessing `min` element and `pop`ing min element are different - the latter is not possible in `O(1)` - otherwise it'd allow you to sort in linear time_
+
+---
+- [x] Intersection of Two Linked Lists (Easy)
+
+> Given the heads of two singly linked-lists `headA` and `headB`, return the node at which the two lists intersect. If the two linked lists have no intersection at all, return `null`.
+
+_Use `O(1)` memory by scanning the lists twice. First pass - calculate lengths of two lists. Second pass - Move the pointer on the longer lists by `diff` (where `diff` is a difference in lengths) and then move both pointers simultaneously until they meet._
+
+---
+- [x] Find Peak Element (Medium)
+
+> A peak element is an element that is strictly greater than its neighbors.
+
+Given an integer array `nums`, find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks. Assume `nums[-1] = nums[n] = -inf`
+
+_Solution in `O(logn)` with binary search. For a given `mid` element, search to it's left/right depending on which neighbour is greater. Neighbours cannot be the same height (as per constraint). If it was possible, linear search would not be possible (imagine an array `[1, 2, 1, 1, 1, 1, 1]` - for a mid element `1` the search procedure does not know which side (left/right) to search for a peak_
