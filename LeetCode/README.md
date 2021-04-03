@@ -839,3 +839,21 @@ _Use `O(1)` memory by scanning the lists twice. First pass - calculate lengths o
 Given an integer array `nums`, find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks. Assume `nums[-1] = nums[n] = -inf`
 
 _Solution in `O(logn)` with binary search. For a given `mid` element, search to it's left/right depending on which neighbour is greater. Neighbours cannot be the same height (as per constraint). If it was possible, linear search would not be possible (imagine an array `[1, 2, 1, 1, 1, 1, 1]` - for a mid element `1` the search procedure does not know which side (left/right) to search for a peak_
+
+---
+- [x] Fraction to Recurring Decimal (Medium)
+
+> Given two integers representing the `numerator` and denom`inator of a fraction, return the fraction in string format.
+
+```
+numerator = 4, denominator = 333
+# result: "0.(012)"
+```
+
+_Perform long division until we get a repeated `remainder` (store a map from remainders to their position in a hash map)._
+
+---
+- [x] Majority Element (Easy)
+> Given an array `nums` of size `n`, return the majority element (elemen appearing more than `n // 2` number of times)
+
+_Use **Boyer-Moore Voting Algorithm** to solve in `O(n)` time and `O(1)` space (see code for explanation)_
