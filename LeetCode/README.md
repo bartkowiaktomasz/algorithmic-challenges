@@ -1,4 +1,4 @@
-# LeetCode - Top Interview Questions
+# LeetCode - Other questions
 Solutions to LeetCode problems
 
 ---
