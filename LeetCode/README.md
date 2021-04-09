@@ -1,4 +1,4 @@
-# LeetCode - Other questions
+# LeetCode - Other Questions
 Solutions to LeetCode problems
 
 ---
