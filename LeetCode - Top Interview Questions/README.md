@@ -899,4 +899,22 @@ _Use DP with state: `dp[i] = max(nums[i] + dp[i + 2], dp[i + 1])`_
 
 _Use BFS. Optimisation: Instead of using `set` for marking `visited`, mark them directly in the input grid_
 
+---
+- [x] Happy Number (Easy)
+> Write an algorithm to determine if a number `n` is happy. A happy number is a number defined by the following process:
 
+- Starting with any positive integer, replace the number by the sum of the squares of its digits.
+- Repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1.
+- Those numbers for which this process ends in 1 are happy.
+
+_Solution with `O(1)` memory uses Floyd's cycle detection (we don't need to store numbers that we've seen already to be able to detect a cycle). Whenever fast pointer hits `0` the number is guaranteed to be happy._
+
+---
+- [x] Count Primes (Easy)
+> Count the number of prime numbers less than a non-negative number, `n`.
+
+_Use the [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes)_
+
+---
+- [x] Reverse Linked List
+> Given the `head` of a singly linked list, reverse the list, and return the reversed list.
