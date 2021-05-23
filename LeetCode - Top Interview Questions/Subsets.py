@@ -1,7 +1,6 @@
 import copy
 from typing import List
 
-
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         def solve(nums: List[int], single_res: List[int], res: List[List[int]]):
@@ -22,3 +21,4 @@ nums = [1, 2, 3]
 
 sol = Solution()
 print(sol.subsets(nums))
+    
