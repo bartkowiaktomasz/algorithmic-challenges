@@ -1,5 +1,5 @@
 from collections import defaultdict
-from typing import List, Set, Tuple
+from typing import Dict, List, Set
 
 class Node:
     def __init__(self, val: int) -> None:
@@ -11,7 +11,7 @@ class Node:
         
 
 class Solution:
-    def dfs(self, node: int, graph: List[List[int]], visited: Set[int]) -> bool:
+    def dfs(self, node: int, graph: Dict[int, List[int]], visited: Set[int]) -> bool:
         """
         Has cycle -> Return True
         State of "visited" list:
@@ -24,7 +24,7 @@ class Solution:
         if visited[node] == -1:
             return True
         visited[node] = -1
-        has_cycle = any((visited[node] == -1 or self.dfs(node, graph, visited)) for node in graph[node])
+        has_cycle = any(self.dfs(node, graph, visited) for node in graph[node])
         visited[node] = 1
         return has_cycle
 
