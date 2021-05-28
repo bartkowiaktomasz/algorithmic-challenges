@@ -3,7 +3,6 @@ from typing import List
 
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
-        n = len(nums)
         max_, min_, res = nums[0], nums[0], nums[0]
         for num in nums[1:]:
             print(max_)

@@ -89,6 +89,8 @@ happen if `digit > 7`, because `7` is the last number of `2^31` -1
 
 ---
 - [x] String to Integer (Medium)
+> Implement the `myAtoi(string s)` function, which converts a string to a 32-bit signed integer (similar to C/C++'s `atoi` function).
+
 
 _Note: Annoying edge cases like `input="++1"`_
 
@@ -287,6 +289,7 @@ original array to mark which positive integers are there or not. Few observation
   `arr[2]` as negative (the index `2` results from the fact that we're indexing from `0`)
 - Even though the original array can contain negative numbers we can convert them to
   any positive number `> n` (e.g. `n + 1`) in the first pass, and ignore when doing next pass because we know that they won't be the answer (see p.1). After all, we ignore any element `e` such that `e > n or e <= 0`
+- Return an index (+1) of the first non-negative number in the processed array which is `<= n`, e.g. for `[-1, -2, 4]` return  `3` (the input array was `[1, 2, 4]`).
 
 
 ---
@@ -520,7 +523,7 @@ _Solve recursively using DFS, keeping track of `visited` cells in a current DFS 
 > Given `n` non-negative integers representing the histogram's bar height where 
 the width of each bar is 1, find the area of largest rectangle in the histogram.
 
-_Use stack of bar indices (heights can be looked up quickly given an index). The rep invariant in the stack is that, for a given bar, the bar to its left is necessarily smaller, so we only insert bars that are higher than the `top`. If we come across a bar that's smaller than `top` we pop the stack and calculate the area for each of the popped bars. The height of the area is the height of the popped bar. Insert dummy bar with `height = 0` at the end of the list to deal with an edge case._
+_Use stack of bar indices (heights can be looked up quickly given an index). The rep invariant in the stack is that, for a given bar, the bar to its left is necessarily smaller, so we only insert bars that are higher than the `top`. If we come across a bar that's smaller (or equal height) than `top` we pop the stack and calculate the area for each of the popped bars. The height of the area is the height of the popped bar. Insert dummy bar with `height = 0` at the end of the list to deal with an edge case._
 
 ---
 - [x] Merge Sorted Array (Easy)
@@ -674,7 +677,7 @@ _Linear scan + hashmap. First, add all elements to a hashmap (key - element, val
 - [x] Surrounded Regions (Medium)
 > Given an `m x n` matrix board containing `'X'` and `'O'`, capture all regions surrounded by `'X'`. A region is captured by flipping all `'O'`s into `'X'`s in that surrounded region. `'O'` is captured if it's not at the boundary or connected to the boundary by other `'O'`s
 
-_BFS with `set` as a queue, searching from all `O`s at the borders of the `board`. Any 'O` reachable form `O` at the border will not be captured - mark that cell with `K` (keep). After BFS, capture all `O` cells which haven't been changed to `K`._
+_BFS with `set` as a queue, searching from all `O`s at the borders of the `board`. Any `O` reachable from `O` at the border will not be captured - mark that cell with `K` (keep). After BFS, capture all `O` cells which haven't been changed to `K`._
 
 ---
 - [x] Palindrome Paritioning (Medium)
@@ -766,7 +769,7 @@ _Use recrusive solution by parsing characters from the end one at a time. Note: 
 
 > Given an integer array `nums`, find a contiguous non-empty subarray within the array that has the largest product, and return the product.
 
-_`O(N)` scan, keeping two running values: `min_, max_` where `min_` and `max_` indicate the minimum and maximum product ending before the current number (not necessarily starting from the beginning of an array). When considering a given number, note its sign. If it's negative we can multiply it with  current `min_` to get the next `max_` (or multiply with current `max_` to get the next `max_` otherwise). We should **not** keep a cumulative product starting from the beginning of the array until current number, because this product might not be contiguous._
+_`O(N)` scan, keeping two running values: `min_, max_` where `min_` and `max_` indicate the minimum and maximum product ending before the current number (not necessarily starting from the beginning of an array). When considering a given number `num`, note its sign. If it's negative we can multiply it with  current `min_` to get the next `max_` (or multiply with current `max_` to get the next `max_` otherwise). When calculating `min/max` values for each `num` consider itself as well. Note: we should **not** keep a cumulative product starting from the beginning of the array until current number, because this product might not be contiguous._
 
 > e.g. `[2, 3, -1, 4]` - when considering `4` the maximum contiguous product would have been `6` but we cannot use `4` with `2, 3` to get a product of `24` because this would not be contiguous.
 
@@ -915,7 +918,7 @@ _Solution with `O(1)` memory uses Floyd's cycle detection (we don't need to stor
 _Use the [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes)_
 
 ---
-- [x] Reverse Linked List
+- [x] Reverse Linked List (Easy)
 > Given the `head` of a singly linked list, reverse the list, and return the reversed list.
 
 
@@ -926,7 +929,35 @@ _Use the [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosth
 _Build a graph and use DFS to find if it has cycles. If so - return `False`. A directed graph has a cycle if there exists a backward edge in a graph. Keep a track of a state list `visited` with 3 states: `-1` if a node is being visited in a current DFS run, `0` if it has not been visited and `1` if it has been visited._
 
 ---
+- [x] Implement Trie (Medium)
+> Implement Trie data structure
+
+---
 - [x] Course Schedule II (Medium)
-> > There are a total of `numCourses` courses you have to take, labeled from `0` to `numCourses - 1`. You are given an array `prerequisites` where p`rerequisites[i] = [ai, bi]` indicates that you must take course `bi` first if you want to take course `ai`. Return `true` if you can finish all courses. Return the ordering of courses you should take to finish all courses. If there are many valid answers, return any of them. If it is impossible to finish all courses, return an empty array.
+> There are a total of `numCourses` courses you have to take, labeled from `0` to `numCourses - 1`. You are given an array `prerequisites` where p`rerequisites[i] = [ai, bi]` indicates that you must take course `bi` first if you want to take course `ai`. Return `true` if you can finish all courses. Return the ordering of courses you should take to finish all courses. If there are many valid answers, return any of them. If it is impossible to finish all courses, return an empty array.
 
 _Return a toposort of the courses. Here, use [Kahn's algorithm](https://en.wikipedia.org/wiki/Topological_sorting#Kahn's_algorithm) to do a BFS-based toposort (no recursion as in DFS)_
+
+---
+- [x] Word Search II
+> Given an `m x n` board of characters and a list of strings `words`, return all `words` on the board. Each word must be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
+
+_Build a trie from `words` and then perform DFS of the `board`_
+
+_Optimisation: Mark nodes that are currently being visited in DFS run as `#` in-place to save space_
+
+_Optimisation 2: When doing DFS we simultaneously walk down the Trie. We can use `node.end` to look-up whether we've just discovered a word defined in `words`_
+
+---
+- [x] Kth Largest Element in an Array
+> Given an integer array `nums` and an integer `k`, return the kth largest element in the array. Note that it is the `k`th largest element in the sorted order, not the `k`th distinct element.
+
+_Use QuickSelect for average `O(N)` performance. In the partitioning procedure make sure that, after partitioning, every element at idx `i < pivot_idx` is smaller than `pivot` and anything `j > pivot_idx` is greater or equal than `pivot`._
+
+_Remark: Try partitioning the array `nums` based on boundaries `low, high` and not by slicing the array at each iteration_
+
+---
+- [x] Contains Duplicate (Easy)
+> Given an integer array `nums`, return `true` if any value appears at least twice in the array, and return `false` if every element is distinct.
+
+_[Element distinctness problem](https://en.wikipedia.org/wiki/Element_distinctness_problem) states that, for arbitrary `nums` and without extra space, best runtime is `O(NlogN)`_

@@ -10,7 +10,6 @@ class Solution:
         #  at the end
         heights.append(0)
         for i in range(len(heights)):
-            # Make sure that bar immediately to the left is smaller
             if not stack:
                 stack.append(i)
             else:

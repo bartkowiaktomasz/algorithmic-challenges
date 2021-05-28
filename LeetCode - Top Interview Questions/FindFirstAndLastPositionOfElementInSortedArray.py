@@ -38,7 +38,7 @@ class Solution:
             else:
                 low = mid
         if nums and nums[low] == elem:
-            return low
+            return high
         return -1
 
     def searchRange(self, nums: List[int], target: int) -> List[int]:
