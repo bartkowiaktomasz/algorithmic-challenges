@@ -961,3 +961,13 @@ _Remark: Try partitioning the array `nums` based on boundaries `low, high` and n
 > Given an integer array `nums`, return `true` if any value appears at least twice in the array, and return `false` if every element is distinct.
 
 _[Element distinctness problem](https://en.wikipedia.org/wiki/Element_distinctness_problem) states that, for arbitrary `nums` and without extra space, best runtime is `O(NlogN)`_
+
+---
+- [x] Skyline Problem
+> A city's skyline is the outer contour of the silhouette formed by all the buildings in that city when viewed from a distance. Given the locations and heights of all the buildings, return the skyline formed by these buildings collectively. Question: https://leetcode.com/problems/the-skyline-problem/
+
+_1. Split buildings into single points `(x, h, type)` and mark each point whether it is a left (`-1`) or a right (`1`) point of a given building._
+
+_2. Update the result if the max height o the priority queue changes: skyline is formed by changing max heights_
+
+_3. Sort points based on three conditions: (X position, type, height)(in this order). Left needs to be before Right (imagine what happens if there are two buildings same height, right side of first one overlaps  with the left side of the next one). Height-wise, if we have two left points  (same x), higher needs to be considered first. If two right points, consider the lower one first._
