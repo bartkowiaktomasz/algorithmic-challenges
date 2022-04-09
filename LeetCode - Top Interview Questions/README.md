@@ -968,6 +968,34 @@ _[Element distinctness problem](https://en.wikipedia.org/wiki/Element_distinctne
 
 _1. Split buildings into single points `(x, h, type)` and mark each point whether it is a left (`-1`) or a right (`1`) point of a given building._
 
-_2. Update the result if the max height o the priority queue changes: skyline is formed by changing max heights_
+_2. Update the result if the max height **of the priority queue changes:** skyline is formed by changing max heights_
 
 _3. Sort points based on three conditions: (X position, type, height)(in this order). Left needs to be before Right (imagine what happens if there are two buildings same height, right side of first one overlaps  with the left side of the next one). Height-wise, if we have two left points  (same x), higher needs to be considered first. If two right points, consider the lower one first._
+
+---
+- [x] Basic Calculator II
+> Given a string `s` which represents an expression, evaluate this expression and return its value. Example: `s = "3+2*2"` return `7`.
+
+_Use Stack. First, preprocess the string to build a stack with numbers and operations. Then parse elements in the stack left to right (i.e. from the bottom, like a queue). Each time pop three elements (left operand, operation, right operand) and if it's addition/subtraction, update the result. Otherwise evaluate the operation and put it back on the stack. If there is one (last) element in the stack, add it to the result and return._
+
+---
+- [x] Kth Smallest Element in a BST
+> Given the root of a binary search tree, and an integer `k`, return the kth smallest value (1-indexed) of all the values of the nodes in the tree.
+
+_Do an in-order traversal (it sorts a BST). Keep a global count of unique elements seen so far and return immediately when seeing `k`th unique element._
+
+---
+- [x] Palindrome Linked List
+> Given the `head` of a singly linked list, return true if it is a palindrome.
+
+Idea: Revert the first half of the list and then iterate
+simultaneously with two pointers: one traverses from mid to start
+and the other one traverses from mid to end.
+```
+    e.g. 1 -> 2 -> 3 -> 2 -> 1 change to: 1 <- 2 <- 3 -> 2 -> 1
+    e.g. 1 -> 2 -> 2 -> 1 change to: 1 <- 2  2 -> 1
+```
+1. Use two pointers: slow, fast to find the mid of the list
+2. Iterate from the list start reversing its direction until we hit list's mid
+3. Iterate two pointers from mid, one towards the start, one towards the end
+to decide if palindrome
