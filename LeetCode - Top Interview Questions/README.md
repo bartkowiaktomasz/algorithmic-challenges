@@ -999,3 +999,23 @@ and the other one traverses from mid to end.
 2. Iterate from the list start reversing its direction until we hit list's mid
 3. Iterate two pointers from mid, one towards the start, one towards the end
 to decide if palindrome
+
+---
+- [x] Product of Array Except Self
+> Given an integer array `nums`, return an array answer such that `answer[i]` is equal to the product of all the elements of `nums` except `nums[i]`.
+
+Idea: Instead of keeping the product, keep a sum of logs
+
+Cases to consider:
+- Zero element (the answer will have everywhere zeros except one position)
+- Negative elements (need to keep track of the count of negative elements)
+
+Alternative approach: Build two arrays: `prefix_product` and `suffix_product` such that `prefix_product[i]` contains the product of all elements before `i` (excluding `i`). Likewise,
+`suffix_product[i]` contains the product of all ements after `[i`] (excluding `i`). The result is `prefix_product[i] * suffix_product[i]` for all `i`. Note: one could actually keep both in the result array (no need to allocate two additional arrays for prefix/suffix)
+
+---
+- [x] Sliding Window Maximum
+> You are given an array of integers nums, there is a sliding window of size `k` which is moving from the very left of the array to the very right. You can only see the `k` numbers in the window. Each time the sliding window moves right by one position. Return the max sliding window.
+
+Use monotonic (non-increasing) queue (`deque_`). When we iterate through input, `deque_[0]` will contain the index of the largest element in the current window. If this index is outside the current window, we'll pop it. 
+
