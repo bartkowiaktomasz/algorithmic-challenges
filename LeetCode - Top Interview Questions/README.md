@@ -939,7 +939,7 @@ _Build a graph and use DFS to find if it has cycles. If so - return `False`. A d
 _Return a toposort of the courses. Here, use [Kahn's algorithm](https://en.wikipedia.org/wiki/Topological_sorting#Kahn's_algorithm) to do a BFS-based toposort (no recursion as in DFS)_
 
 ---
-- [x] Word Search II
+- [x] Word Search II (Hard)
 > Given an `m x n` board of characters and a list of strings `words`, return all `words` on the board. Each word must be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
 
 _Build a trie from `words` and then perform DFS of the `board`_
@@ -949,7 +949,7 @@ _Optimisation: Mark nodes that are currently being visited in DFS run as `#` in-
 _Optimisation 2: When doing DFS we simultaneously walk down the Trie. We can use `node.end` to look-up whether we've just discovered a word defined in `words`_
 
 ---
-- [x] Kth Largest Element in an Array
+- [x] Kth Largest Element in an Array (Medium)
 > Given an integer array `nums` and an integer `k`, return the kth largest element in the array. Note that it is the `k`th largest element in the sorted order, not the `k`th distinct element.
 
 _Use QuickSelect for average `O(N)` performance. In the partitioning procedure make sure that, after partitioning, every element at idx `i < pivot_idx` is smaller than `pivot` and anything `j > pivot_idx` is greater or equal than `pivot`._
@@ -963,7 +963,7 @@ _Remark: Try partitioning the array `nums` based on boundaries `low, high` and n
 _[Element distinctness problem](https://en.wikipedia.org/wiki/Element_distinctness_problem) states that, for arbitrary `nums` and without extra space, best runtime is `O(NlogN)`_
 
 ---
-- [x] Skyline Problem
+- [x] Skyline Problem (Hard)
 > A city's skyline is the outer contour of the silhouette formed by all the buildings in that city when viewed from a distance. Given the locations and heights of all the buildings, return the skyline formed by these buildings collectively. Question: https://leetcode.com/problems/the-skyline-problem/
 
 _1. Split buildings into single points `(x, h, type)` and mark each point whether it is a left (`-1`) or a right (`1`) point of a given building._
@@ -973,19 +973,19 @@ _2. Update the result if the max height **of the priority queue changes:** skyli
 _3. Sort points based on three conditions: (X position, type, height)(in this order). Left needs to be before Right (imagine what happens if there are two buildings same height, right side of first one overlaps  with the left side of the next one). Height-wise, if we have two left points  (same x), higher needs to be considered first. If two right points, consider the lower one first._
 
 ---
-- [x] Basic Calculator II
+- [x] Basic Calculator II (Medium)
 > Given a string `s` which represents an expression, evaluate this expression and return its value. Example: `s = "3+2*2"` return `7`.
 
 _Use Stack. First, preprocess the string to build a stack with numbers and operations. Then parse elements in the stack left to right (i.e. from the bottom, like a queue). Each time pop three elements (left operand, operation, right operand) and if it's addition/subtraction, update the result. Otherwise evaluate the operation and put it back on the stack. If there is one (last) element in the stack, add it to the result and return._
 
 ---
-- [x] Kth Smallest Element in a BST
+- [x] Kth Smallest Element in a BST (Medium)
 > Given the root of a binary search tree, and an integer `k`, return the kth smallest value (1-indexed) of all the values of the nodes in the tree.
 
 _Do an in-order traversal (it sorts a BST). Keep a global count of unique elements seen so far and return immediately when seeing `k`th unique element._
 
 ---
-- [x] Palindrome Linked List
+- [x] Palindrome Linked List (Easy)
 > Given the `head` of a singly linked list, return true if it is a palindrome.
 
 Idea: Revert the first half of the list and then iterate
@@ -1001,7 +1001,7 @@ and the other one traverses from mid to end.
 to decide if palindrome
 
 ---
-- [x] Product of Array Except Self
+- [x] Product of Array Except Self (Medium)
 > Given an integer array `nums`, return an array answer such that `answer[i]` is equal to the product of all the elements of `nums` except `nums[i]`.
 
 Idea: Instead of keeping the product, keep a sum of logs
@@ -1014,8 +1014,28 @@ Alternative approach: Build two arrays: `prefix_product` and `suffix_product` su
 `suffix_product[i]` contains the product of all ements after `[i`] (excluding `i`). The result is `prefix_product[i] * suffix_product[i]` for all `i`. Note: one could actually keep both in the result array (no need to allocate two additional arrays for prefix/suffix)
 
 ---
-- [x] Sliding Window Maximum
+- [x] Sliding Window Maximum (Hard)
 > You are given an array of integers nums, there is a sliding window of size `k` which is moving from the very left of the array to the very right. You can only see the `k` numbers in the window. Each time the sliding window moves right by one position. Return the max sliding window.
 
 Use monotonic (non-increasing) queue (`deque_`). When we iterate through input, `deque_[0]` will contain the index of the largest element in the current window. If this index is outside the current window, we'll pop it. 
 
+---
+- [x] Search a 2D Matrix II (Medium)
+> Write an efficient algorithm that searches for a value target in an m x n integer matrix matrix. This matrix has the following properties:
+> - Integers in each row are sorted in ascending from left to right.
+> - Integers in each column are sorted in ascending from top to bottom.
+
+There is no simple logarithmic solution. $O(m + n)$ starts in the top-right corner and eliminates one row or column at a time (depending whether $m[i][j]$ is greater than or smaller than the target).
+
+---
+- [x] Valid Anagram (Easy)
+> Given two strings `s` and `t`, return true if `t` is an anagram of `s`, and false otherwise.
+
+Compare counts of characters in both strings
+
+---
+- [x] Given an array nums containing n distinct numbers in the range `[0, n]`, return the only number in the range that is missing from the array.
+
+Return a XOR of `x1` and `x2`, where `x1` is a XOR of all elements `0,...,n` and `x2` is a XOR of all elements in the input `nums`. The XOR of `x1, x2` will eliminate (set to zero) every `1` bit that was present in both. What's left is an element that is in one but not the other array.
+
+Alternatively, use the fact that the sum of all elements `1,...,n` is `n/2*(1+n)`
