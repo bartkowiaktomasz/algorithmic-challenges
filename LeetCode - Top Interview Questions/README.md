@@ -1034,8 +1034,29 @@ There is no simple logarithmic solution. $O(m + n)$ starts in the top-right corn
 Compare counts of characters in both strings
 
 ---
-- [x] Given an array nums containing n distinct numbers in the range `[0, n]`, return the only number in the range that is missing from the array.
+- [x] Missing Number (Easy)
+
+> Given an array nums containing n distinct numbers in the range `[0, n]`, return the only number in the range that is missing from the array.
 
 Return a XOR of `x1` and `x2`, where `x1` is a XOR of all elements `0,...,n` and `x2` is a XOR of all elements in the input `nums`. The XOR of `x1, x2` will eliminate (set to zero) every `1` bit that was present in both. What's left is an element that is in one but not the other array.
 
 Alternatively, use the fact that the sum of all elements `1,...,n` is `n/2*(1+n)`
+
+---
+- [x] Perfect Squares (Medium)
+> Given an integer `n`, return the least number of perfect square numbers that sum to `n`.
+
+Use Dynamic Programming
+
+---
+- [x] Move Zeroes (Easy)
+> Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements. Note that you must do this in-place without making a copy of the array.
+
+Use two pointers (slow and fast)
+
+---
+- [x] Find the Duplicate Number
+> Given an array of integers nums containing n + 1 integers where each integer is in the range `[1, n]` inclusive. There is only one repeated number in nums, return this repeated number.
+
+- (Optimal) `O(N)` time and `O(1)` space: Travel around the input list like through a linked list (current number indicates the next index to go to). Duplicate number will cause a loop in the list. Use Floyd's cycle detection algorithm to determine the duplicate. Note: The first number/node in the loop is not the duplicate, it's the node before!
+- `O(NlogN)` time - Binary search over the answer - count the number of elements smaller/bigger than `x` and search over `x` (initialise `x = n // 2`).
