@@ -1055,8 +1055,28 @@ Use Dynamic Programming
 Use two pointers (slow and fast)
 
 ---
-- [x] Find the Duplicate Number
+- [x] Find the Duplicate Number (Medium)
 > Given an array of integers nums containing n + 1 integers where each integer is in the range `[1, n]` inclusive. There is only one repeated number in nums, return this repeated number.
 
 - (Optimal) `O(N)` time and `O(1)` space: Travel around the input list like through a linked list (current number indicates the next index to go to). Duplicate number will cause a loop in the list. Use Floyd's cycle detection algorithm to determine the duplicate. Note: The first number/node in the loop is not the duplicate, it's the node before!
 - `O(NlogN)` time - Binary search over the answer - count the number of elements smaller/bigger than `x` and search over `x` (initialise `x = n // 2`).
+
+---
+- [x] Game of Life (Medium)
+> Given the current state of the `m x n` grid `board`, return the next state (as per the Game of Life rules)
+
+- For each cell, find its next state and save it in `board[i][j]` itself. As a memory optimisation we can (in each cell) store 2 bits, where the first (leftmost) bit represents current cell state and the second bit represents the next state. In the second pass, we shift the 2bit number to the right, only leaving the next state.
+
+
+---
+- [x] Find Median from Data Stream (Hard)
+> Given a datastream, implement `addNum` and `findMedian`
+
+- Use two heaps: `smaller` (max heap) and `larger` (min heap) to keep smaller half and larger half of numbers (respectively). Note: the `addNum` should first `heappush` onto one heap, then `heappop` from it and `heappush` that element onto the other heap. Optimisation: Use `heapq.heappushpop`.
+
+---
+- [x] Serialize and Deserialize Binary Tree (Hard)
+> Design an algorithm to serialize and deserialize a binary tree
+
+- Use pre-order or level-order tree traversal
+
