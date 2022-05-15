@@ -1080,3 +1080,20 @@ Use two pointers (slow and fast)
 
 - Use pre-order or level-order tree traversal
 
+---
+- [x] Longest Increasing Subsequence (Medium)
+> Given an integer array `nums`, return the length of the longest strictly increasing subsequence.
+
+- Use [Patience sorting](https://en.wikipedia.org/wiki/Patience_sorting) ([Princeton notes](https://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures/LongestIncreasingSubsequence.pdf)) for `O(nlogn)`
+
+---
+- [x] Count of Smaller Numbers After Self
+> You are given an integer array `nums` and you have to return a new `counts` array. The `counts` array has the property where `counts[i]` is the number of smaller elements to the right of `nums[i]`.
+
+- Use (a modified) merge sort to count the number of inversions for each number. An inversion, for a given number `x` is when there is some other number `y` smaller than x that gets put to the left of `x` when doing the merge sort.  Note: When we have, in the "combine" step of the merge sort, e.g. `left=[2, 3, 5, 6], right=[1]`, do not increment the counter for `2, 3, ..., 6` before appending `1` to the combined list. This will result in `O(n^2)` worst case time in the combine step.
+
+---
+- [x] Coin Change
+> You are given an integer array `coins` representing coins of different denominations and an integer `amount` representing a total amount of money. Return the fewest number of coins that you need to make up that amount.
+
+- Use DP
