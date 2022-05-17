@@ -1087,13 +1087,37 @@ Use two pointers (slow and fast)
 - Use [Patience sorting](https://en.wikipedia.org/wiki/Patience_sorting) ([Princeton notes](https://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures/LongestIncreasingSubsequence.pdf)) for `O(nlogn)`
 
 ---
-- [x] Count of Smaller Numbers After Self
+- [x] Count of Smaller Numbers After Self (Hard)
 > You are given an integer array `nums` and you have to return a new `counts` array. The `counts` array has the property where `counts[i]` is the number of smaller elements to the right of `nums[i]`.
 
 - Use (a modified) merge sort to count the number of inversions for each number. An inversion, for a given number `x` is when there is some other number `y` smaller than x that gets put to the left of `x` when doing the merge sort.  Note: When we have, in the "combine" step of the merge sort, e.g. `left=[2, 3, 5, 6], right=[1]`, do not increment the counter for `2, 3, ..., 6` before appending `1` to the combined list. This will result in `O(n^2)` worst case time in the combine step.
 
 ---
-- [x] Coin Change
+- [x] Coin Change (Medium)
 > You are given an integer array `coins` representing coins of different denominations and an integer `amount` representing a total amount of money. Return the fewest number of coins that you need to make up that amount.
+
+- Use DP
+
+---
+- [x] Wiggle Sort II (Medium)
+> Given an integer array nums, reorder it such that `nums[0] < nums[1] > nums[2] < nums[3]` ...
+
+- Sort `nums` and split into `smaller, bigger` halves. Overwrite `nums` by injecting numbers from `smaller/bigger`, alternating between them. Note: Need to iterate through `smaller/bigger` backwards - consider the input `[4, 5, 5, 6]`.
+
+---
+- [x] Power of Three (Easy)
+> Given an integer `n`, return `true` if it is a power of three. Otherwise, return `false`. Follow up: Could you solve it without loops/recursion?
+
+- Use `math.log(n, 3) % 1` and then compare against `0` or `1` using `math.isclose`. Alternative solution: `x = 3 ** 19` is the highest power of 3 that fits in 32-bit int. 3 is prime so only the powers of 3 will divide `x`.
+
+---
+- [x] Odd Even Linked List
+> Given the `head` of a singly linked list, group all the nodes with odd indices together followed by the nodes with even indices, and return the reordered list.
+
+- Reorder by performing a single scan with two pointers
+
+---
+- [x] Longest Increasing Path in a Matrix
+> Given an `m x n` integers `matrix`, return the length of the longest increasing path in `matrix`.
 
 - Use DP
