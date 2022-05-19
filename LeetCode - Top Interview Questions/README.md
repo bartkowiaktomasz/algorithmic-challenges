@@ -1084,7 +1084,7 @@ Use two pointers (slow and fast)
 - [x] Longest Increasing Subsequence (Medium)
 > Given an integer array `nums`, return the length of the longest strictly increasing subsequence.
 
-- Use [Patience sorting](https://en.wikipedia.org/wiki/Patience_sorting) ([Princeton notes](https://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures/LongestIncreasingSubsequence.pdf)) for `O(nlogn)`
+- Use [Patience sorting](https://en.wikipedia.org/wiki/Patience_sorting) ([Princeton notes](https://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures/LongestIncreasingSubsequence.pdf)) for `O(nlogn)`. Alternatively, use DP where `dp[i]` is the minumum (ending) value which is the end of increasing sequence of length `i + 1`. So e.g. with `[1, 2, 4, 3]` we will iterate through all the numbers and update the `dp` to be `[1] -> [1, 2] -> [1, 2, 4] -> [1, 2, 3]`. Return the length of the list. Use `bisect.bisect_left` to find an appropriate index where to insert a number.
 
 ---
 - [x] Count of Smaller Numbers After Self (Hard)
@@ -1111,13 +1111,28 @@ Use two pointers (slow and fast)
 - Use `math.log(n, 3) % 1` and then compare against `0` or `1` using `math.isclose`. Alternative solution: `x = 3 ** 19` is the highest power of 3 that fits in 32-bit int. 3 is prime so only the powers of 3 will divide `x`.
 
 ---
-- [x] Odd Even Linked List
+- [x] Odd Even Linked List (Medium)
 > Given the `head` of a singly linked list, group all the nodes with odd indices together followed by the nodes with even indices, and return the reordered list.
 
 - Reorder by performing a single scan with two pointers
 
 ---
-- [x] Longest Increasing Path in a Matrix
+- [x] Longest Increasing Path in a Matrix (Hard)
 > Given an `m x n` integers `matrix`, return the length of the longest increasing path in `matrix`.
 
 - Use DP
+
+---
+- [x] Increasing Triplet Subsequence (Medium)
+> Given an integer array `nums`, return true if there exists a triple of indices `(i, j, k)` such that `i < j < k` and `nums[i] < nums[j] < nums[k]`. If no such indices exists, return false.
+
+- Use [Patience sorting](https://en.wikipedia.org/wiki/Patience_sorting) ([Princeton notes](https://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures/LongestIncreasingSubsequence.pdf)) for `O(nlogn)` or DP with binary search as in the _Longest Increasing Subsequence_ problem.
+
+---
+- [x] Flatten Nested List Iterator (Medium)
+> You are given a nested list of integers nestedList. Each element is either an integer or a list whose elements may also be integers or other lists. Implement an iterator to flatten it. e.g. `[[1,1],2,[1,1]] -> [1,1,2,1,1]`
+
+- Use a `deque` - keep unpacking the first element, appending all its elements back to the `deque` until the first element is an integer.
+
+- [x] Reverse String (Easy)
+> Write a function that reverses a string. The input string is given as an array of characters `s`.
