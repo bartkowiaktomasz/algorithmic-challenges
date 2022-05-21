@@ -1134,5 +1134,18 @@ Use two pointers (slow and fast)
 
 - Use a `deque` - keep unpacking the first element, appending all its elements back to the `deque` until the first element is an integer.
 
+---
 - [x] Reverse String (Easy)
 > Write a function that reverses a string. The input string is given as an array of characters `s`.
+
+---
+- [x] Top K Frequent Elements (Medium)
+> Given an integer array `nums` and an integer `k`, return the `k` most frequent elements. You may return the answer in any order.
+
+> Count the occurences of all elements and then add them to heap of (a fixed) size `k`
+
+---
+- [x] Intersection of Two Arrays II (Easy)
+> Given two integer arrays `nums1` and `nums2`, return an array of their intersection.
+
+> Use `Counter(nums1) & Counter(nums2)`
