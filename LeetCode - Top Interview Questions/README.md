@@ -1149,3 +1149,23 @@ Use two pointers (slow and fast)
 > Given two integer arrays `nums1` and `nums2`, return an array of their intersection.
 
 > Use `Counter(nums1) & Counter(nums2)`
+
+---
+- [x] Sum Of Two Integers (Medium)
+> Given two integers `a` and `b`, return the sum of the two integers without using the operators + and -.
+
+> Perform `XOR` while `carry` is non zero
+
+---
+- [x] Kth Smallest Element in a Sorted Matrix (Medium)
+> Given an `n x n` matrix where each of the rows and columns is sorted in ascending order, return the kth smallest element in the matrix.
+
+- The answer is the smallest number `x` (found via binary search in the range `min(matrix), max(matrix)`*) out of all elements that have the property that _"the number of elements in the matrix which are less-or-euqal-to that element is `>= k`"_. Note: during the binary search, the `mid` element doesn't necessarily need to be in the matrix.
+
+- The efficient way to find, for a given element, the number of elements in the matrix which are less-or-euqal-to that element is, roughly, to count the elements by starting in the top-right corner of the matrix and moving down-left (whichever makes sense based on the current number)
+
+---
+- [x] Insert Delete GetRandom O(1)
+> Implement the `RandomizedSet` class with `O(1) insert, remove, getRandom` (average).
+
+- Keep an array with elements `self.nums` and a dictionary with their positions in the array `self.idxs`. When removing, replace removed element with the last element from the array (and update the dictionary accordingly).

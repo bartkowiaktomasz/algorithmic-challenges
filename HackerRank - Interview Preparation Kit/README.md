@@ -65,13 +65,11 @@ running time cause we only overwrite two cells for each query.
 
  - [x] Sherlock and Anagrams (Medium)
  > Two strings are anagrams of each other if the letters of one string can be rearranged to form the other string.
- Given a string, find the number of pairs of substrings of the string that are anagrams of each other.
+ Given a string, find the number of pairs of substrings of the string that are anagrams of each other (i.e. anagramic pairs).
  
- _For each substring, sort its letters it and store the counter for each sorted substring in a hash map. Then for each element in the hash map
- calculate the number of anagrams, which can be interpreted as a number of connections with other identical sorted substrings 
- (number of connections between the vertices of the polygon, i.e. `n(n-1)/2)`._
+ _For each possible substring (`O(n^2)`), sort its letters it and store the letter counter for each sorted substring in a hash map. Sorting is used to ensure that two anagrams map to the same value in the hashmap. For each value in the hash map the number of anagramic pairs is `NC2 = n(n-1)/2)` (`N choose 2`) - 
  
- _Optimisation: Use rolling hash (e.g. Rabin-Karp) and use a hashing function that
+ _Optimisation: Use rolling hash (e.g. Rabin-Karp) and a hashing function that
  gives the same hash to anagrams (this eliminates the sorting step)._
  
  - [x] Count Triplets (Medium)
@@ -83,14 +81,8 @@ for a given common ratio `r` and `i < j < k`
 indices `(0, 1, 2)` and `(1, 2, 3)` so the count is `2`.
 
 _This algorithm can be solved in linear time with one pass: 
-Run a single pass through the array and for each element `elem` keep track how many
-previous elements can form a tuple `(i, j)` and triple `(i, j, k)` with `elem`.
-Keep two counters for that purpose, e.g. `t2`, `t3`. For example, if for one of
-the elements no other elements are yet to form a tuple or triple, this element
-is the one that is "waiting" to form a tuple and then a triple. For this purpose
-increment the counter (`t2`) for the value `elem*r`. Next time, if element `elem*r`
-arrives, it will check how many elements are waiting for it and will increment
-the value of `t3` accordingly._
+Run a single pass through the array and, for each element `elem`, keep two `Counter`s (`t2`, `t3`) with a count of previous elements can form a tuple `(i, elem)` and triple `(i, j, elem)`.
+When seeing a new `elem` increment the counter (`t2`) for the value `elem*r`. Next time, if element `elem*r` arrives increment the value of `t3` accordingly._
 
 - [x] Frequency Queries (Medium)
 > You are given `q` queries. Each query is of the form two integers described below:
@@ -105,7 +97,7 @@ zero_
  ## Dynamic Programming
 - [x] Max Array Sum (Medium)
 > Given an array of integers, find the subset of non-adjacent elements with the maximum sum.
-Calculate the sum of that subset.
+Calculate the sum of that subset. e.g. for `arr = [-2, 1, 3, -4, 5]` return `5 + 3 = 8` (1 is adjacent to `3`).
 
 _Bottom up solution: Build an array (dynamically) that, at each position, holds a maximum 
 sum of the original array up to that position. For each next element (at position `i`)
