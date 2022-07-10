@@ -741,7 +741,7 @@ _Use Floyd's cycle detection algorithm_
 - [x] LRU Cache (Medium)
 > Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
 
-_Use hash map with a doubly linked list. Note: create auxiliary `_add` and `_remove` methods for reassigning linked list pointers. Make sure to do the reassignment there only_
+_Use hash map with a doubly linked list (a.k.a. `LinkedHasMap`). Note: create auxiliary `_add` and `_remove` methods for reassigning linked list pointers. Make sure to do the reassignment there only_
 
 _Note: Python has an in-built `collections.OrderedDict` with methods: `move_to_end(key, last=True)` and `popitem(last=True)`._
 
@@ -1165,7 +1165,39 @@ Use two pointers (slow and fast)
 - The efficient way to find, for a given element, the number of elements in the matrix which are less-or-euqal-to that element is, roughly, to count the elements by starting in the top-right corner of the matrix and moving down-left (whichever makes sense based on the current number)
 
 ---
-- [x] Insert Delete GetRandom O(1)
+- [x] Insert Delete GetRandom O(1) (Medium)
 > Implement the `RandomizedSet` class with `O(1) insert, remove, getRandom` (average).
 
 - Keep an array with elements `self.nums` and a dictionary with their positions in the array `self.idxs`. When removing, replace removed element with the last element from the array (and update the dictionary accordingly).
+
+---
+- [x] Shuffle an Array (Medium)
+
+> Given an integer array `nums`, design an algorithm to randomly shuffle the array. All permutations of the array should be equally likely as a result of the shuffling.
+
+- Iterate through an entire array - each time swapping current element at index `i` with a random element at position  `[i, len(n) - 1]`
+
+---
+- [x] First Unique Character in a String (Easy)
+
+> Given a string `s`, find the first non-repeating character in it and return its index. If it does not exist, return `-1`.
+
+- One-pass solution using Doubly Linked list and a `map: char -> node`. The doubly linked list contains elements seen only once (so that the last element of the list is the answer).
+
+---
+- [x] Longest Substring with At Least K Repeating Characters (Medium)
+
+> Given a string `s` and an integer `k`, return the length of the longest substring of `s` such that the frequency of each character in this substring is greater than or equal to `k`.
+
+Recursive solution by splitting the original string into substrings using least frequent character (assuming its frequency is ` <k`). If, given a substring `sub`, the east frequent character has the frequency `>= k`, return `len(subs)`.
+
+---
+- [x] Fizz Buzz (Easy)
+
+---
+- [x] 4Sum II (Medium)
+
+> Given four integer arrays `nums1`, `nums2`, `nums3`, and `nums4` all of length `n`, return the number of tuples `(i, j, k, l)` such that `nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0`. 
+
+- `O(n^2)`: Count sums of all pairs of numbers of `nums1, nums2` (1) and repeat for `nums3, nums4` (2). Then, for each sum in (1) check if `-sum` is in (2).
+
