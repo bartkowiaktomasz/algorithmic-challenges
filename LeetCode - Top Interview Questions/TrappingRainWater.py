@@ -9,28 +9,22 @@ from typing import List
 
 class Solution:
     def trap(self, height: List[int]) -> int:
-        stack = deque()
-        res = 0
-        for current_i, current_h in enumerate(height):
-            if not stack or current_h <= height[stack[-1]]:
-                stack.append(current_i)
-            else:
-                while stack and current_h > height[stack[-1]]:
-                    # Pop element `e` from the top of the stack cause its smaller than
-                    #  the current height
-                    # Note: We will also use the element "before" that element (i.e.
-                    #  next stack-top after popping `e`) to decide side used to
-                    #  calculate volume
-                    i = stack.pop()
-                    if stack:
-                        # Popped element provides horizontal lower bound for hight
-                        # Horizontal upper bound is deinfed by smaller of two boundary
-                        #  heights
-                        side_height = min(current_h, height[stack[-1]]) - height[i]
-                        volume = side_height * (current_i - stack[-1] - 1)
-                        res += volume
-                stack.append(current_i)
-        return res
+        stack = []
+        bottom_height, vol = 0, 0
+        for i in range(len(height)):
+            while stack:
+                smaller_height = min(height[stack[-1]], height[i])
+                vol += (
+                    smaller_height - bottom_height
+                ) * (i - stack[-1] - 1)
+                bottom_height = smaller_height
+                if height[i] < height[stack[-1]]:
+                    # If current bar is smaller than the top in the stack
+                    # Don't pop the top element
+                    break
+                stack.pop()
+            stack.append(i)
+        return vol
 
 
 sol = Solution()

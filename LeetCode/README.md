@@ -44,6 +44,23 @@ nums[a] + nums[b] + nums[c] + nums[d] == target
 - Binary search. `while(l < r)` and always return `l`. 
 
 ---
+- [x] 39. Combination Sum
+> Given an array of distinct integers `candidates` and a `target` integer `target`, return a list of all unique combinations of candidates where the chosen numbers sum to `target`. You may return the combinations in any order.
+
+- Naive recursive solution with recursive relation:
+```
+for i in range(len(candidates)):
+    solve(candidates[i:], [candidates[i]] + cur, target - candidates[i])
+```
+Remark: Notice `candidates[i:]` which allows for skipping duplicates.
+
+---
+- [x] 45. Jump Game II
+> Given an array of non-negative integers `nums`, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position. Your goal is to reach the last index in the minimum number of jumps.
+
+- DP from backwards. Optimisation: BFS. For each node, find the leftmost one that can reach `destination` in one jump. Mark it as a new `destination`, increment the jump counter and repeat until `destination` is at index 0.
+
+---
 - [x] 394. Decode String (Medium)
 > Given an encoded string, return its decoded string.
 

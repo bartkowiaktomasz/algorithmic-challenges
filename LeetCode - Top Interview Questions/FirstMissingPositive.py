@@ -10,6 +10,10 @@ class Solution:
         First missing positive must be in range [1, ... l + 1] where l is the length
         of the list. e.g. for list [1, 2, 3] the first missing positive is l + 1 = 4
         """
+        # Cap all numbers > n and <= 0 and set to n + 1
+        #   After this step we no longer have negative numbers
+        #   This will allow us to do the -1 trick to mark numbers present in the 
+        #   array
         n = len(nums)
         for i, elem in enumerate(nums):
             if elem > n or elem <= 0:
@@ -25,6 +29,7 @@ class Solution:
             #  elem is present in the array
             if nums[abs(elem) - 1] < 0:
                 continue
+            # Mark element (value at its index - 1) as present in the array
             nums[abs(elem) - 1] *= -1
         # Here the negative elements indicate which positive elements are present
         #  in the array. For example [-1, -2, 4] (original array [1, 2, 4])

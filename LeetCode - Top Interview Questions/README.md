@@ -306,22 +306,12 @@ print ["".join(grp) for num, grp in groupby('111234')]
 > Given `n` non-negative integers representing an elevation map where the width of each 
 bar is `1`, compute how much water it can trap after raining.
 
-_`O(N)` solution using stack. Stack keeps track of **indices** of bars. We will add a 
-bar to the stack if it's smaller or equal to the top element on the stack (otherwise we will start 
-popping elements and updating volume/area). Otherwise we pop bars until we encounter
-bigger (or equal) element and update the total area/volume for each popped bar. Note:_
+_`O(N)` solution using stack. Stack keeps track of **indices** of bars. We will add a bar to the stack if it's smaller or equal to the top element on the stack - otherwise we pop bars until we encounter bigger (or equal) element and update the total area/volume for each popped bar. Note:_
 - The reason for appending to stack bars smaller **or equal** is the fact that
 once we encounter a bigger bar we will ignore the plateaus of bars with the same
-heights and only add one big area at the end. E.g. say the heights are `[2, 1, 1, 1]`
-  and we encounter `h = 4`. We will now start popping `1`s, adding the area of 
-  `A = w * h = (current_idx - popped_idx - 1) * (min(1, 4) - 1) = 0` each time until we hit
-  `2` where we add `A = w * h = (4 - 0 - 1) * (min(4, 2) - 1) = 3 * 1 = 3`.
-  
-- Note: Each time when we compute the area, the width is the difference between the 
-  indices (minus 1) and the height is a difference between the `min(border heights)` and
-  the popped bar
+heights and only add one big area at the end. E.g. say the heights are `[2, 1, 1, 1]` and we encounter `h = 4`. We will now start popping `1`s, adding the area of  `A = w * h = (current_idx - popped_idx - 1) * (min(1, 4) - 1) = 0` each time until we hit `2` where we add `A = w * h = (4 - 0 - 1) * (min(4, 2) - 1) = 3 * 1 = 3`.
 
-- Note: See [Solution using 2 pointers](https://leetcode.com/problems/trapping-rain-water/solution/) on LeetCode
+- Note: For `O(n)` time and `O(1)` space use a two pointer approach - start with `left, right = 0, len(heights) - 1` and move them towards each other, updating trapped area. We can do it only if we move the pointer that points to a smaller bar (because we know that it is bounded from the other side by a higher bar)
 
 ---
 - [x] Wildcard Matching (Hard)
@@ -370,6 +360,8 @@ y = y ^ x
 x = x ^ y
 # x = 5, y = 10
 ```
+
+Note: Solve by figuring out where an arbitrary point `(i, j)` will map after transformation. Assume `n, m` are height and width of the table and `i, j` are distance from the top and left edge of the table. After a 90 deg rotation, the point will map to `(j, m - i)`. Transposition: `(i, j) -> (j, i)` 
 
 ---
 - [x] Group Anagrams (Medium)
