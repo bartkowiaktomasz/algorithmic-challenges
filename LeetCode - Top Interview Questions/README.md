@@ -380,14 +380,7 @@ _Use DP. Calculate recursively by splitting power `n` into `n // 2` and `n - n /
 > Given an integer array `nums`, find the contiguous subarray (containing at 
 least one number) which has the largest sum and return its sum.
 
-_Do linear scan in `O(N)`. For each number consider whether it should be a) added
-to a current (running) subarray, b) ignored or c) made a beggining of new running
-subarray. We want to add it (a) if a running sum is positive (or equal to 0) and
-`n` does not decrease it below 0. We ignore it (b) if it decreases running sum 
-from positive to below 0. To decide whether we start new subarray at `n` (c) 
-we need to consider two separate cases - whether `n` is contiguous with current
-subarray or not (see code). Note: the code also keeps track of indices of the
-array that produces max sum._
+_Use [Kadane's Algorithm](https://en.wikipedia.org/wiki/Maximum_subarray_problem) which runs in `O(n)`_
 
 ---
 - [x] Spiral Matrix (Medium)

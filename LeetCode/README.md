@@ -44,7 +44,7 @@ nums[a] + nums[b] + nums[c] + nums[d] == target
 - Binary search. `while(l < r)` and always return `l`. 
 
 ---
-- [x] 39. Combination Sum
+- [x] 39. Combination Sum (Medium)
 > Given an array of distinct integers `candidates` and a `target` integer `target`, return a list of all unique combinations of candidates where the chosen numbers sum to `target`. You may return the combinations in any order.
 
 - Naive recursive solution with recursive relation:
@@ -55,10 +55,40 @@ for i in range(len(candidates)):
 Remark: Notice `candidates[i:]` which allows for skipping duplicates.
 
 ---
-- [x] 45. Jump Game II
+- [x] 45. Jump Game II (Medium)
 > Given an array of non-negative integers `nums`, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position. Your goal is to reach the last index in the minimum number of jumps.
 
 - DP from backwards. Optimisation: BFS. For each node, find the leftmost one that can reach `destination` in one jump. Mark it as a new `destination`, increment the jump counter and repeat until `destination` is at index 0.
+
+---
+- [x] 51. N-Queens (Hard)
+> Given an integer `n`, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.
+
+- Brute force with backtracking. Optimisations: 1. After placing a queen, skip to next row (two queens cannot be placed in the same row)
+
+---
+- [x] 64. Minimum Path Sum (Medium)
+> Given a `m x n` grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.
+
+- DP. State:
+```
+# function "solve"
+dp[i][j] = grid[i][j] + min(
+    solve(i + 1, j), solve(i, j + 1)
+)
+```
+
+---
+- [x] 72. Edit Distance (Hard)
+> Given two strings `word1` and `word2`, return the minimum number of operations required to convert `word1` to `word2`.
+
+- Use DP. `dp[i][j]` keeps the solution to the subproblem for `word1[i:]` and `word2[j:]` (suffixes). DP state will be different depending on whether `word1[i] == word2[j]` or not. Roughly speaking, for each `i, j` we can either replace the character in `word1`, replace the character in `word2` 
+
+---
+- [x] 74. Search a 2D matrix
+> Write an efficient algorithm that searches for a value target in an `m x n` integer matrix matrix. Each row is sorted left to right and columns - top to bottom
+
+- Start in the top-right corner and move to the left if target is smaller than the current element, else move to the bottom (or return `True` if `target` is found)
 
 ---
 - [x] 394. Decode String (Medium)
@@ -73,5 +103,3 @@ Output: "accaccacc"
 ```
 
 _Use stack for an iterative solution. When coming across a `[` character, put a `current` decoded string onto a stack (together with a quantifier preceding given `[`) and start building a new `current` until hitting `]`._
-
-
