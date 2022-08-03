@@ -1,6 +1,5 @@
 from typing import List
 from collections import deque
-from bisect import b
 
 class Solution:
     def largestRectangleArea(self, heights: List[int]) -> int:
@@ -24,5 +23,5 @@ class Solution:
 
 
 sol = Solution()
-l = [2,1,5,6,2,3]
+l = [4,3,4,5]
 print(sol.largestRectangleArea(l))
