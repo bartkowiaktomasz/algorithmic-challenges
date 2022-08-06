@@ -91,6 +91,20 @@ dp[i][j] = grid[i][j] + min(
 - Start in the top-right corner and move to the left if target is smaller than the current element, else move to the bottom (or return `True` if `target` is found)
 
 ---
+- [x] 96. Unique Binary Search Trees
+> Given an integer `n`, return the number of structurally unique BST's (binary search trees) which has exactly `n` nodes of unique values from `1` to `n`.
+
+- Recursive solution: Say `n = 4`. Feasible trees can start with `1` as root, `2` as root, ..., `4` as root. Valid BST trees for a given root will only have nodes `i` such that for the left subtree `i < root` and for the right subtree: `i > root`. 
+Remark: The answer is the n'th [Catalan number](https://en.wikipedia.org/wiki/Catalan_number)
+
+---
+- [x] 114. Flatten Binary Tree to Linked List
+> Given the `root` of a binary tree, flatten the tree into a "linked list":
+> The "linked list" should use the same `TreeNode` class where the `right` child pointer points to the next node in the list and the `left` child pointer is always null.
+
+- Recursive solution. For each `node`, `flatten` its both subtrees and then recombine pointers so that the `root` together with its flattened left subtree and flattened right subtree form a flattened tree.
+
+---
 - [x] 394. Decode String (Medium)
 > Given an encoded string, return its decoded string.
 
