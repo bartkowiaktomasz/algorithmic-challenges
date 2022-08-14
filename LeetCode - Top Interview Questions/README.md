@@ -649,7 +649,7 @@ nums = [0,3,7,2,5,8,4,6,0,1]
 # result: 9
 ```
 
-_Linear scan + hashmap. First, add all elements to a hashmap (key - element, value - length of consecutive sequence (lcs) starting at that element). For each element of the list, do an inner loop to check if conecutive elements are in the map and then backtrack, updating the lcs for each backtracked element. So for e.g. `[2, 3, 4, 1]` when we hit `1` the hashmap for element `2` will have had the value of `3` (the lcs for that element is `3`)._ 
+_Two scans: First, create a set of available numbers. In the second scan, for each number `n`, see how long consecutive sequence could be created starting at this number (a nested `while` loop). Trick: Do it only if `n - 1` is not in the available set. Say `nums = [1, 2, 3, 4]`. Thanks to this trick we'd only do a scan for `n = 1`. For `n = 2, 3, 4` the `while` loop wouldn't run_ 
 
 
 ---

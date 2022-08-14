@@ -105,6 +105,12 @@ Remark: The answer is the n'th [Catalan number](https://en.wikipedia.org/wiki/Ca
 - Recursive solution. For each `node`, `flatten` its both subtrees and then recombine pointers so that the `root` together with its flattened left subtree and flattened right subtree form a flattened tree.
 
 ---
+- [x] 142. Linked List Cycle II
+> Given the `head` of a linked list, return the node where the cycle begins. If there is no cycle, return `null`.
+
+- Use Floyd's cycle detection algorithm
+
+---
 - [x] 394. Decode String (Medium)
 > Given an encoded string, return its decoded string.
 
