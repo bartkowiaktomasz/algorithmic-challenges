@@ -123,3 +123,9 @@ Output: "accaccacc"
 ```
 
 _Use stack for an iterative solution. When coming across a `[` character, put a `current` decoded string onto a stack (together with a quantifier preceding given `[`) and start building a new `current` until hitting `]`._
+
+---
+- [x] 153. Find Minimum in Rotated Sorted Array
+> Rotating an array `[a[0], a[1], a[2], ..., a[n-1]]` 1 time results in the array `[a[n-1], a[0], a[1], a[2], ..., a[n-2]]`.
+
+_Binary search with three pointer: `low, mid, high` but `low` moves whenever:             `if nums[mid] > nums[0]: low = mid + 1` (note: comparing against the first number in the array)_
