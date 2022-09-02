@@ -129,3 +129,12 @@ _Use stack for an iterative solution. When coming across a `[` character, put a 
 > Rotating an array `[a[0], a[1], a[2], ..., a[n-1]]` 1 time results in the array `[a[n-1], a[0], a[1], a[2], ..., a[n-2]]`.
 
 _Binary search with three pointer: `low, mid, high` but `low` moves whenever:             `if nums[mid] > nums[0]: low = mid + 1` (note: comparing against the first number in the array)_
+
+---
+- [x] Binary Tree Right Side View
+
+> Given the `root` of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
+
+_Do a level-order traversal. In each level, append to `res` the last (rightmost) element of that level_
+
+
