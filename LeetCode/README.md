@@ -105,7 +105,7 @@ Remark: The answer is the n'th [Catalan number](https://en.wikipedia.org/wiki/Ca
 - Recursive solution. For each `node`, `flatten` its both subtrees and then recombine pointers so that the `root` together with its flattened left subtree and flattened right subtree form a flattened tree.
 
 ---
-- [x] 142. Linked List Cycle II
+- [x] 142. Linked List Cycle II (Medium)
 > Given the `head` of a linked list, return the node where the cycle begins. If there is no cycle, return `null`.
 
 - Use Floyd's cycle detection algorithm
@@ -125,16 +125,21 @@ Output: "accaccacc"
 _Use stack for an iterative solution. When coming across a `[` character, put a `current` decoded string onto a stack (together with a quantifier preceding given `[`) and start building a new `current` until hitting `]`._
 
 ---
-- [x] 153. Find Minimum in Rotated Sorted Array
+- [x] 153. Find Minimum in Rotated Sorted Array (Medium)
 > Rotating an array `[a[0], a[1], a[2], ..., a[n-1]]` 1 time results in the array `[a[n-1], a[0], a[1], a[2], ..., a[n-2]]`.
 
-_Binary search with three pointer: `low, mid, high` but `low` moves whenever:             `if nums[mid] > nums[0]: low = mid + 1` (note: comparing against the first number in the array)_
+_Binary search with three pointers: `low, mid, high` with `low` moving `if nums[mid] > nums[0]: low = mid + 1` (note: we're always comparing against the first number in the array `nums[0]`)_
 
 ---
-- [x] Binary Tree Right Side View
+- [x] 199. Binary Tree Right Side View (Medium)
 
 > Given the `root` of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
 
 _Do a level-order traversal. In each level, append to `res` the last (rightmost) element of that level_
 
+---
+- [x] 221. Maximal Square
+> Given an `m x n` binary matrix filled with `0`'s and `1`'s, find the largest square containing only `1`'s and return its area.
+
+_Use DP. State: `dp[i][j]` represents the side length of the largest square who's bottom-right corner is `i, j`. `dp[i][j] = 1 + min(dp[i - 1][j], dp[i - 1][j - 1], dp[i][j - 1])` if `matrix[i][j] == '1'` (else `0`). Optimisation - when doing bottom-up we only need to keep the last row so `dp` is 1D._
 
