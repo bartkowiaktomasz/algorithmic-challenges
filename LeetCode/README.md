@@ -138,8 +138,13 @@ _Binary search with three pointers: `low, mid, high` with `low` moving `if nums[
 _Do a level-order traversal. In each level, append to `res` the last (rightmost) element of that level_
 
 ---
-- [x] 221. Maximal Square
+- [x] 221. Maximal Square (Medium)
 > Given an `m x n` binary matrix filled with `0`'s and `1`'s, find the largest square containing only `1`'s and return its area.
 
 _Use DP. State: `dp[i][j]` represents the side length of the largest square who's bottom-right corner is `i, j`. `dp[i][j] = 1 + min(dp[i - 1][j], dp[i - 1][j - 1], dp[i][j - 1])` if `matrix[i][j] == '1'` (else `0`). Optimisation - when doing bottom-up we only need to keep the last row so `dp` is 1D._
 
+---
+- [x] 226. Invert Binary Tree (Easy)
+> Given the `root` of a binary tree, invert the tree, and return its `root`.
+
+---

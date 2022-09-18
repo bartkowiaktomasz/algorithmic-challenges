@@ -983,14 +983,8 @@ to decide if palindrome
 - [x] Product of Array Except Self (Medium)
 > Given an integer array `nums`, return an array answer such that `answer[i]` is equal to the product of all the elements of `nums` except `nums[i]`.
 
-Idea: Instead of keeping the product, keep a sum of logs
-
-Cases to consider:
-- Zero element (the answer will have everywhere zeros except one position)
-- Negative elements (need to keep track of the count of negative elements)
-
-Alternative approach: Build two arrays: `prefix_product` and `suffix_product` such that `prefix_product[i]` contains the product of all elements before `i` (excluding `i`). Likewise,
-`suffix_product[i]` contains the product of all ements after `[i`] (excluding `i`). The result is `prefix_product[i] * suffix_product[i]` for all `i`. Note: one could actually keep both in the result array (no need to allocate two additional arrays for prefix/suffix)
+Build two arrays: `prefix_product` and `suffix_product` such that `prefix_product[i]` contains the product of all elements before `i` (excluding `i`). Likewise,
+`suffix_product[i]` contains the product of all ements after `[i`] (excluding `i`). The result is `prefix_product[i] * suffix_product[i]` for all `i`. Note: one can store `prefix_product` directly in the result and then iterate backwards with a single `suffix_running_product` variable, updating the `result`.
 
 ---
 - [x] Sliding Window Maximum (Hard)
