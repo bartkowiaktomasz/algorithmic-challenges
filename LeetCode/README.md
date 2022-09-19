@@ -148,3 +148,8 @@ _Use DP. State: `dp[i][j]` represents the side length of the largest square who'
 > Given the `root` of a binary tree, invert the tree, and return its `root`.
 
 ---
+- [x] 416. Partition Equal Subset Sum (Medium)
+> Given a non-empty array `nums` containing only positive integers, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.
+
+_Knapsack problem. We're trying to find if there is a subset of elements with sum equal to `sum(nums) / 2`. If laying out `nums` as rows and `target / weight` as columns, each row depends only on the previous row, so `dp` table can be a 1D vector._
+

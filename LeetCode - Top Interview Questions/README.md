@@ -1025,7 +1025,7 @@ Use Dynamic Programming
 - [x] Move Zeroes (Easy)
 > Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements. Note that you must do this in-place without making a copy of the array.
 
-Use two pointers (slow and fast)
+Use two pointers (`slow` and `fast`). `slow` points to a zero element. Iterate `fast` until it points to a non-zero element. Swap.
 
 ---
 - [x] Find the Duplicate Number (Medium)
