@@ -153,3 +153,19 @@ _Use DP. State: `dp[i][j]` represents the side length of the largest square who'
 
 _Knapsack problem. We're trying to find if there is a subset of elements with sum equal to `sum(nums) / 2`. If laying out `nums` as rows and `target / weight` as columns, each row depends only on the previous row, so `dp` table can be a 1D vector._
 
+---
+- [x] 437. Path Sum III (Medium)
+
+> Given the `root` of a binary tree and an integer `targetSum`, return the number of paths where the sum of the values along the path equals `targetSum`.
+
+_DFS. Keep a global `cache`, which, at any time (for a given node) maintains (counts of) lengths of all subpaths (that start at a root node) above a given node (this requires subtracting the counts after invoking the recursive calls). If there exists a length `l` (in `cache`) such that:
+```
+current node's cumulative length from root - `l` == targetSum
+```
+then we found a valid subpath_
+
+---
+- [x] 438. Find All Anagrams in a String
+> Given two strings `s` and `p`, return an array of all the start indices of `p`'s anagrams in `s`. You may return the answer in any order.
+
+_Use a running `diff Counter` but count downwards (i.e. we've found an anagram iff `len(diff) == 0`)_
