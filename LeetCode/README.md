@@ -165,7 +165,31 @@ current node's cumulative length from root - `l` == targetSum
 then we found a valid subpath_
 
 ---
-- [x] 438. Find All Anagrams in a String
+- [x] 438. Find All Anagrams in a String (Medium)
 > Given two strings `s` and `p`, return an array of all the start indices of `p`'s anagrams in `s`. You may return the answer in any order.
 
 _Use a running `diff Counter` but count downwards (i.e. we've found an anagram iff `len(diff) == 0`)_
+
+---
+- [x] 543. Diameter of Binary Tree (Easy)
+
+> Given the `root` of a binary tree, return the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
+
+---
+- [x] 560. Subarray Sum Equals K (Medium)
+
+> _One pass - keep incrementing `res` while computing a running `cumsum`. For a given `cumsum` we need to be able to quickly identify how many previous `cumsums` are such that `previous_cumsum + k == cumsum` (use `Counter`).
+
+---
+- [x] 647. Palindromic Substrings (Medium)
+
+> Given a string `s`, return the number of palindromic substrings in it.
+
+_2D DP using two pointers: `i, j`. State:_
+```
+dp[i][j] = 
+    - True if dp[i + 1][j - 1] and s[i] == s[j] and j - i >= 2
+    - True if s[i] == s[j] if j == i + 1
+    - else False
+```
+_Note: In order to calculate `dp` we need to have calculated `dp[i + 1][j - 1]`, so we need to iterate `i` backwards `for i in reversed(range(len(s)))` and `j` forwards: `for j in range(i, len(s))`_
