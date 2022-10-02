@@ -193,3 +193,28 @@ dp[i][j] =
     - else False
 ```
 _Note: In order to calculate `dp` we need to have calculated `dp[i + 1][j - 1]`, so we need to iterate `i` backwards `for i in reversed(range(len(s)))` and `j` forwards: `for j in range(i, len(s))`_
+
+---
+- [x] 739. Daily Temperatures (Medium)
+> Given an array of integers `temperatures` represents the daily temperatures, return an array answer such that `answer[i]` is the number of days you have to wait after the `i`th day to get a warmer temperature. If there is no future day for which this is possible, keep `answer[i] == 0` instead.
+
+_Use non-increasing mono queue (stack) storing temperature indices in the `stack`_
+
+---
+- [x] 763. Partition Labels
+> You are given a string `s`. We want to partition the string into as many parts as possible so that each letter appears in at most one part.
+
+_Two passes: First, build a mapping from a letter to its last index in `s`. In second pass, make the partitions_
+
+---
+- [x] 994. Rotting Oranges
+> Return the minimum number of minutes that must elapse until no cell has a fresh orange. If this is impossible, return `-1`.
+
+_Use BFS_
+
+---
+- [x] 1143. Longest Common Subsequence
+
+> Given two strings `text1` and `text2`, return the length of their longest common subsequence. If there is no common subsequence, return 0.
+
+_Use DP: compare (growing) prefixes_
