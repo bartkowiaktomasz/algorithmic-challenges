@@ -1,8 +1,26 @@
 # LeetCode - Other Questions
-Solutions to LeetCode problems
+Solutions to LeetCode problems (solution overviewes provided only for Medium and Hard problems)
+
+- [x] 6. Zigzag Conversion (Medium)
+> The string `PAYPALISHIRING` is written in a zigzag pattern
+on a given number of rows like this:
+```
+P   A   H   N
+A P L S I I G
+Y   I   R
+```
+> And then read line by line: `PAHNAPLSIIGYIR`
+
+> Write the code that will take a string and make this
+conversion given a number of rows
+
+- Preallocate `numRows` many empty strings (one for each row) and iterate through characters `c` of the input string `s` appending each `c` to a relevant preallocated string
+```
+['', '', ''] -> ['P', '', ''] -> ['P', 'A', ''] -> ['P', 'A', 'Y'] -> ['P', 'AP', 'Y'] -> ['PA', 'AP', 'Y'] -> ...
+```
 
 ---
-- [x] 4Sum (Medium)
+- [x] 18. 4Sum (Medium)
 > Given an array nums of `n` integers, return an array of all the unique quadruplets `[nums[a], nums[b], nums[c], nums[d]]` such that:
 ```
 0 <= a, b, c, d < n
@@ -24,6 +42,9 @@ nums[a] + nums[b] + nums[c] + nums[d] == target
 > Given the head of a linked list, reverse the nodes of the list `k` at a time, and return the modified list.
 
 - Use three pointers: `start, stop, next_` to reverse the linked list between `start, stop` at each iteration. Alternatively, use recursion
+
+---
+- [x] 27. Remove element (Easy)
 
 ---
 - [x] 31. Next Permutation (Medium)
@@ -91,6 +112,12 @@ dp[i][j] = grid[i][j] + min(
 - Start in the top-right corner and move to the left if target is smaller than the current element, else move to the bottom (or return `True` if `target` is found)
 
 ---
+- [x] 80. Remove Duplicates from Sorted Array II
+> Given an integer array nums sorted in non-decreasing order, remove some duplicates in-place such that each unique element appears at most twice. The relative order of the elements should be kept the same.
+
+- Solution: Two pass: 1. Mark all characters for removal (e.g. using `_`), 2. Use two pointers: slow `i` and fast `j` to swap `_` (pointed by `i`) with appropriate character (pointed by `j`)
+
+---
 - [x] 96. Unique Binary Search Trees
 > Given an integer `n`, return the number of structurally unique BST's (binary search trees) which has exactly `n` nodes of unique values from `1` to `n`.
 
@@ -146,6 +173,13 @@ _Use DP. State: `dp[i][j]` represents the side length of the largest square who'
 ---
 - [x] 226. Invert Binary Tree (Easy)
 > Given the `root` of a binary tree, invert the tree, and return its `root`.
+
+---
+- [x] 274. H-Index (Medium)
+> Given an array of integers citations where `citations[i]` is the number of citations a researcher received for their ith paper, return the researcher's h-index. The h-index is defined as the maximum value of h such that the given researcher has published at least h papers that have each been cited at least h times.
+
+- Solution: For `O(N)` use counting sort and compute cumulative sum (reversed). E.g. `citations = [3,0,6,1,5] -> [1,1,0,1,0,1,1] -> [5,4,3,3,2,2,1]`. The meaning of each entry at idx `idx` is "Number of papers with number of citations >= `idx`"
+
 
 ---
 - [x] 416. Partition Equal Subset Sum (Medium)
