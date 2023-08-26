@@ -132,6 +132,15 @@ Remark: The answer is the n'th [Catalan number](https://en.wikipedia.org/wiki/Ca
 - Recursive solution. For each `node`, `flatten` its both subtrees and then recombine pointers so that the `root` together with its flattened left subtree and flattened right subtree form a flattened tree.
 
 ---
+- [x] 135. Candy (Hard)
+> There are n children standing in a line. Each child is assigned a rating value given in the integer array ratings. You are giving candies to these children subjected to the following requirements:
+> - Each child must have at least one candy.
+> - Children with a higher rating get more candies than their neighbors.
+
+> Return the minimum number of candies you need to have to distribute the candies to the children.
+- Create two arrays: `l, r`. `l (r)` will track the number of candies needed to ensure that a kid with a higher rating than its left (right) neighbour has more candies. The assigned candies will be an elementwise `max` between `l` and `r`.
+
+---
 - [x] 142. Linked List Cycle II (Medium)
 > Given the `head` of a linked list, return the node where the cycle begins. If there is no cycle, return `null`.
 
