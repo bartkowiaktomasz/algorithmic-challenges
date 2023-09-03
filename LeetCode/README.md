@@ -18,6 +18,11 @@ conversion given a number of rows
 ```
 ['', '', ''] -> ['P', '', ''] -> ['P', 'A', ''] -> ['P', 'A', 'Y'] -> ['P', 'AP', 'Y'] -> ['PA', 'AP', 'Y'] -> ...
 ```
+---
+
+- [x] 12. Integer to Roman (Medium)
+> Given an integer, convert it to a roman numeral, e.g. `1994 -> "MCMXCIV"`
+
 
 ---
 - [x] 18. 4Sum (Medium)
@@ -174,6 +179,12 @@ _Binary search with three pointers: `low, mid, high` with `low` moving `if nums[
 _Do a level-order traversal. In each level, append to `res` the last (rightmost) element of that level_
 
 ---
+- [x] 209. Minimum Size Subarray Sum
+> Given an array of positive integers `nums` and a positive integer `target`, return the minimal length of a subarray whose sum is greater than or equal to `target`. If there is no such subarray, return 0 instead.
+
+_Use Sliding Window approach. Expand the window while `sum(window) < target` and shrink it while `sum(window) >= target`_
+
+---
 - [x] 221. Maximal Square (Medium)
 > Given an `m x n` binary matrix filled with `0`'s and `1`'s, find the largest square containing only `1`'s and return its area.
 
@@ -188,6 +199,14 @@ _Use DP. State: `dp[i][j]` represents the side length of the largest square who'
 > Given an array of integers citations where `citations[i]` is the number of citations a researcher received for their ith paper, return the researcher's h-index. The h-index is defined as the maximum value of h such that the given researcher has published at least h papers that have each been cited at least h times.
 
 - Solution: For `O(N)` use counting sort and compute cumulative sum (reversed). E.g. `citations = [3,0,6,1,5] -> [1,1,0,1,0,1,1] -> [5,4,3,3,2,2,1]`. The meaning of each entry at idx `idx` is "Number of papers with number of citations >= `idx`"
+
+---
+- [x] 383. Ransom Note (Easy)
+> Given two strings `ransomNote` and `magazine`, return `true` if `ransomNote` can be constructed by using the letters from `magazine` and `false` otherwise.
+
+---
+- [x] 392. Is Subsequence (Easy)
+> Given two strings `s` and `t``, return `true`` if `s` is a subsequence of `t`, or false otherwise.
 
 
 ---

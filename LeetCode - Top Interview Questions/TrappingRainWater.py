@@ -28,5 +28,16 @@ class Solution:
 
 
 sol = Solution()
+"""
+Example
+---
+     #
+#    #
+#  # #
+## ###
+## ###
+---
+012345
+"""
 height = [4,2,0,3,2,5]
 print(sol.trap(height))
