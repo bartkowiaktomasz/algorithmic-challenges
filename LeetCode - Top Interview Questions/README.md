@@ -1,25 +1,29 @@
 # LeetCode - Top Interview Questions
 Solutions to [**LeetCode - Top Interview Questions**](https://leetcode.com/problemset/top-interview-questions/)
 
-- [x] Two Sum (Easy)
+- [x] 1. Two Sum (Easy)
 
 ---
-- [x] Add Two Numbers (Medium)
+- [x] 2. Add Two Numbers (Medium)
 > You are given two non-empty linked lists representing two non-negative integers. The
 digits are stored in reverse order, and each of their nodes contains a single digit.
 Add the two numbers and return the sum as a linked list.
 You may assume the two numbers do not contain any leading zero, except the number 
 0 itself.
 
-> e.g. `l1 = 2 -> 4 -> 3`, `l2 = 5 -> 6 -> 4` gives `7 -> 0 -> 8`
+> e.g.
+```
+l1 = 2 -> 4 -> 3
+l2 = 5 -> 6 -> 4
+gives 7 -> 0 -> 8
+```
 
 _Iterate through both linked lists simultaneously while any of them is non-empty.
 Add digits and carry a "carry" to the next operation in case of overflow_
 
 ---
-- [x] Longest Substring Without Repeating Characters (Medium)
-> Given a string `s`, find the length of the longest substring without repeating 
-characters. Examples:
+- [x] 3. Longest Substring Without Repeating Characters (Medium)
+> Given a string `s`, find the length of the longest substring without repeating characters. Examples:
 ```
 "abcabcbb" -> 3
 "bbbbb" -> 1
@@ -32,15 +36,14 @@ _Use sliding window approach with two moving pointers: `i, j`. Iterate through e
 _1. If a new `char` does not exist in the map, move `j`_
 
 _2. If a new `char` exists in the map, move `i` to the right of the existing duplicate
-and calculate the length of the substring starting in `i` ending in `j`. Keep track
-of the running `max` of the longest substring._
+and calculate the length of the substring starting in `i` ending in `j`. Keep track of the running `max` of the longest substring._
 
 ---
-- [x] Median of Two Sorted Arrays (Hard)
+- [x] 4. Median of Two Sorted Arrays (Hard)
 > Given two sorted arrays `nums1` and `nums2` of size `m` and `n` respectively, 
 return the median of the two sorted arrays.
 
-_This can be done in `O(min(logm, logn))`. Note that median is the number that cuts given list in half. First, you need to find a partition in a smaller list, where a partition is a cut that divides the list into two sublists. For a given partition we find a corresponding partition for the second list such that the number of elements in the left sublists `|LHS| == |RHS|` or `|LHS| == |RHS| + 1`. We know that the median is somewhere among the four boundary elements if a partition is a correct partition. The partition is correct iff max element of the LHS subarray (of one subarray) is smaller (or equal) to the min element of the RHS subarray (of the other list), e.g. the partitions below are correct because `5 < 6` and no element is smaller than `7`_
+_This can be done in `O(min(logm, logn))`. Note that median is the number that cuts given list in half. First, you need to find a partition in a smaller list, where a partition is a cut that divides the list into two sublists. For a given partition we find a corresponding partition for the second list such that the number of elements in the left sublists `|LHS| == |RHS|` or `|LHS| == |RHS| + 1`. We know that the median is somewhere among the four boundary elements if a partition is a correct partition. The partition is correct iff max element of the LHS subarray (of one subarray) is smaller (or equal) to the min element of the RHS subarray (of the other list), e.g. the partitions below are correct because `5 < 6` and no element in the second list is smaller than `7`_
 ```
 [1, 2, 5, | 7]
 [| 6, 8
@@ -48,7 +51,7 @@ _This can be done in `O(min(logm, logn))`. Note that median is the number that c
 _NOTE: `|` indicates a partition. Finally, if the number of all elements is odd, return max element on the LHS (cause it's bigger), otherwise take an average of max LHS elem and min RHS elem._
 
 ---
-- [x] Longest Palindromic Substring (Medium)
+- [x] 5. Longest Palindromic Substring (Medium)
 > Given a string `s`, return the longest palindromic substring in `s`.
 
 `O(n^3)`: _Naive implementation. For each substring `O(n^2)` `bool: is_palindrome(s)` 
@@ -112,9 +115,7 @@ _i.e. `xyy` matches `xy*` if, when we remove `y`, the resulting `xy` also matche
 _As a result, if the char is `*` the result `dp[i][j]` will match if one of the above
 cases happens_
 
-_NOTE: For each `dp[i][j]` we're deciding if substring `s[:i]` matches subpattern
-`p[:j]`. Also note that we need to initialise the first row of the matrix (empty string)
-and the first column (empty pattern)._
+_NOTE: DP State: `dp[i][j]`: `s[:i]` matches subpattern `p[:j]`_
 
 ---
 - [x] Container With Most Water (Medium)
@@ -481,7 +482,9 @@ contain all the characters in `t`. If there is no such window in `s` that covers
 all characters in `t`, return the empty string `""`. Note: `t` can contain
 duplicates and the output window needs to contain all of them.
 
-_Linear scan with two pointers: `low, high`. Increment `high` in outer `while` loop as long as `high < len(s)`. Whenever we have a window between `low` and `high` such that `s[low:high + 1]` contains all the required chars in `t`, start shrinking the window by incrementing `low` as long as the window contains all elements from `t` (use `Counter` to keep track of those counts)._
+_Linear scan with two pointers: `i, j`. Use one loop: `j, char = enumerate(s, 1)` expanding `j` until all character have been seen. Maintain `need: Counter` (count of each letter that needs to be seen) and `count_needed: int` (how many unique letters need yet to be seen). When `count_needed == 0` start expanding `i` until `count_needed != 0`. Update `best_i, best_j` based on the size of the window `j - i`._
+
+_Note: `enumerate(s, 1)` indexes `j` from 1 - this is to cover edge cases like `s = "a", t = "aa"`, where the answer `s[best_i:best_j + 1]` would return `a` instead of (correct) `""` (empty string)_
 
 ---
 - [x] Subsets (Medium)
@@ -561,10 +564,10 @@ _Reuse previous solution with stacks and add an additional variable `direction` 
 > Given the `root` of a binary tree, return its maximum depth.
 
 ---
-- [x] Construct Binary Tree from Preorder and Inorder Traversal (Medium)
+- [x] 105. Construct Binary Tree from Preorder and Inorder Traversal (Medium)
 > Given two integer arrays `preorder` and `inorder` where `preorder` is the preorder traversal of a binary tree and `inorder` is the inorder traversal of the same tree, construct and return the binary tree.
 
-_Note that: 1. First element of `preorder` is the `root`, 2. `inorder` the array will look like `[..., root, ...]`. This means that for each element in `preorder` we can recursively build its left and right subtrees if we know the index of `root` element in the `inorder` array._
+_Note that: 1. First element of `preorder` is the `root`, 2. `inorder` array will look like `[..., root, ...]`. This means that for each element in `preorder` we can recursively build its left and right subtrees if we know the index of `root` element in the `inorder` array._
 
 ---
 - [x] Convert Sorted Array to Binary Search Tree (Easy)
@@ -753,11 +756,11 @@ _`O(N)` scan, keeping two running values: `min_, max_` where `min_` and `max_` i
 > e.g. `[2, 3, -1, 4]` - when considering `4` the maximum contiguous product would have been `6` but we cannot use `4` with `2, 3` to get a product of `24` because this would not be contiguous.
 
 ---
-- [x] Min Stack (Easy)
+- [x] Min Stack (Medium)
 
 > Design a stack that supports `push`, `pop`, `top`, and retrieving the minimum element `getMin` in constant time.
 
-_When pushing an element, add to it an information about the current `min` in the stack (all elements below it)._
+_When pushing an element, wrap it into an object `StackElement` that also keeps track of the `min` in the stack (for all elements below it)._
 
 _Remark: See [here](https://cs.stackexchange.com/questions/6146/lower-bounds-queues-that-return-their-min-elements-in-o1-time) how to implement Queue with `O(1)` access to min element._
 
@@ -1141,7 +1144,7 @@ Use two pointers (`slow` and `fast`). `slow` points to a zero element. Iterate `
 - [x] Insert Delete GetRandom O(1) (Medium)
 > Implement the `RandomizedSet` class with `O(1) insert, remove, getRandom` (average).
 
-- Keep an array with elements `self.nums` and a dictionary with their positions in the array `self.idxs`. When removing, replace removed element with the last element from the array (and update the dictionary accordingly).
+- Keep an array with elements `self.nums` and a dictionary with their positions in the array `self.idxs = {num: arr_idx}`. When removing, replace removed element with the last element from the array (and update the dictionary accordingly).
 
 ---
 - [x] Shuffle an Array (Medium)

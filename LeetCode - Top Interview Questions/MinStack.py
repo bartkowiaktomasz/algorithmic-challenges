@@ -1,6 +1,6 @@
 from collections import deque
 
-class Element:
+class StackElement:
     def __init__(self, val, min):
         self.val = val
         # For a given element, indicates the minimum of the stack below it
@@ -17,7 +17,7 @@ class MinStack:
 
     def push(self, val: int) -> None:
         minimum = min(val, self.stack[-1].min if self.stack else float('inf'))
-        elem = Element(val, minimum)
+        elem = StackElement(val, minimum)
         self.stack.append(elem)
 
     def pop(self) -> None:

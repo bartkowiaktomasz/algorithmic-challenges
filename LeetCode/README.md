@@ -105,6 +105,14 @@ dp[i][j] = grid[i][j] + min(
 ```
 
 ---
+- [x] 71. Simplify Path (Medium)
+
+> Given a string path, which is an absolute path (starting with a slash '/') to a file or directory in a Unix-style file system, convert it to the simplified canonical path.
+
+_Use `stack`. Split the path with `/` (`path.split("/")`). Iterate through the list and `pop` from the `stack` if encountered `..`._
+
+
+---
 - [x] 72. Edit Distance (Hard)
 > Given two strings `word1` and `word2`, return the minimum number of operations required to convert `word1` to `word2`.
 
@@ -123,6 +131,23 @@ dp[i][j] = grid[i][j] + min(
 - Solution: Two pass: 1. Mark all characters for removal (e.g. using `_`), 2. Use two pointers: slow `i` and fast `j` to swap `_` (pointed by `i`) with appropriate character (pointed by `j`)
 
 ---
+- [x] 92. Reverse Linked List II
+> Given the head of a singly linked list and two integers `left` and `right` where `left <= right`, reverse the nodes of the list from position `left` to position `right`, and return the reversed list.
+
+_Solution: One pass scan. See [solution](ReverseLinkedListII.py)_:
+```
+# The algorithm advances two pointers: first.next and tail.next
+#  at each iteration, increasing the reversed region
+#  e.g. revert between 2 and 4
+#  1 -> 2 -> 3 -> 4 -> 5
+#  f    t
+#  1 -> 3 -> 2 -> 4 -> 5
+#  f         t
+#  1 -> 4 -> 3 -> 2 -> 5
+#  f              t
+```
+
+---
 - [x] 96. Unique Binary Search Trees
 > Given an integer `n`, return the number of structurally unique BST's (binary search trees) which has exactly `n` nodes of unique values from `1` to `n`.
 
@@ -130,11 +155,27 @@ dp[i][j] = grid[i][j] + min(
 Remark: The answer is the n'th [Catalan number](https://en.wikipedia.org/wiki/Catalan_number)
 
 ---
+- [x] 100. Same Tree (Easy)
+> Given the roots of two binary trees `p` and `q`, write a function to check if they are the same or not.
+
+---
+- [x] 106. Construct Binary Tree from Inorder and Postorder Traversal
+> Given two integer arrays `inorder` and `postorder` where `inorder` is the `inorder` traversal of a binary tree and `postorder` is the `postorder` traversal of the same tree, construct and return the binary tree.
+
+_Note that: 1. Last element of `postorder` is the `root`, 2. `inorder` array will look like `[..., root, ...]`. This means that for each element in `preorder` we can recursively (by `pop`ing) build its left and right subtrees if we know the index of `root` element in the `inorder` array._
+
+---
 - [x] 114. Flatten Binary Tree to Linked List
 > Given the `root` of a binary tree, flatten the tree into a "linked list":
 > The "linked list" should use the same `TreeNode` class where the `right` child pointer points to the next node in the list and the `left` child pointer is always null.
 
 - Recursive solution. For each `node`, `flatten` its both subtrees and then recombine pointers so that the `root` together with its flattened left subtree and flattened right subtree form a flattened tree.
+
+---
+- [x] 133. Clone Graph (Medium)
+> Given a reference of a `node` in a connected undirected graph. Return a deep copy (clone) of the graph.
+
+_Solution: DFS - inner function accepts two nodes: original one and it's clone. Keep track of `map: value -> node object` when updating neighbour pointers in clones_
 
 ---
 - [x] 135. Candy (Hard)
@@ -195,6 +236,10 @@ _Use DP. State: `dp[i][j]` represents the side length of the largest square who'
 > Given the `root` of a binary tree, invert the tree, and return its `root`.
 
 ---
+- [x] 228. Summary Ranges (Easy)
+> Turn `nums = [0,1,2,4,5,7]` to `["0->2","4->5","7"]`
+
+---
 - [x] 274. H-Index (Medium)
 > Given an array of integers citations where `citations[i]` is the number of citations a researcher received for their ith paper, return the researcher's h-index. The h-index is defined as the maximum value of h such that the given researcher has published at least h papers that have each been cited at least h times.
 
@@ -233,6 +278,12 @@ then we found a valid subpath_
 _Use a running `diff Counter` but count downwards (i.e. we've found an anagram iff `len(diff) == 0`)_
 
 ---
+- [x] 530. Minimum Absolute Difference in BST (Easy)
+> Given the `root` of a Binary Search Tree (BST), return the minimum absolute difference between the values of any two different nodes in the tree.
+
+_Do inorder traversal to produce a sorted list of elements, followed by running delta between two adjacent elements_
+
+---
 - [x] 543. Diameter of Binary Tree (Easy)
 
 > Given the `root` of a binary tree, return the length of the diameter of the tree. The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
@@ -241,6 +292,10 @@ _Use a running `diff Counter` but count downwards (i.e. we've found an anagram i
 - [x] 560. Subarray Sum Equals K (Medium)
 
 > _One pass - keep incrementing `res` while computing a running `cumsum`. For a given `cumsum` we need to be able to quickly identify how many previous `cumsums` are such that `previous_cumsum + k == cumsum` (use `Counter`).
+
+---
+- [x] 637. Average of Levels in Binary Tree (Easy)
+> Given the `root` of a binary tree, return the average value of the nodes on each level in the form of an array. Answers within 10e-5 of the actual answer will be accepted.
 
 ---
 - [x] 647. Palindromic Substrings (Medium)
