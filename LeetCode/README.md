@@ -20,6 +20,13 @@ conversion given a number of rows
 ```
 ---
 
+- [x] 9. Palindrome Number (Easy*)
+> Given an integer x, return true if x is a  palindrome, and false otherwise.
+Follow-up: Could you solve it without converting the integer to a string?
+
+_Reverse input number (via `rev_x = (rev_x * 10) + (x % 10), x //= 10`) and compare if `x == rev_x`. Optimisation - only reverse `while x > rev_x`._
+
+---
 - [x] 12. Integer to Roman (Medium)
 > Given an integer, convert it to a roman numeral, e.g. `1994 -> "MCMXCIV"`
 
@@ -104,6 +111,10 @@ dp[i][j] = grid[i][j] + min(
 )
 ```
 
+- [x] 67. Add Binary (Easy)
+> Given two binary strings `a` and `b`, return their sum as a binary string e.g. `a = "11", b = "1" => "100"`
+
+
 ---
 - [x] 71. Simplify Path (Medium)
 
@@ -123,6 +134,12 @@ _Use `stack`. Split the path with `/` (`path.split("/")`). Iterate through the l
 > Write an efficient algorithm that searches for a value target in an `m x n` integer matrix matrix. Each row is sorted left to right and columns - top to bottom
 
 - Start in the top-right corner and move to the left if target is smaller than the current element, else move to the bottom (or return `True` if `target` is found)
+
+---
+- [x] 77. Combinations
+> Given two integers `n` and `k`, return all possible combinations of `k` numbers chosen from the range `[1, n]`.
+
+- _Use recursion. Given elements `[1, 2, ..., n]` at each call consider two choices: 1. Take first element (`1`) and 2. Do not take that element. Then recurse into `[2, ..., n]` with `k = k -1`_
 
 ---
 - [x] 80. Remove Duplicates from Sorted Array II
@@ -191,6 +208,12 @@ _Solution: DFS - inner function accepts two nodes: original one and it's clone. 
 > Given the `head` of a linked list, return the node where the cycle begins. If there is no cycle, return `null`.
 
 - Use Floyd's cycle detection algorithm
+
+---
+- [x] 211. Design Add and Search Words Data Structure (Medium)
+> Design a data structure that supports adding new words and finding if a string matches any previously added string. `word` may contain dots '.' where dots can be matched with any letter.
+
+_Use Trie_
 
 ---
 - [x] 394. Decode String (Medium)
@@ -278,6 +301,16 @@ then we found a valid subpath_
 _Use a running `diff Counter` but count downwards (i.e. we've found an anagram iff `len(diff) == 0`)_
 
 ---
+- [x] 502. IPO (Hard)
+
+> You are given `n` projects where the `i`th project has a pure profit `profits[i]` and a minimum capital of `capital[i]` is needed to start it.
+Initially, you have `w` capital. When you finish a project, you will obtain its pure profit and the profit will be added to your total capital.
+Pick a list of at most `k` distinct projects from given projects to maximize your final capital, and return the final maximized capital.
+
+_Use priority heap. Sort inputs by increasing capital and, at each step, complete a project with with the highest feasible profit_
+
+
+---
 - [x] 530. Minimum Absolute Difference in BST (Easy)
 > Given the `root` of a Binary Search Tree (BST), return the minimum absolute difference between the values of any two different nodes in the tree.
 
@@ -322,6 +355,18 @@ _Use non-increasing mono queue (stack) storing temperature indices in the `stack
 > You are given a string `s`. We want to partition the string into as many parts as possible so that each letter appears in at most one part.
 
 _Two passes: First, build a mapping from a letter to its last index in `s`. In second pass, make the partitions_
+
+---
+- [x] 909. Snakes and Ladders
+> Find the least number of moves required to reach the last square in the "snakes and ladders" game
+
+_Use BFS, tracking `min` distance to each square from starting square_
+
+---
+- [x] 918. Maximum Sum Circular Subarray
+> Given a circular integer array `nums` of lengt`h` n, return the maximum possible sum of a non-empty subarray of nums.
+
+_Use Kadane's algorithm like in Maximum Sum Subarray but also keep track of minimum sum subarray. At the end, the maximum sum is EITHER a 1. contiguous subarray, 2. circular subarray. In the latter case, the max subarray sum is of a form `total_sum - sum(min_sum)` where `total_sum` is a total array sum and `sum(min_sum)` is a minimum sum of a contiguous subarray found during Kadane's scan_
 
 ---
 - [x] 994. Rotting Oranges

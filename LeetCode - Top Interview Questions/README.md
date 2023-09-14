@@ -126,7 +126,7 @@ _NOTE: DP State: `dp[i][j]`: `s[:i]` matches subpattern `p[:j]`_
 
 _O(n): (greedy) Use two pointers `i`, `j` that start at edges and get closer to each
 other until they are equal. Increment `i` (or decrement `j`) whichever pointer points 
-to the smaller line._
+to the shorter line._
 
 _Intuition: Assume there exists some biggest area between indices `a` and `b` (`b > a`).
  Let's try to prove that always moving the pointer that points to the smaller height 
@@ -780,7 +780,7 @@ _Use `O(1)` memory by scanning the lists twice. First pass - calculate lengths o
 
 Given an integer array `nums`, find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks. Assume `nums[-1] = nums[n] = -inf`
 
-_Solution in `O(logn)` with binary search. For a given `mid` element, search to it's left/right depending on which neighbour is greater. Neighbours cannot be the same height (as per constraint). If it was possible, linear search would not be possible (imagine an array `[1, 2, 1, 1, 1, 1, 1]` - for a mid element `1` the search procedure does not know which side (left/right) to search for a peak_
+_Solution in `O(logn)` with binary search. For a given `mid` element, search to it's left/right depending on which neighbour is greater. Neighbours cannot be the same height (as per constraint). If it was possible, binary search would not be possible (imagine an array `[1, 2, 1, 1, 1, 1, 1]` - for a mid element `1` the search procedure does not know which side (left/right) to search for a peak_
 
 ---
 - [x] Fraction to Recurring Decimal (Medium)
