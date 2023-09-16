@@ -100,6 +100,12 @@ Remark: Notice `candidates[i:]` which allows for skipping duplicates.
 - Brute force with backtracking. Optimisations: 1. After placing a queen, skip to next row (two queens cannot be placed in the same row)
 
 ---
+- [x] 63. Unique Paths II
+> Return the number of possible unique paths that the robot can take to reach the bottom-right corner (starting in the top-left corner)
+
+_DP state: `unique_paths[i][j] = unique_paths[i - 1][j] + unique_paths[i][j - 1]`. If a square at `i, j` is an obstacle, set `unique_paths[i][j] = 0`_
+
+---
 - [x] 64. Minimum Path Sum (Medium)
 > Given a `m x n` grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.
 
@@ -187,6 +193,12 @@ _Note that: 1. Last element of `postorder` is the `root`, 2. `inorder` array wil
 > The "linked list" should use the same `TreeNode` class where the `right` child pointer points to the next node in the list and the `left` child pointer is always null.
 
 - Recursive solution. For each `node`, `flatten` its both subtrees and then recombine pointers so that the `root` together with its flattened left subtree and flattened right subtree form a flattened tree.
+
+---
+- [x] 120. Triangle (Medium)
+> Given a `triangle` array, return the minimum path sum from top to bottom.
+
+_Iterate through each row of the triangle, keeping track of current min path distance to each of the elements of that row. Finally, return the `min` of the min paths to the last row`_
 
 ---
 - [x] 133. Clone Graph (Medium)
