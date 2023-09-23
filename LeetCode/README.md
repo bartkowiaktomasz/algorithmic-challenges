@@ -59,6 +59,12 @@ nums[a] + nums[b] + nums[c] + nums[d] == target
 - [x] 27. Remove element (Easy)
 
 ---
+- [x] 30. Substring with Concatenation of All Words (Hard)
+> Return the starting indices of all the concatenated substrings in s. You can return the answer in any order. e.g. `s = "barfoothefoobarman", words = ["foo","bar"] => [0,9]` because at indices `0, 9` we have strings `barfoo` and `foobar` respectively (both are concatenation of all strings in `words`)
+
+_Use sliding window approach with two lops: outer loop scans through `s` while the inner loop slides a window `s[low, high]` with stepsize `len(words[0])`. Count matches with `Counter`_
+
+---
 - [x] 31. Next Permutation (Medium)
 > Given an array of integers `nums`, find the next permutation of `nums`. E.g. next permutation of arr = `[1,2,3]` is `[1,3,2]`. For arr = `[2,3,1]` it's `[3,1,2]`
 
@@ -98,6 +104,10 @@ Remark: Notice `candidates[i:]` which allows for skipping duplicates.
 > Given an integer `n`, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.
 
 - Brute force with backtracking. Optimisations: 1. After placing a queen, skip to next row (two queens cannot be placed in the same row)
+
+---
+- [x] 58. Length of Last Word (Easy)
+> Given a string `s` consisting of words and spaces, return the length of the last word in the string.
 
 ---
 - [x] 63. Unique Paths II
@@ -248,11 +258,20 @@ _Use stack for an iterative solution. When coming across a `[` character, put a 
 _Binary search with three pointers: `low, mid, high` with `low` moving `if nums[mid] > nums[0]: low = mid + 1` (note: we're always comparing against the first number in the array `nums[0]`)_
 
 ---
+- [x] 167. Two Sum II - Input Array Is Sorted (Medium)
+> Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific `target` number.
+
+_`O(n)`: Two pointers starting at indices `(0, len(arr) - 1)` moving towards each other_
+
+---
 - [x] 199. Binary Tree Right Side View (Medium)
 
 > Given the `root` of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
 
 _Do a level-order traversal. In each level, append to `res` the last (rightmost) element of that level_
+
+---
+- [x] 205. Isomorphic Strings (Easy)
 
 ---
 - [x] 209. Minimum Size Subarray Sum
