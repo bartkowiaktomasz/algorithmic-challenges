@@ -106,6 +106,12 @@ Remark: Notice `candidates[i:]` which allows for skipping duplicates.
 - Brute force with backtracking. Optimisations: 1. After placing a queen, skip to next row (two queens cannot be placed in the same row)
 
 ---
+- [x] 57. Insert Interval (Medium)
+> Insert `newInterval` into `intervals` such that intervals is still sorted in ascending order by starti and `intervals` still does not have any overlapping intervals (merge overlapping intervals if necessary). e.g. `intervals = [[1,3],[6,9]], newInterval = [2,5] => [[1,5],[6,9]]`
+
+_When scanning the array, build two arrays: `left, right` where `left` is strictly smaller than the `newInterval` wihle `right` is strictly larger. The output is an array `left + [[start, end]] + right` where `start, end` are constructed by using `min, max` operators when scanning middle intervals (which aren't in `left` or `right`)_
+
+---
 - [x] 58. Length of Last Word (Easy)
 > Given a string `s` consisting of words and spaces, return the length of the last word in the string.
 
