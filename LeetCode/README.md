@@ -170,6 +170,12 @@ _Use `stack`. Split the path with `/` (`path.split("/")`). Iterate through the l
 - Solution: Two pass: 1. Mark all characters for removal (e.g. using `_`), 2. Use two pointers: slow `i` and fast `j` to swap `_` (pointed by `i`) with appropriate character (pointed by `j`)
 
 ---
+- [x] 82. Remove Duplicates from Sorted List II (Medium)
+> Given the `head` of a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list. Return the linked list sorted as well.
+
+_Single scan with three pointers: `previous, current, runner`. The `runner` jumps ahead to the first non-duplicate. If there were any duplicate nodes, assign `previosu.next = runner`_
+
+---
 - [x] 92. Reverse Linked List II
 > Given the head of a singly linked list and two integers `left` and `right` where `left <= right`, reverse the nodes of the list from position `left` to position `right`, and return the reversed list.
 
@@ -204,7 +210,11 @@ Remark: The answer is the n'th [Catalan number](https://en.wikipedia.org/wiki/Ca
 _Note that: 1. Last element of `postorder` is the `root`, 2. `inorder` array will look like `[..., root, ...]`. This means that for each element in `preorder` we can recursively (by `pop`ing) build its left and right subtrees if we know the index of `root` element in the `inorder` array._
 
 ---
-- [x] 114. Flatten Binary Tree to Linked List
+- [x] 112. Path Sum (Easy)
+> Given the `root` of a binary tree and an integer `targetSum`, return `true` if the tree has a root-to-leaf path such that adding up all the values along the path equals `targetSum`.
+
+---
+- [x] 114. Flatten Binary Tree to Linked List (Medium)
 > Given the `root` of a binary tree, flatten the tree into a "linked list":
 > The "linked list" should use the same `TreeNode` class where the `right` child pointer points to the next node in the list and the `left` child pointer is always null.
 
@@ -292,6 +302,14 @@ _Use Sliding Window approach. Expand the window while `sum(window) < target` and
 _Use DP. State: `dp[i][j]` represents the side length of the largest square who's bottom-right corner is `i, j`. `dp[i][j] = 1 + min(dp[i - 1][j], dp[i - 1][j - 1], dp[i][j - 1])` if `matrix[i][j] == '1'` (else `0`). Optimisation - when doing bottom-up we only need to keep the last row so `dp` is 1D._
 
 ---
+- [x] 224. Basic Calculator (Hard)
+> Given a string `s` representing a valid expression, implement a basic calculator to evaluate it, and return the result of the evaluation.
+
+_Use a single stack. When encountering `(`, save current result to stack (together with sign - see code). In case of `)` pop previously pushed result and combine it with current result._
+
+_Alternative approach: [Dijkstra's shunting yard algorithm](https://en.wikipedia.org/wiki/Shunting_yard_algorithm). Note: Dijkstra's two stack approach won't work due to it's [limitations](https://medium.com/beyn-technology/an-unconventional-approach-to-determine-operator-precedence-dijkstras-two-stack-algorithm-41fe9beff559)_
+
+---
 - [x] 226. Invert Binary Tree (Easy)
 > Given the `root` of a binary tree, invert the tree, and return its `root`.
 
@@ -313,6 +331,11 @@ _Use DP. State: `dp[i][j]` represents the side length of the largest square who'
 - [x] 392. Is Subsequence (Easy)
 > Given two strings `s` and `t``, return `true`` if `s` is a subsequence of `t`, or false otherwise.
 
+---
+- [x] 399. Evaluate Division (Medium)
+> Given `equations` representing division of pair of variables, `values` (results of divison), return the answers to all queries (each `q in query` representing a division of pair of variables). e.g. `equations = [["a","b"],["b","c"]], values = [2.0,3.0], queries = [["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]] => [6.00000,0.50000,-1.00000,1.00000,-1.00000]`
+
+_Use DFS. Build a weighted graph where edge weight is a result of division. For a `query = "a"/"b"` do DFS to find if there is a path from `"a"` to `"b"`. The result is a product of all edge weights on the path_
 
 ---
 - [x] 416. Partition Equal Subset Sum (Medium)
