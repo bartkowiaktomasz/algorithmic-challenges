@@ -103,7 +103,17 @@ Remark: Notice `candidates[i:]` which allows for skipping duplicates.
 - [x] 51. N-Queens (Hard)
 > Given an integer `n`, return all distinct solutions to the n-queens puzzle. You may return the answer in any order.
 
-- Brute force with backtracking. Optimisations: 1. After placing a queen, skip to next row (two queens cannot be placed in the same row)
+- Brute force with backtracking. Optimisations:
+1. After placing a queen, skip to next row (two queens cannot be placed in the same row)
+2. Use stack rather than recrusion (to avoid recursion limit exceeded). Two `while` loops: the outer `while` loop runs while there are any pieces on the board OR the first piece is still to be placed somewhere on the board (there are still slots we haven't considered). The inner `while` tries to place a queen in a position that does not cause attack
+3. Keep four `set`s to quickly look-up attacks: `rows_occupied, cols_occupied, diag_pos_occoupied, diag_neg_occupied`. When placing a queen, update those sets with values `x, y, x + y, x - y` accordingly. `diag_pos_occoupied` are diagonals with positive slope and `diag_neg_occupied` are diagonals with negative slope
+
+---
+52. N-Queens II (Hard)
+> Given an integer `n`, return the number of distinct solutions to the n-queens puzzle.
+
+- Same as above (N-Queens I)
+
 
 ---
 - [x] 57. Insert Interval (Medium)
@@ -342,6 +352,12 @@ _Use DFS. Build a weighted graph where edge weight is a result of division. For 
 > Given a non-empty array `nums` containing only positive integers, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.
 
 _Knapsack problem. We're trying to find if there is a subset of elements with sum equal to `sum(nums) / 2`. If laying out `nums` as rows and `target / weight` as columns, each row depends only on the previous row, so `dp` table can be a 1D vector._
+
+---
+- [x] 433. Minimum Genetic Mutation (Medium)
+> A gene string can be represented by an 8-character long string, with choices from 'A', 'C', 'G', and 'T'. Given two gene strings `startGene` and `endGene` and the gene bank `bank` (that records all the valid gene mutations) return the minimum number of mutations needed to mutate from `startGene` to `endGene`. e.g. `startGene = "AACCGGTT", endGene = "AAACGGTA", bank = ["AACCGGTA","AACCGCTA","AAACGGTA"] => 2` 
+
+_Use BFS. In each BFS iteration, iterate through all characters of a current gene (replacing each of them) - add to `queue` iff a gene is valid (i.e. is in a bank)_
 
 ---
 - [x] 437. Path Sum III (Medium)
