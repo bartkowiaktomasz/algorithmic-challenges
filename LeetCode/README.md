@@ -297,6 +297,13 @@ _`O(n)`: Two pointers starting at indices `(0, len(arr) - 1)` moving towards eac
 _Do a level-order traversal. In each level, append to `res` the last (rightmost) element of that level_
 
 ---
+201. Bitwise AND of Numbers Range (Medium)
+
+> Given two integers `left` and `right` that represent the range `[left, right]`, return the bitwise AND of all numbers in this range, inclusive.
+
+_This is equivalent to finding the largest common prefix `p` between `left` and `right`. That's because all bits to the right of the `p` swap between 0 <-> 1 for some number between `left` and `right`. And if there is a swap, the AND will return 0_.
+
+---
 - [x] 205. Isomorphic Strings (Easy)
 
 ---
@@ -332,6 +339,12 @@ _Alternative approach: [Dijkstra's shunting yard algorithm](https://en.wikipedia
 > Given an array of integers citations where `citations[i]` is the number of citations a researcher received for their ith paper, return the researcher's h-index. The h-index is defined as the maximum value of h such that the given researcher has published at least h papers that have each been cited at least h times.
 
 - Solution: For `O(N)` use counting sort and compute cumulative sum (reversed). E.g. `citations = [3,0,6,1,5] -> [1,1,0,1,0,1,1] -> [5,4,3,3,2,2,1]`. The meaning of each entry at idx `idx` is "Number of papers with number of citations >= `idx`"
+
+---
+- [x] 373. Find K Pairs with Smallest Sums
+> You are given two integer arrays `nums1` and `nums2` sorted in non-decreasing order and an integer `k`. Return `k` pairs (one elem from `nums1` and one from `nums2`) with the smallest sum
+
+- Solution: Use (min)heap to store the pairs. At every iteration, when we pop the pair, say `nums1[i], nums2[j]`, we need to add to heap two new candidates: `nums1[i + 1], nums2[j]` and `nums1[i], nums2[j + 1]`.
 
 ---
 - [x] 383. Ransom Note (Easy)
