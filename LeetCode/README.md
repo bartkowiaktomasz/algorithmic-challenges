@@ -146,6 +146,10 @@ dp[i][j] = grid[i][j] + min(
 - [x] 67. Add Binary (Easy)
 > Given two binary strings `a` and `b`, return their sum as a binary string e.g. `a = "11", b = "1" => "100"`
 
+- [x] 68. Text Justification (Hard)
+> Given an array of strings words and a width `maxWidth`, format the text such that each line has exactly `maxWidth` characters and is fully (left and right) justified.
+
+_Use greedy approach_
 
 ---
 - [x] 71. Simplify Path (Medium)
@@ -210,6 +214,18 @@ _Solution: One pass scan. See [solution](ReverseLinkedListII.py)_:
 Remark: The answer is the n'th [Catalan number](https://en.wikipedia.org/wiki/Catalan_number)
 
 ---
+- [x] 97. Interleaving String (Medium)
+> Given strings `s1`, `s2`, and `s3`, find whether `s3` is formed by an interleaving of `s1` and `s2`.
+
+Solution: (2D) DP. State: 
+```
+dp(i, j) = dp(i + 1, j) if s1[i] == s3[i + j] or
+           dp(i, j + 1) if s2[i] == s3[i + j]
+           else False
+```
+in another words, we keep iterators `i, j` to scan through `s1, s2` respectively. If `s3[i + j]` matches either `s1[i]` or `s2[j]`, increment the index that matches and recurse
+
+---
 - [x] 100. Same Tree (Easy)
 > Given the roots of two binary trees `p` and `q`, write a function to check if they are the same or not.
 
@@ -235,6 +251,11 @@ _Note that: 1. Last element of `postorder` is the `root`, 2. `inorder` array wil
 > Given a `triangle` array, return the minimum path sum from top to bottom.
 
 _Iterate through each row of the triangle, keeping track of current min path distance to each of the elements of that row. Finally, return the `min` of the min paths to the last row`_
+
+- [x] 123. Best Time to Buy and Sell Stock III (Hard)
+> You are given an array `prices` where `prices[i]` is the price of a given stock on the ith day. Find the maximum profit you can achieve. You may complete at most two transactions.
+
+_Solution: DP or State machine. For a detailed explanation, see [Solution](BestTimeToBuyAndSellStockIII.py)_
 
 ---
 - [x] 133. Clone Graph (Medium)
@@ -290,6 +311,12 @@ _Binary search with three pointers: `low, mid, high` with `low` moving `if nums[
 _`O(n)`: Two pointers starting at indices `(0, len(arr) - 1)` moving towards each other_
 
 ---
+- [x] 188. Best Time to Buy and Sell Stock IV
+> You are given an integer array prices where `prices[i]` is the price of a given stock on the ith day, and an integer `k`. Find the maximum profit you can achieve. You may complete at most `k` transactions: i.e. you may buy at most `k` times and sell at most `k` times.
+
+_Use DP. See [solution for explanation](BestTimeToBuyAndSellStockIII.py)_
+
+---
 - [x] 199. Binary Tree Right Side View (Medium)
 
 > Given the `root` of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
@@ -297,7 +324,7 @@ _`O(n)`: Two pointers starting at indices `(0, len(arr) - 1)` moving towards eac
 _Do a level-order traversal. In each level, append to `res` the last (rightmost) element of that level_
 
 ---
-201. Bitwise AND of Numbers Range (Medium)
+- [x] 201. Bitwise AND of Numbers Range (Medium)
 
 > Given two integers `left` and `right` that represent the range `[left, right]`, return the bitwise AND of all numbers in this range, inclusive.
 
