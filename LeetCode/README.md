@@ -340,6 +340,9 @@ _This is equivalent to finding the largest common prefix `p` between `left` and 
 _Use Sliding Window approach. Expand the window while `sum(window) < target` and shrink it while `sum(window) >= target`_
 
 ---
+- [x] 219. Contains Duplicate II (Easy)
+
+---
 - [x] 221. Maximal Square (Medium)
 > Given an `m x n` binary matrix filled with `0`'s and `1`'s, find the largest square containing only `1`'s and return its area.
 
@@ -366,6 +369,9 @@ _Alternative approach: [Dijkstra's shunting yard algorithm](https://en.wikipedia
 > Given an array of integers citations where `citations[i]` is the number of citations a researcher received for their ith paper, return the researcher's h-index. The h-index is defined as the maximum value of h such that the given researcher has published at least h papers that have each been cited at least h times.
 
 - Solution: For `O(N)` use counting sort and compute cumulative sum (reversed). E.g. `citations = [3,0,6,1,5] -> [1,1,0,1,0,1,1] -> [5,4,3,3,2,2,1]`. The meaning of each entry at idx `idx` is "Number of papers with number of citations >= `idx`"
+
+---
+- [x] 290. Word Pattern (Easy)
 
 ---
 - [x] 373. Find K Pairs with Smallest Sums
@@ -415,6 +421,12 @@ then we found a valid subpath_
 > Given two strings `s` and `p`, return an array of all the start indices of `p`'s anagrams in `s`. You may return the answer in any order.
 
 _Use a running `diff Counter` but count downwards (i.e. we've found an anagram iff `len(diff) == 0`)_
+
+---
+- [x] 452. Minimum Number of Arrows to Burst Balloons (Medium)
+> Given overlapping intervals `[x, y]` find the minimum number of coordinates `x` that cover all ranges. E.g. `[1, 3], [2, 4], [3, 5]` can be covered by `x = 3` (output: 1). Here, baloons are represented by the intervals and arrows are represented by `x` coordinates.
+
+_Sort intervals by second coordinate. Shoot at the a baloons at their `end` coordinate. E.g. In `[1, 3], [2, 4], [3, 5], [4, 6]` we shoot at `x = 3` (after seeing three intervals) and then set `end = 6`._
 
 ---
 - [x] 502. IPO (Hard)
