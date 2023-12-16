@@ -126,6 +126,12 @@ _When scanning the array, build two arrays: `left, right` where `left` is strict
 > Given a string `s` consisting of words and spaces, return the length of the last word in the string.
 
 ---
+- [x] 61. Rotate List (Medium)
+> Given the head of a linked list, rotate the list to the right by `k` places.
+
+_Calculate the length of the list `len`. Let `k = k % len`. "Cut" the list after position `idx = len - k` (list `head` node is at `idx = 1`)_
+
+---
 - [x] 63. Unique Paths II
 > Return the number of possible unique paths that the robot can take to reach the bottom-right corner (starting in the top-left corner)
 
@@ -245,6 +251,14 @@ _Note that: 1. Last element of `postorder` is the `root`, 2. `inorder` array wil
 > The "linked list" should use the same `TreeNode` class where the `right` child pointer points to the next node in the list and the `left` child pointer is always null.
 
 - Recursive solution. For each `node`, `flatten` its both subtrees and then recombine pointers so that the `root` together with its flattened left subtree and flattened right subtree form a flattened tree.
+
+---
+- [x] 117. Populating Next Right Pointers in Each Node II (Medium)
+> Populate each `next` pointer to point to its `next` right node. If there is no `next` right node, the next pointer should be set to `NULL`.
+
+- Level-order traversal. Reasign `next` pointers on one level while building a queue with nodes in the next level. Instead of using two separate queues (one for the current level and one for the next level), use a single queue and keep track of the number of nodes in the next level (to know when to stop iterating through the queue).
+
+> Note: It can be solved in `O(1)` space without `deque` with three pointers. `node` does level-order traversal. `cur` does the level-order traversal one level below `node`. `cur` is used to assign `next` pointers. We need one more pointer, `level_ptr` to point (`level_ptr.next`) to the first node in the next level (we will assign `next = level_ptr.next` at the end of the `while` loop). There are two `while node` loops. The inner one does the level-order traversal. The outer one ensures that the traversal stops when we finish traversing the last level.
 
 ---
 - [x] 120. Triangle (Medium)
