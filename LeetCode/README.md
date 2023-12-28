@@ -196,6 +196,12 @@ _Use `stack`. Split the path with `/` (`path.split("/")`). Iterate through the l
 _Single scan with three pointers: `previous, current, runner`. The `runner` jumps ahead to the first non-duplicate. If there were any duplicate nodes, assign `previosu.next = runner`_
 
 ---
+- [x] 86. Partition List
+> Given the head of a linked list and a value `x`, partition it such that all nodes less than `x` come before nodes greater than or equal to `x`.
+
+_Create two auxiliary linked lists: one for the "less than" and one for "greater or equal to" nodes. Scan through the input linked list, and assign the node to one of the two linked lists. Connect the lists._
+
+---
 - [x] 92. Reverse Linked List II
 > Given the head of a singly linked list and two integers `left` and `right` where `left <= right`, reverse the nodes of the list from position `left` to position `right`, and return the reversed list.
 
@@ -272,6 +278,12 @@ _Iterate through each row of the triangle, keeping track of current min path dis
 _Solution: DP or State machine. For a detailed explanation, see [Solution](BestTimeToBuyAndSellStockIII.py)_
 
 ---
+- [x] 129. Sum Root to Leaf Numbers (Medium)
+Return the total sum of all root-to-leaf numbers. For example, the root-to-leaf path `1 -> 2 -> 3`represents the number 123.
+
+_DFS. Once in a leaf node, update the global `sum_`_
+
+---
 - [x] 133. Clone Graph (Medium)
 > Given a reference of a `node` in a connected undirected graph. Return a deep copy (clone) of the graph.
 
@@ -311,6 +323,12 @@ Output: "accaccacc"
 ```
 
 _Use stack for an iterative solution. When coming across a `[` character, put a `current` decoded string onto a stack (together with a quantifier preceding given `[`) and start building a new `current` until hitting `]`._
+
+---
+- [x] 151. Reverse Words in a String (Medium)
+> Given an input string `s`, reverse the order of the words.
+
+_One liner with `split` and `strip`_
 
 ---
 - [x] 153. Find Minimum in Rotated Sorted Array (Medium)
@@ -412,6 +430,12 @@ _Use DFS. Build a weighted graph where edge weight is a result of division. For 
 > Given a non-empty array `nums` containing only positive integers, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.
 
 _Knapsack problem. We're trying to find if there is a subset of elements with sum equal to `sum(nums) / 2`. If laying out `nums` as rows and `target / weight` as columns, each row depends only on the previous row, so `dp` table can be a 1D vector._
+
+---
+- [x] 427. Construct Quad Tree (Medium)
+> Given a `n * n` matrix grid of `0`'s and `1`'s only. We want to represent grid with a Quad-Tree.
+
+_Divide & Conquer. Recursively split the grid into four (sub)rectangles (children). Combine the four nodes (children) into one parent node depending on the `child.val`._
 
 ---
 - [x] 433. Minimum Genetic Mutation (Medium)
