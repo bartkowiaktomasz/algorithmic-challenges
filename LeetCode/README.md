@@ -343,7 +343,13 @@ _Binary search with three pointers: `low, mid, high` with `low` moving `if nums[
 _`O(n)`: Two pointers starting at indices `(0, len(arr) - 1)` moving towards each other_
 
 ---
-- [x] 188. Best Time to Buy and Sell Stock IV
+- [x] 173. Binary Search Tree Iterator (Medium)
+> Implement the `BSTIterator` class that represents an iterator over the in-order traversal of a binary search tree (BST):
+
+_Stack implementation of in-order traversal_
+
+---
+- [x] 188. Best Time to Buy and Sell Stock IV (Hard)
 > You are given an integer array prices where `prices[i]` is the price of a given stock on the ith day, and an integer `k`. Find the maximum profit you can achieve. You may complete at most `k` transactions: i.e. you may buy at most `k` times and sell at most `k` times.
 
 _Use DP. See [solution for explanation](BestTimeToBuyAndSellStockIII.py)_
@@ -379,6 +385,11 @@ _Use Sliding Window approach. Expand the window while `sum(window) < target` and
 > Given an `m x n` binary matrix filled with `0`'s and `1`'s, find the largest square containing only `1`'s and return its area.
 
 _Use DP. State: `dp[i][j]` represents the side length of the largest square who's bottom-right corner is `i, j`. `dp[i][j] = 1 + min(dp[i - 1][j], dp[i - 1][j - 1], dp[i][j - 1])` if `matrix[i][j] == '1'` (else `0`). Optimisation - when doing bottom-up we only need to keep the last row so `dp` is 1D._
+
+--- [x] 222. Count Complete Tree Nodes (Easy/Medium)
+> Given the root of a complete binary tree, return the number of the nodes in the tree. Follow-up: Do it in `O(log(n))` time.
+
+_Calculate the depth `d` of the tree by going leftwards. Then, do a binary search to find the rightmost non-null node at depth `d`. At depth `d` there are `2^d` nodes: `0,...,2^d-1`. When searching if node `x` is in the tree, convert `x` to binary e.g. `6 -> 110`. The binary form tells us the path to take i.e. `110 -> right-right-left` to access the node `6` at depth `d`. The binary search implementation needs to be of form as in the problem `Find First And Last Position Of Element In Sorted Array`._
 
 ---
 - [x] 224. Basic Calculator (Hard)
