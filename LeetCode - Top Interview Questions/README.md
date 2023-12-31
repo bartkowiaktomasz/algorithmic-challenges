@@ -31,12 +31,7 @@ Add digits and carry a "carry" to the next operation in case of overflow_
 "abba" -> 2
 ```
 
-_Use sliding window approach with two moving pointers: `i, j`. Iterate through each char in `s` keeping a `map: char -> idx` and use it to discover a  duplicate (and its index). If came across a duplicate, update the `map` with a new `idx`.  Keep track of two indices: `i, j` (`j >= i`) that note the beginning and end of the  valid string ending in `j`._
-
-_1. If a new `char` does not exist in the map, move `j`_
-
-_2. If a new `char` exists in the map, move `i` to the right of the existing duplicate
-and calculate the length of the substring starting in `i` ending in `j`. Keep track of the running `max` of the longest substring._
+_Use sliding window approach with two moving pointers: `i, j`, `j > i`. Keep a set of `seen` letters. Expand `j` if `s[j] not in seen`. Once `s[j]` points to a letter thats `in seen`, shrink the window by incrementing `i` until `i` is to the right of the same letter that is currently being pointed to by `j`. In each round, keep track of the length of the largest substring window seen so far._
 
 ---
 - [x] 4. Median of Two Sorted Arrays (Hard)
@@ -70,6 +65,9 @@ the palindrome has even length so we need to compare letters at indices `i - d ,
 
 `O(n)`:
 _See Manacher's algorithm_
+
+---
+- [x] 27. Remove element (Easy)
 
 ---
 - [x] Reverse Integer (Easy)
@@ -259,16 +257,9 @@ _Remark: If numbers are `int`s it is sufficient to find an index of an input num
 
 ---
 - [x] Valid Sudoku (Medium)
-> Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be 
-validated according to the following rules:
-Each row must contain the digits 1-9 without repetition. Each column must contain the 
-digits 1-9 without repetition. Each of the nine 3 x 3 sub-boxes of the grid must 
-contain the digits 1-9 without repetition.
+> Determine if a 9 x 9 Sudoku board is valid. A valid sudoku does not have duplicate numbers in each row, each column and in each 3x3 subbox
 
-_Initialise one set per each row, each column and each box (3 * 9 = 27 sets). Then iterate
-through the board once, checking for each element if it exists already in one of the
-sets (is so - return `False`). Each element at index `i, j` belongs to a box with index
-`3 * (i // 3) + (j // 3)`_
+_For each cell, check if any of the elements `(i, board[i][j]), (board[i][j], j), (i // 3, j // 3, board[i][j])` has been seen so far (if so - return `False`)._
 
 
 ---
@@ -508,7 +499,7 @@ the width of each bar is 1, find the area of largest rectangle in the histogram.
 _Use stack of bar indices (heights can be looked up quickly given an index). The rep invariant in the stack is that, for a given bar, the bar to its left is necessarily smaller, so we only insert bars that are higher than the `top`. If we come across a bar that's smaller (or equal height) than `top` we pop the stack and calculate the area for each of the popped bars. The height of the area is the height of the popped bar. Insert dummy bar with `height = 0` at the end of the list to deal with an edge case._
 
 ---
-- [x] Merge Sorted Array (Easy)
+- [x] 88. Merge Sorted Array (Easy)
 > Given two sorted integer arrays `nums1` and `nums2`, merge `nums2` into `nums1` as one sorted array (in place).
 > e.g. 
 ```

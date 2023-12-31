@@ -8,36 +8,19 @@ contain the digits 1-9 without repetition.
 """
 from typing import List
 
-
 class Solution:
-    SUDOKU_SIZE = 9
-
-    def box_idx(self, i: int, j: int):
-        return 3 * (i // 3) + (j // 3)
-
     def isValidSudoku(self, board: List[List[str]]) -> bool:
-        # indices 0 - 8 store elements in rows
-        # indices 9 - 17 store elements in columns
-        # indices 18 - 24 stpre elements in 3x3 boxes
-        elems_map = [set() for _ in range(3 * Solution.SUDOKU_SIZE)]
-
-        for i, row in enumerate(board):
-            for j, elem in enumerate(row):
-                if elem == ".":
-                    continue
-                elif 1 <= int(elem) <= 9:
-                    if (
-                            elem in elems_map[i] or
-                            elem in elems_map[j + Solution.SUDOKU_SIZE] or
-                            elem in elems_map[self.box_idx(i, j) + 2 * Solution.SUDOKU_SIZE]
-                    ):
-                        return False
-                    else:
-                        elems_map[i].add(elem)
-                        elems_map[j + Solution.SUDOKU_SIZE].add(elem)
-                        elems_map[self.box_idx(i, j) + 2 * Solution.SUDOKU_SIZE].add(elem)
+        seen = set()
+        for i in range(9):
+            for j in range(9):
+                if board[i][j] == ".": continue
+                elems = [(i, board[i][j]), (board[i][j], j), (i // 3, j // 3, board[i][j])]
+                if any([
+                    e in seen for e in elems
+                ]):
+                    return False
+                for e in elems: seen.add(e)
         return True
-
 
 board = [[".", ".", ".", ".", "5", ".", ".", "1", "."],
          [".", "4", ".", "3", ".", ".", ".", ".", "."],

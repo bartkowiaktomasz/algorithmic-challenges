@@ -56,9 +56,6 @@ nums[a] + nums[b] + nums[c] + nums[d] == target
 - Use three pointers: `start, stop, next_` to reverse the linked list between `start, stop` at each iteration. Alternatively, use recursion
 
 ---
-- [x] 27. Remove element (Easy)
-
----
 - [x] 30. Substring with Concatenation of All Words (Hard)
 > Return the starting indices of all the concatenated substrings in s. You can return the answer in any order. e.g. `s = "barfoothefoobarman", words = ["foo","bar"] => [0,9]` because at indices `0, 9` we have strings `barfoo` and `foobar` respectively (both are concatenation of all strings in `words`)
 

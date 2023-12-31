@@ -10,19 +10,21 @@ e.g.
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        letters_to_idx = dict()
-        length_longest_substr = 0
-        i = 0
-        for j, c in enumerate(s):
-            if c not in letters_to_idx:
-                letters_to_idx[c] = j
-            else:
-                duplicate_idx = letters_to_idx[c]
-                i = max(duplicate_idx + 1, i)
-                letters_to_idx[c] = j
-            length_longest_substr = max(length_longest_substr, j - i + 1)
-
-        return length_longest_substr
+        if not s: return 0
+        i, j, max_l = 0, 1, 1
+        seen = set([s[i]])
+        while j < len(s):
+            while j < len(s) and s[j] not in seen:
+                seen.add(s[j])
+                j += 1
+            max_l = max(max_l, j - i)
+            if i == len(s) or j == len(s): return max_l
+            while s[i] != s[j]:
+                seen.remove(s[i])
+                i += 1
+            seen.remove(s[i])
+            i += 1
+        return max_l
 
 input1 = "abba"
 print(
