@@ -70,6 +70,29 @@ _See Manacher's algorithm_
 - [x] 27. Remove element (Easy)
 
 ---
+- [x] 56. Merge Intervals (Medium)
+> Given an array of intervals where `intervals[i] = [start_i, end_i]`, merge all 
+overlapping intervals, and return an array of the non-overlapping intervals 
+that cover all the intervals in the input.
+
+e.g.
+```
+merge([[1,3],[2,6],[8,10],[15,18]]) = [[1,6],[8,10],[15,18]]
+merge([[1,4],[4,5]]) = [[1,5]]
+```
+
+_Sort by start of intervals. Then solve by linear scan. Note: Remember about a
+case where one interval is inside the previous one, e.g. `[[1, 5], [2, 4]...]`
+(e.g. skip a loop, i.e. `continue`)._
+
+---
+- [x] 199. Binary Tree Right Side View (Medium)
+
+> Given the `root` of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
+
+_Do a level-order traversal. In each level, append to `res` the last (rightmost) element of that level_
+
+---
 - [x] Reverse Integer (Easy)
 > Given a 32-bit signed integer, reverse digits of an integer.
 If a number overflows, return `0`
@@ -396,22 +419,6 @@ a jump size of `n` **do not** iterate through all elems at indices
  keep track of one value *leftmost_good* which tracks the leftmost index 
  for which we are in good position. Each position `i` iff 
  `i + nums[i] >= leftmost_good >= i` i.e. `leftmost_good` is within our jump._
-
----
-- [x] Merge Intervals (Medium)
-> Given an array of intervals where `intervals[i] = [start_i, end_i]`, merge all 
-overlapping intervals, and return an array of the non-overlapping intervals 
-that cover all the intervals in the input.
-
-e.g.
-```
-merge([[1,3],[2,6],[8,10],[15,18]]) = [[1,6],[8,10],[15,18]]
-merge([[1,4],[4,5]]) = [[1,5]]
-```
-
-_Sort by start of intervals. Then solve by linear scan. Note: Remember about a
-case where one interval is inside the previous one, e.g. `[[1, 5], [2, 4]...]`
-(e.g. skip a loop, i.e. `continue`)._
 
 ---
 - [x] Unique Paths (Medium)

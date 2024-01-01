@@ -352,13 +352,6 @@ _Stack implementation of in-order traversal_
 _Use DP. See [solution for explanation](BestTimeToBuyAndSellStockIII.py)_
 
 ---
-- [x] 199. Binary Tree Right Side View (Medium)
-
-> Given the `root` of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
-
-_Do a level-order traversal. In each level, append to `res` the last (rightmost) element of that level_
-
----
 - [x] 201. Bitwise AND of Numbers Range (Medium)
 
 > Given two integers `left` and `right` that represent the range `[left, right]`, return the bitwise AND of all numbers in this range, inclusive.
