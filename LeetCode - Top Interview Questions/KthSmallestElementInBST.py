@@ -14,28 +14,19 @@ class TreeNode:
 
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        last_val_seen = None
-        num_unique_seen = 0
-        res = None
-        def traverse_in_order(node: TreeNode):
-            nonlocal last_val_seen
-            nonlocal num_unique_seen
-            nonlocal res
-            if node.left is not None:
-                traverse_in_order(node.left)
-            if node.val != last_val_seen:
-                num_unique_seen += 1
-            if num_unique_seen == k:
-                res = node.val
-                # Found a result, return immediately
-                raise Exception
-            last_val_seen = node.val
-            if node.right is not None:
-                traverse_in_order(node.right)
-        try:
-            traverse_in_order(root)
-        finally:
-            return res
+        # In-order traversal using stack
+        stack = []
+        cur = root
+        i = 1
+        while stack or cur:
+            while cur:
+                stack.append(cur)
+                cur = cur.left
+            cur = stack.pop()
+            if i == k: return cur.val
+            cur = cur.right
+            i += 1
+        return -1
 
 root = TreeNode(5)
 root.left = TreeNode(3)

@@ -27,7 +27,7 @@ class Solution:
 sol = Solution()
 s1, t1 = "aa", "aa"
 s2, t2 = "a", "aa"
-s3, t2 = "ADOBECODEBANC", "ABC"
+s3, t3 = "ADOBECODEBANC", "ABC"
 s4, t4 = "a", "a"
 print(
     sol.minWindow(s1, t1)

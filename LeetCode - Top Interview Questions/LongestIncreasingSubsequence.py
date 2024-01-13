@@ -5,8 +5,8 @@ class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         stacks = [[nums[0]]]
         for n in nums[1:]:
-            # Note: for...else
-            # If break is encountered inside "for", else
+            # Note: for...else struct
+            # If break is encountered inside "for", it does not run "else"
             for s in stacks:
                 if n <= s[-1]:
                     s.append(n)

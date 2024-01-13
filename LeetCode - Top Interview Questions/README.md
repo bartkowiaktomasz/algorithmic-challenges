@@ -61,7 +61,7 @@ _NOTE: In general it might be a good idea to do a BS over possible answers_
  `O(n^2)` (this solution):
 _For each character in `s` at index `i` expand outwards comparing letters at indices
 `i - d` and `i + d` saving biggest encountered palindrome. Note the second case where
-the palindrome has even length so we need to compare letters at indices `i - d , i+1 - d`_
+the palindrome has even length so we need to compare letters at indices `i - d , i + 1 - d`_
 
 `O(n)`:
 _See Manacher's algorithm_
@@ -256,8 +256,7 @@ so we're gonna make subtractions `22 - 12 - 6 - 3 = 1` and our result will be up
 
 ---
 - [x] Search in Rotated Sorted Array (Medium)
-> You are given an integer array `nums` sorted in ascending order (with distinct values),
-and an integer target.
+> You are given an integer array `nums` sorted in ascending order (with distinct values), and an integer `target`.
 Suppose that `nums` is rotated at some pivot unknown to you beforehand 
 (i.e., `[0,1,2,4,5,6,7]` might become `[4,5,6,7,0,1,2]`).
 > If target is found in the array return its index, otherwise, return `-1`
@@ -289,8 +288,7 @@ _For each cell, check if any of the elements `(i, board[i][j]), (board[i][j], j)
 - [x] First Missing Positive (Hard)
 > Given an unsorted integer array `nums`, find the smallest missing positive integer.
 
-_Solve in `O(n)` with `O(1)` extra space. `O(1)` suggests that we need to somehow alter the
-original array to mark which positive integers are there or not. Few observations:_
+_Solve in `O(n)` with `O(1)` extra space. `O(1)` suggests that we need to somehow alter the original array to mark which positive integers are there or not. Few observations:_
 - First missing positive integer in the array of length `l` must be in range `[1, l + 1]`
   e.g. for list `[1, 2, 3]` the first missing positive is `l + 1 = 4`
 - We will be marking positive numbers present in the array by multiplying the elements
@@ -335,7 +333,7 @@ with support for '`?`' and '`*`' where:
 - '`?`' Matches any single character.
 - '`*`' Matches any sequence of characters (including the empty sequence).
 
-_Solution using bottom-down DP. Initialise `memo` table of size `|s| + 1 * |p| + 1|` 
+_Solution using bottom-up DP. Initialise `memo` table of size `|s| + 1 * |p| + 1|` 
 to account for memo values for edge cases (empty string/empty pattern). 
 Set boundary conditions: `memo[0][0] = True`, `memo[col = 0] = False` (empty pattern),
 and for `memo[row = 0]` depending on the character and the previous `memo` value for
@@ -445,9 +443,10 @@ _Do binary search over the answers. Improvement: use Newton's method
 with initial guess being `x`_
 
 ---
-- [x] Climbing Stairs (Easy)
-> You are climbing a staircase. It takes n steps to reach the top. 
-Each time you can either climb `1` or `2` steps. In how many distinct ways can you climb to the top?
+- [x] 70. Climbing Stairs (Easy)
+> You are climbing a staircase. It takes n steps to reach the top.  Each time you can either climb `1` or `2` steps. In how many distinct ways can you climb to the top?
+
+_DP state: dp[n] = dp[n - 1] + dp[n - 2]_
 
 ---
 - [x] Set Matrix Zeros (Medium)
@@ -856,7 +855,7 @@ After revering last n-k numbers : 5 6 7 1 2 3 4 --> Result
 > Write a function that takes an unsigned integer and returns the number of '1' bits it has (also known as the Hamming weight).
 
 ---
-- [x] House Robber (Medium)
+- [x] 198. House Robber (Medium)
 
 > Given an integer array `nums` representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
 
@@ -872,11 +871,11 @@ Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (m
 Total amount you can rob = 2 + 9 + 1 = 12.
 ```
 
-_Use DP with state: `dp[i] = max(nums[i] + dp[i + 2], dp[i + 1])`_
+_Use DP with state: `dp[i] = max(nums[i] + dp[i + 2], dp[i + 1]). For space optimisation, only maintain last two dp states_
 
 
 ---
-- [x] Number of Islands (Medium)
+- [x] 200. Number of Islands (Medium)
 > Given an `m x n` 2D binary grid grid which represents a map of `'1'`s (land) and `'0'`s (water), return the number of islands.
 
 _Use BFS. Optimisation: Instead of using `set` for marking `visited`, mark them directly in the input grid_
@@ -962,7 +961,7 @@ _Use Stack. First, preprocess the string to build a stack with numbers and opera
 - [x] Kth Smallest Element in a BST (Medium)
 > Given the root of a binary search tree, and an integer `k`, return the kth smallest value (1-indexed) of all the values of the nodes in the tree.
 
-_Do an in-order traversal (it sorts a BST). Keep a global count of unique elements seen so far and return immediately when seeing `k`th unique element._
+_Do an in-order traversal (it sorts a BST). Break when processing a `k`th element_
 
 ---
 - [x] Palindrome Linked List (Easy)
