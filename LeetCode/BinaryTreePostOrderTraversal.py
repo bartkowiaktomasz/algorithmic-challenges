@@ -1,25 +1,22 @@
-# Definition for a binary tree node.
+from collections import deque
+from typing import List, Optional
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
 
-from typing import List, Optional
-
-from utils import TreeNode
-
-
 class Solution:
-    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        stack, res = [], []
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        stack, res = [], deque([])
         cur = root
         while cur or stack:
             if cur:
+                res.appendleft(cur.val)
                 stack.append(cur)
-                cur = cur.left
+                cur = cur.right
             else:
                 cur = stack.pop()
-                res.append(cur.val)
-                cur = cur.right
+                cur = cur.left
         return res

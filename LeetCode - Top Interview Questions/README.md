@@ -67,6 +67,34 @@ the palindrome has even length so we need to compare letters at indices `i - d ,
 _See Manacher's algorithm_
 
 ---
+- [x] 11. Container With Most Water (Medium)
+> Given `n` non-negative integers `a1, a2, ..., an`, where each represents a point at 
+> coordinate `(i, ai)`. `n` vertical lines are drawn such that the two endpoints of 
+> the line `i` is at `(i, ai)` and `(i, 0)`. Find two lines, which, together with the
+> x-axis forms a container, such that the container contains the most water.
+
+_O(n): (greedy) Use two pointers `i`, `j` that start at the edges and get closer to each other `while i < j`. Increment `i` (or decrement `j`) whichever pointer points to the shorter line, updating the max rectangle (if current rectangle is greater than the max so far)._
+
+_Intuition: Assume there exists some biggest area between indices `a` and `b` (`b > a`).
+ Let's try to prove that always moving the pointer that points to the smaller height 
+ will eventually find our maximum area. Since we increment pointer `i` 
+ (or decrement pointer `j`) either `i` will hit `a` first or `j` will hit 
+ `b`. We now need to guarantee that, if `i` hits `a` first, it will stay there until `j`
+ hits `b` (or if `j` hits `b` first, it will stay there until `i` hits `a`). 
+ Say `i` hits `a` first - since we only decrement `j` if `height[j] < height[i]` we must
+ reach `b` eventually - it is impossible for us to find a line higher than `height[i]`
+ before reaching `b` because this would mean that the new area is bigger than the one
+ between `a` and `b`, which is a contradiction._
+
+
+---
+- [x] 26. Remove Duplicates from Sorted Array (Easy)
+> Given a sorted array `nums`, remove the duplicates in-place such that each element 
+appears only once and return the new length
+
+_Use two pointers: slow runner `i` and fast runner `j`. Fast runner jumps over all duplicates until it hits a non-duplicate. Then we overwrite `nums[i + 1]` with `nums[j]` and increment both._ 
+
+---
 - [x] 27. Remove element (Easy)
 
 ---
@@ -84,6 +112,30 @@ merge([[1,4],[4,5]]) = [[1,5]]
 _Sort by start of intervals. Then solve by linear scan. Note: Remember about a
 case where one interval is inside the previous one, e.g. `[[1, 5], [2, 4]...]`
 (e.g. skip a loop, i.e. `continue`)._
+
+---
+- [x] 64. Minimum Path Sum (Medium)
+> Given a `m x n` grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.
+
+- DP. State:
+```
+# function "solve"
+dp[i][j] = grid[i][j] + min(
+    solve(i + 1, j), solve(i, j + 1)
+)
+```
+
+---
+- [x] 98. Validate Binary Search Tree (Medium)
+> Given the `root` of a binary tree, determine if it is a valid binary search tree (BST). Note: the following tree is invalid
+```
+  5
+ 3 6
+  4 7
+```
+because `4 < 5` so it should be on the left of root.
+
+_Iterative solution using `stack`. Keep track of `previous` node to compare it with `root` each time after retrieving it from the stack. If `previous.val >= root.val` at any time, the BST is invalid (Note the task imposes a constraint that BST keys (of children) must be strictly less or greater than the parent). _
 
 ---
 - [x] 199. Binary Tree Right Side View (Medium)
@@ -137,29 +189,6 @@ _As a result, if the char is `*` the result `dp[i][j]` will match if one of the 
 cases happens_
 
 _NOTE: DP State: `dp[i][j]`: `s[:i]` matches subpattern `p[:j]`_
-
----
-- [x] Container With Most Water (Medium)
-> Given `n` non-negative integers `a1, a2, ..., an`, where each represents a point at 
-> coordinate `(i, ai)`. `n` vertical lines are drawn such that the two endpoints of 
-> the line `i` is at `(i, ai)` and `(i, 0)`. Find two lines, which, together with the
-> x-axis forms a container, such that the container contains the most water.
-
-_O(n): (greedy) Use two pointers `i`, `j` that start at edges and get closer to each
-other until they are equal. Increment `i` (or decrement `j`) whichever pointer points 
-to the shorter line._
-
-_Intuition: Assume there exists some biggest area between indices `a` and `b` (`b > a`).
- Let's try to prove that always moving the pointer that points to the smaller height 
- will eventually find our maximum area. Since we increment pointer `i` 
- (or decrement pointer `j`) either `i` will hit `a` first or `j` will hit 
- `b`. We now need to guarantee that, if `i` hits `a` first, it will stay there until `j`
- hits `b` (or if `j` hits `b` first, it will stay there until `i` hits `a`). 
- Say `i` hits `a` first - since we only decrement `j` if `height[j] < height[i]` we must
- reach `b` eventually - it is impossible for us to find a line higher than `height[i]`
- before reaching `b` because this would mean that the new area is bigger than the one
- between `a` and `b`, which is a contradiction._
-
 
 ---
 - [x] Roman to Integer (Easy)
@@ -223,13 +252,6 @@ _Remark: The number of well-formed parentheses for `n` pairs of parentheses is `
 ascending order. Merge all the linked-lists into one sorted linked-list and return it.
 
 _Iterate each linked list simultaneously, adding new nodes to a priority queue. In each iteration, `heappop` smallest node from the heap, add it to the solution, access its `next` element and add that to the heap if it exists, otherwise add `inf`. `break` if the smallest element in the heap is `inf`._
-
----
-- [x] Remove Duplicates from Sorted Array (Easy)
-> Given a sorted array `nums`, remove the duplicates in-place such that each element 
-appears only once and return the new length
-
-_Use two pointers: slow runner `i` and fast runner `j`. Fast runner jumps over all duplicates until it hits a non-duplicate. Then we overwrite `nums[i + 1]` with `nums[j]` and increment both._ 
 
 ---
 - [x] Implement strStr() (Easy)
@@ -530,13 +552,6 @@ nodes' values.
 _Use `stack` and two `while` loops to solve iteratively. Initialise stack with single `None` element to exit gracefully from the outer `while` loop  (we exit when `stack` is empty and `root is None`, i.e we retrieved first, initial element form the stack)._
 
 _See [How to solve Tree questions using iterative in-order traversal](https://leetcode.com/problems/validate-binary-search-tree/discuss/32112/Learn-one-iterative-inorder-traversal-apply-it-to-multiple-tree-questions-(Java-Solution))_
-
-
----
-- [x] Validate Binary Search Tree (Medium)
-> Given the `root` of a binary tree, determine if it is a valid binary search tree (BST).
-
-_Iterative solution using `stack`. Keep track of `previous` node to compare it with `root` each time after retrieving it from the stack. If `previous.val >= root.val` at any time, the BST is invalid (Note the task imposes a constraint that BST keys (of children) must be strictly less or greater than the parent)._
  
  ---
  - [x] Symmetric Tree (Easy)
@@ -614,7 +629,7 @@ _We should buy for 1$, sell for 2$ (1$ profit), buy for 2$ and sell for 3$ (1$ m
 - [x] Binary Tree Maximum Path Sum (Hard)
 > Given the `root` of a binary tree, return the maximum path sum of any path.
 
-_Note: the question is about a maximum path sum and not a maximum subtree sum. Do a postorder traversal (first - leaves, root at the end), calculating a `max_path_sum` for each node, where `max_path_sum` is the maximum path sum at a given node (maximum of its own sum or it's sum plus either of its children but not both). For each node in the higher levels of the tree we recompute `max_path_sum` using `max_path_sum` of its children. Note that the maximum path might be a one that includes all: some node `n` and `n.left` and `n.right`, but then it cannot include `n.parent` because it would no longer be a path. So the final result will not be a max of `max_path_sum` - we also need to, at each step, compute a value of `n.val + n.left.max_path_sum + n.right.max_path_sum` and update our `max_sum` if necessary. `max_sum` is the final result._
+_Note: the question is about a maximum path sum and not a maximum subtree sum. Do a postorder traversal (first - leaves, root at the end), calculating a `max_path_sum` for each node (keep `max_path_sum` as a local property of each `node`), where `max_path_sum` is the maximum path sum involving a given node - `max` of: its own value or it's value plus `max_path_sum` of either of its children but not both (the path needs to be joinable with a node's parent). In postorder traversal we can do this operation  bottom-up (so we have access to `max_path_sum` of children nodes). The final result **will not** be a max of `max_path_sum` - this is because `max_path_sum` involves a path that can be "joined" with a parent (i.e. it cannot be a "kink"). So, when doing the traversal, we also need to keep a track of a global `max_sum` (result): `max_sum = max(max_sum, n.max_path_sum, n.val + n.left.max_path_sum + n.right.max_path_sum)`._
 
 ---
 - [x] Valid Palindrome (Easy)

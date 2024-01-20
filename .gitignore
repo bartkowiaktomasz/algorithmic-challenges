@@ -6,3 +6,6 @@
 *.code-workspace
 
 Other/*
+utils.py
+competitive-programming-cheathseet.md
+interview-notes.md

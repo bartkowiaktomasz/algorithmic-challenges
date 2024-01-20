@@ -1,4 +1,7 @@
 # Definition for a binary tree node.
+import math
+
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -8,12 +11,11 @@ class TreeNode:
 
 class Solution:
     def maxPathSum(self, root: TreeNode) -> int:
-        max_sum = float('-inf')
+        max_sum = -math.inf
 
         def sumNode(node: TreeNode):
             nonlocal max_sum
-            if node is None:
-                return 0
+            if node is None: return 0
             left, right = sumNode(node.left), sumNode(node.right)
             node.max_path_sum = max(
                 node.val,

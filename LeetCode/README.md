@@ -135,17 +135,6 @@ _Calculate the length of the list `len`. Let `k = k % len`. "Cut" the list after
 _DP state: `unique_paths[i][j] = unique_paths[i - 1][j] + unique_paths[i][j - 1]`. If a square at `i, j` is an obstacle, set `unique_paths[i][j] = 0`_
 
 ---
-- [x] 64. Minimum Path Sum (Medium)
-> Given a `m x n` grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.
-
-- DP. State:
-```
-# function "solve"
-dp[i][j] = grid[i][j] + min(
-    solve(i + 1, j), solve(i, j + 1)
-)
-```
-
 - [x] 67. Add Binary (Easy)
 > Given two binary strings `a` and `b`, return their sum as a binary string e.g. `a = "11", b = "1" => "100"`
 
@@ -536,10 +525,22 @@ _Use BFS, tracking `min` distance to each square from starting square_
 _Use Kadane's algorithm like in Maximum Sum Subarray but also keep track of minimum sum subarray. At the end, the maximum sum is EITHER a 1. contiguous subarray, 2. circular subarray. In the latter case, the max subarray sum is of a form `total_sum - sum(min_sum)` where `total_sum` is a total array sum and `sum(min_sum)` is a minimum sum of a contiguous subarray found during Kadane's scan_
 
 ---
+- [x] 938. Range Sum of BST (Easy)
+> Given the `root` node of a binary search tree and two integers `low` and `high`, return the sum of values of all nodes with a value in the inclusive range `[low, high]`.
+
+_Recurse into the left branch `if low <= node.val: solve(node.left)` and the right branch `if high >= node.val: solve(node.right)`._
+
+---
 - [x] 994. Rotting Oranges
 > Return the minimum number of minutes that must elapse until no cell has a fresh orange. If this is impossible, return `-1`.
 
 _Use BFS_
+
+---
+- [x] 1007. Minimum Domino Rotations For Equal Row
+> In a row of dominoes, `tops[i]` and `bottoms[i]` represent the top and bottom halves of the ith domino. (A domino is a tile with two numbers from 1 to 6 - one on each half of the tile.) Return the minimum number of rotations so that all the values in tops are the same, or all the values in bottoms are the same. E.g. `tops = [2,1,2,4,2,2], bottoms = [5,2,6,2,3,2] => 2 (rotate dominoes at idxs 1, 3 to make tops = [2,2,2,2,2,2])`
+
+_Count appearances in `tops, bottoms` and how many times `tops[i] == bottoms[i]` for each `num = 1,...,6`. The rotation is doable iff `counter_tops[num] + counter_bottoms[num] - counter_equal[num] >= len(tops)`_
 
 ---
 - [x] 1143. Longest Common Subsequence
